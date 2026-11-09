@@ -14,7 +14,7 @@
   <style>
     /* Board: Knoten in Lack an festen Stellen, Kabel als Gummi mit Lichtkante; passt sich der Fläche an */
     .hf-board { position: absolute; left: 0; top: 0; inline-size: 900px; block-size: 560px; transform-origin: 0 0; }
-    .hf-board .ak-geraet { position: absolute; inline-size: 236px; padding: 10px 10px 12px; --ak-spalten: 3; --ak-zelle-min: 64px; }
+    .hf-board .ak-geraet { position: absolute; left: var(--x); top: var(--y); inline-size: 236px; padding: 10px 10px 12px; --ak-spalten: 3; --ak-zelle-min: 64px; }
     .hf-board .ak-geraet.gewaehlt { outline: 2px solid var(--akzent-flaeche); outline-offset: 4px; }
     .hf-board .ak-geraet-kopf { margin-bottom: 6px; }
     .hf-board .ak-geraet-kopf b { font-size: var(--klein); }
@@ -61,24 +61,24 @@
     <div class="st-board-rahmen" id="rahmen">
       <div class="hf-board" id="board">
         <svg class="hf-kabel" id="kabel" aria-hidden="true"></svg>
-        <div class="ak-geraet" data-bauform="knoten" data-modul="A" id="k-hochpass" style="left:20px; top:40px">
+        <div class="ak-geraet" data-bauform="knoten" data-modul="A" id="k-hochpass" style="--x:20px; --y:40px">
           <span class="hf-port ein"></span><span class="hf-port aus"></span>
           <div class="ak-geraet-kopf"><span class="ak-schild">A2</span><b>Hochpass</b><ak-led farbe="weiss" zustand="an" groesse="klein"></ak-led></div>
           <div class="ak-raster"><ak-dreh kappe="lack" farbe="#ebe1c8" name="Grenze" min="20" max="400" kurve="log" wert="80" einheit="Hz"></ak-dreh><ak-dreh kappe="lack" farbe="#ebe1c8" name="Flanke" raster="12|24|48" wert="1"></ak-dreh><ak-dreh kappe="lack" farbe="#ebe1c8" name="Rauschen" wert="35" einheit="%"></ak-dreh></div></div>
-        <div class="ak-geraet" data-bauform="knoten" data-modul="C" id="k-kompressor" style="left:330px; top:20px">
+        <div class="ak-geraet" data-bauform="knoten" data-modul="C" id="k-kompressor" style="--x:330px; --y:20px">
           <span class="hf-port ein"></span><span class="hf-port aus"></span>
           <div class="ak-geraet-kopf"><span class="ak-schild">C1</span><b>Kompressor</b><ak-led farbe="bernstein" zustand="atmet" groesse="klein"></ak-led></div>
           <div class="ak-raster"><ak-dreh kappe="lack" farbe="#c99b3c" name="Schwelle" min="-48" max="0" schritt="0.5" wert="-18" einheit="dB"></ak-dreh><ak-dreh kappe="lack" farbe="#c99b3c" name="Verhältnis" min="1" max="20" schritt="0.1" wert="3" einheit="x"></ak-dreh><ak-dreh kappe="lack" farbe="#c99b3c" name="Aufholen" min="0" max="24" schritt="0.5" wert="6" einheit="dB"></ak-dreh></div>
           <ak-pegel art="gr" kanaele="1" farbe="bernstein" segmente="16" skala="" style="--pegel-h:16px; margin-top:8px" beschriftung="Pegelminderung"></ak-pegel></div>
-        <div class="ak-geraet" data-bauform="knoten" data-modul="B" id="k-tonhoehe" style="left:330px; top:300px">
+        <div class="ak-geraet" data-bauform="knoten" data-modul="B" id="k-tonhoehe" style="--x:330px; --y:300px">
           <span class="hf-port ein"></span><span class="hf-port aus"></span><span class="hf-port steuer"></span>
           <div class="ak-geraet-kopf"><span class="ak-schild">B5</span><b>Tonkorrektur</b><ak-led farbe="weiss" zustand="an" groesse="klein"></ak-led></div>
           <div class="ak-raster"><ak-dreh kappe="lack" farbe="#ebe1c8" name="Stärke" wert="40" einheit="%" mod="0.15"></ak-dreh><ak-dreh kappe="lack" farbe="#ebe1c8" name="Tempo" min="0" max="200" wert="60" einheit="ms"></ak-dreh><ak-dreh kappe="lack" farbe="#ebe1c8" name="Formant" min="-12" max="12" schritt="0.1" wert="0" bipolar einheit="dB"></ak-dreh></div></div>
-        <div class="ak-geraet gewaehlt" data-bauform="knoten" data-modul="E" id="k-hall" style="left:640px; top:150px">
+        <div class="ak-geraet gewaehlt" data-bauform="knoten" data-modul="E" id="k-hall" style="--x:640px; --y:150px">
           <span class="hf-port ein"></span><span class="hf-port aus"></span>
           <div class="ak-geraet-kopf"><span class="ak-schild">E1</span><b>Faltungshall</b><ak-led farbe="weiss" zustand="an" groesse="klein"></ak-led></div>
           <div class="ak-raster"><ak-dreh kappe="lack" farbe="#ebe1c8" name="Größe" wert="64" einheit="%"></ak-dreh><ak-dreh kappe="lack" farbe="#ebe1c8" name="Dämpfung" min="1000" max="20000" kurve="log" schritt="10" wert="6800" einheit="Hz"></ak-dreh><ak-dreh kappe="lack" farbe="#ebe1c8" name="Mischung" wert="28" einheit="%"></ak-dreh></div></div>
-        <div class="ak-geraet" data-bauform="knoten" data-modul="S" id="k-lfo" style="left:20px; top:330px">
+        <div class="ak-geraet" data-bauform="knoten" data-modul="S" id="k-lfo" style="--x:20px; --y:330px">
           <span class="hf-port aus" style="background:var(--tuerkis); border-radius:3px; transform:rotate(45deg)"></span>
           <div class="ak-geraet-kopf"><span class="ak-schild">S1</span><b>LFO</b><ak-led farbe="tuerkis" zustand="atmet" groesse="klein"></ak-led></div>
           <ak-schirm art="lfo" farbe="tuerkis" tempo="#lfo-tempo" tiefe="#lfo-tiefe" verhaeltnis="16 / 6" beschriftung="LFO"></ak-schirm>
@@ -136,6 +136,8 @@
       + `<path class="steuer" d="M${s[0]} ${s[1]}C${s[0] + 120} ${s[1]} ${z[0]} ${z[1] - 120} ${z[0]} ${z[1]}"/>`;
   }
   function einpassen() {
+    // schmal zeigt die Seite das Board als Liste (Stil der Seite setzt es statisch): dann nicht verkleinern
+    if (getComputedStyle(board).position === "static") { board.style.transform = ""; return; }
     const m = Math.min(1, (rahmen.clientWidth - 24) / 900, (rahmen.clientHeight - 24) / 560);
     board.style.transform = `translate(12px, 12px) scale(${m.toFixed(3)})`;
     document.getElementById("zoom").textContent = `${Math.round(m * 100)} %`;
