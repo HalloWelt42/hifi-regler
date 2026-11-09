@@ -69,6 +69,7 @@
   --hifi-metall-tinte-2: #3a4450;
   --hifi-grund-licht: rgba(255, 255, 255, 0.35);
   --hifi-weich: .55;              /* kürzere, härtere Schatten */
+  --ak-auswahl-licht: color-mix(in srgb, var(--akzent-flaeche) 34%, rgb(255 255 255 / .55)); /* auf Silber braucht das Licht mehr, sonst verschwindet es */
   --hifi-licht: .8;               /* Leuchten wirkt bei Tageslicht schwächer */
 }
 
