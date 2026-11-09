@@ -44,6 +44,7 @@
     :root[data-vorlage="hifi"] .st-board-rahmen { background-color: #0c0e11; }
     :root[data-vorlage="hifi"][data-theme="hell"] .st-board-rahmen { background-color: #b9bec4; }
   </style>
+  <link rel="stylesheet" href="rechte.css">
 </head>
 <body data-seite="studio.html" data-titel="Im Studio" data-unter="Board mit Knoten in Lack, Inspektor in Metall, Transport">
 <div class="hf-rollt"><main class="hf-inhalt">
@@ -152,5 +153,6 @@
   uhr.schritt = (t) => { const s = t % 3600, text = `${zwei(s / 60)}:${zwei(s % 60)}.${Math.floor((s * 10) % 10)}`; if (text !== zuletzt) { zuletzt = text; uhr.text = text; } };
   Appkern.Takt.anmelden(uhr);
 </script>
+<script src="rechte.js"></script>
 </body>
 </html>

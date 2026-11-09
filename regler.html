@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="appkern/vorlagen/hifi.css">
   <link rel="stylesheet" href="farben.css">
   <link rel="stylesheet" href="seite.css">
+  <link rel="stylesheet" href="rechte.css">
 </head>
 <body data-seite="regler.html" data-titel="Regler" data-unter="drehen, schieben, tasten, kippen, wählen">
 <div class="hf-rollt"><main class="hf-inhalt">
@@ -174,5 +175,6 @@
   auto.schritt = (t) => { if (!auto.classList.contains("zieht") && document.activeElement !== auto) auto.anteil = 0.5 + 0.42 * Math.sin(t * 0.9); };
   Appkern.Takt.anmelden(auto);
 </script>
+<script src="rechte.js"></script>
 </body>
 </html>

@@ -1,59 +1,44 @@
-Nicht-kommerzielle Lizenz v1.0
+Alle Rechte vorbehalten
 
-SPDX-License-Identifier: LicenseRef-HiFiRegler-NC-1.0
-Basierend auf CC BY-NC-ND 4.0 mit Ergänzungen
+SPDX-License-Identifier: LicenseRef-HiFiRegler-Proprietaer
 
-Copyright (c) 2025-2026 HalloWelt42
+Copyright (c) 2026 HalloWelt42
 Alle Rechte vorbehalten.
+
+Diese Präsentation mit Quelltext, Gestaltung, Texten und Bildern (im Folgenden "das Werk")
+ist urheberrechtlich geschützt.
 
 1. Erlaubte Nutzung
 
-   - Private, nicht-kommerzielle Nutzung und Installation
-   - Persönliche Anpassungen für den Eigengebrauch
-   - Erstellung privater Forks (nicht eigenständig veröffentlicht)
-   - Beiträge via Pull Request an das Originalprojekt
-   - Weitergabe des unveränderten Originalwerks mit vollständiger
-     Namensnennung
+   - Die veröffentlichte Seite im Browser ansehen und ausprobieren
+   - Auf die Seite oder dieses Repository verlinken
+   - Ansehen und Forken auf GitHub im Rahmen der Nutzungsbedingungen von GitHub
 
-2. Verbotene Nutzung
+2. Nur mit schriftlicher Erlaubnis von HalloWelt42
 
-   - Jegliche kommerzielle Nutzung, Verkauf oder Lizenzierung
-   - Öffentliche Verbreitung modifizierter Versionen
-   - Darstellung von Forks als eigenständige Projekte
-   - Entfernung oder Änderung von Urheberrechtshinweisen
-   - Weiterverbreitung unter einer anderen Lizenz
-   - Nutzung des Namens "HiFi-Regler" oder des Logos für
-     abgeleitete Projekte ohne schriftliche Genehmigung
+   - Kopieren oder Herunterladen zur Weiterverwendung
+   - Verändern, Bearbeiten, Übersetzen oder Nachbauen
+   - Weitergeben, Veröffentlichen oder Hosten, auch in veränderter Form
+   - Verwenden in eigenen oder kommerziellen Projekten, auch in Teilen
+   - Nutzung des Namens "HiFi-Regler" oder der Gestaltung für abgeleitete Projekte
 
-3. Modifikationen
+3. Haftungsausschluss
 
-   Modifizierte Versionen dürfen nicht öffentlich verbreitet, gehostet
-   oder Dritten zugänglich gemacht werden. Ausnahme: Pull Requests an
-   das Originalprojekt.
-
-4. Beiträge
-
-   Mit dem Einreichen eines Pull Requests erklärt sich der Beitragende
-   damit einverstanden, dass der Beitrag unter dieser Lizenz steht und
-   die Rechte an HalloWelt42 übertragen werden.
-
-5. Haftungsausschluss
-
-   DIE SOFTWARE WIRD "WIE BESEHEN" BEREITGESTELLT, OHNE JEGLICHE
+   DAS WERK WIRD "WIE BESEHEN" BEREITGESTELLT, OHNE JEGLICHE
    GEWÄHRLEISTUNG, WEDER AUSDRÜCKLICH NOCH STILLSCHWEIGEND.
    IN KEINEM FALL HAFTEN DIE AUTOREN FÜR SCHÄDEN JEGLICHER ART,
-   DIE AUS DER NUTZUNG DER SOFTWARE ENTSTEHEN.
+   DIE AUS DER NUTZUNG DES WERKS ENTSTEHEN.
 
-6. Drittanbieter-Komponenten
+4. Drittanbieter-Komponenten
 
-   Diese Software nutzt folgende Open-Source-Bibliotheken:
+   Im Ordner vendor/ liegen folgende Komponenten unter ihren eigenen Lizenzen:
    - Font Awesome Free (Symbole CC BY 4.0, Schriften SIL OFL 1.1, Code MIT)
    - Barlow und Chakra Petch über Fontsource (SIL OFL 1.1)
    - Stile des Appkerns (https://github.com/HalloWelt42/appkern)
 
    Die jeweiligen Lizenzen dieser Komponenten bleiben unberührt.
 
-7. Verstoß
+5. Verstoß
 
-   Bei Verstoß gegen diese Lizenzbedingungen erlischt das Nutzungsrecht
+   Bei Verstoß gegen diese Bedingungen erlischt jedes Nutzungsrecht
    automatisch. Alle Kopien müssen unverzüglich gelöscht werden.

@@ -32,6 +32,7 @@
     .hf-telefon { inline-size: min(100%, 300px); padding: 14px 12px; border-radius: 22px; background-color: #0a0b0d; box-shadow: 0 0 0 2px #2c3036, var(--hifi-schatten-geraet, var(--schatten)); }
     .hf-telefon .ak-geraet { display: grid; gap: 12px; }
   </style>
+  <link rel="stylesheet" href="rechte.css">
 </head>
 <body data-seite="skalierung.html" data-titel="Skalierung" data-unter="ein Maßsystem für Knoten, Rack, Inspektor und Telefon">
 <div class="hf-rollt"><main class="hf-inhalt">
@@ -177,5 +178,6 @@
   new ResizeObserver(() => { tafelZeigen(); pruefen(); }).observe(document.getElementById("probe"));
   addEventListener("resize", pruefen);
 </script>
+<script src="rechte.js"></script>
 </body>
 </html>

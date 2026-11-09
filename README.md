@@ -28,11 +28,6 @@ Ziehen hoch und runter, Mausrad, Pfeiltasten, Bild auf und ab, Pos1 und Ende. Mi
 zehnmal feiner. Doppelklick, Doppeltipp oder Entf setzen die Vorgabe, ein Klick auf den Wert öffnet ein Feld zum
 Eintippen.
 
-## Lokal ansehen
-
-Ohne Build und ohne Server: `index.html` im Browser öffnen. Schriften, Symbole und Stile liegen in `vendor/`, nichts
-kommt aus dem Netz.
-
 ## Aufbau
 
 | Ort | Inhalt |
@@ -41,15 +36,18 @@ kommt aus dem Netz.
 | `appkern/vorlagen/hifi.css` | die Vorlage: Marken für Material, Licht und Stufen, Bausteine im HiFi-Stil |
 | `farben.css` | Farben der App je Modul |
 | `seite.css`, `seite.js`, `wahl.js`, `bausteine.js`, `leistung.js` | Rahmen der Präsentation, Wahl, Verhalten, Messlauf |
+| `rechte.js`, `rechte.css` | Hinweis zum Urheberrecht beim ersten Besuch, Zeile am Fuß jeder Seite |
 | `vendor/` | Barlow, Chakra Petch, Font Awesome Free, Stile des Appkerns |
 
 ## Lizenz
 
-**Nicht-kommerzielle Nutzung** - Siehe [LICENSE](LICENSE)
+**Alle Rechte vorbehalten** - Siehe [LICENSE](LICENSE)
 
-Erlaubt: Private Nutzung, Installation, persönliche Anpassungen, Teilen mit Quellenangabe
+Erlaubt: Ansehen und Ausprobieren im Browser, Verlinken
 
-Verboten: Kommerzielle Nutzung, Verkauf, Einbindung in kommerzielle Produkte
+Nur mit schriftlicher Erlaubnis: Kopieren, Verändern, Weitergeben, Verwenden in eigenen Projekten, auch in Teilen
+
+Mitgelieferte Schriften und Symbole in `vendor/` stehen unter ihren eigenen Lizenzen.
 
 ---
 
@@ -69,4 +67,4 @@ Wenn dir das Projekt gefällt, kannst du es weitersagen oder einen Stern dalasse
 | DOGE | `DL7tuiYCqm3xQjMDXChdxeQxqUGMACn1ZV` |
 | ETH | `0x8A28fc47bFFFA03C8f685fa0836E2dBe1CA14F27` |
 
-Copyright (c) 2025-2026 HalloWelt42
+Copyright (c) 2026 HalloWelt42. Alle Rechte vorbehalten.
