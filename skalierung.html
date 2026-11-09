@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="de" data-theme="dunkel" data-vorlage="hifi" data-schrift="mittel" data-effekte="kraeftig">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Vorlage HiFi: Skalierung</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="vendor/schriften.css">
+  <link rel="stylesheet" href="appkern/instrumente.css">
+  <link rel="stylesheet" href="appkern/vorlagen/hifi.css">
+  <link rel="stylesheet" href="farben.css">
+  <link rel="stylesheet" href="seite.css">
+  <style>
+    .hf-ansatz { counter-reset: ansatz; }
+    .hf-ansatz .hf-muster > b::before { counter-increment: ansatz; content: counter(ansatz) ". "; color: var(--akzent); }
+    .hf-werkbank { display: grid; gap: 14px; }
+    .hf-werkbank .hf-knopfreihe { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .hf-werkbank .hf-knopfreihe .knopf { block-size: 40px; font-size: var(--klein); }
+    .hf-rahmen { inline-size: min(100%, var(--breite, 380px)); margin-inline: auto; transition: inline-size var(--ruhig) ease; }
+    .hf-messtafel { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 150px), 1fr)); gap: 10px; }
+    .hf-messtafel > div { display: grid; gap: 2px; padding: 10px 12px; border-radius: var(--r2); background-color: var(--mulde); box-shadow: var(--hifi-mulde, none); }
+    .hf-messtafel b { font-family: var(--schrift-zahl); font-size: var(--titel); }
+    .hf-messtafel span { font-size: var(--klein); color: var(--text-2); }
+    .hf-pruefstand { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); gap: 12px; }
+    .hf-pruefstand > div { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 12px; align-items: center; padding: 12px; border-radius: var(--r3); background-color: var(--flaeche);
+                           background-image: var(--hifi-erhaben, none); box-shadow: var(--hifi-kante-ruhig, var(--schatten)); }
+    .hf-pruefstand b { font-family: var(--schrift-zahl); font-size: var(--titel); }
+    .hf-pruefstand span { grid-column: 2; font-size: var(--klein); color: var(--text-2); }
+    .hf-bauformen { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 22px; align-items: start; }
+    .hf-bauformen > div { display: grid; gap: 8px; justify-items: center; min-width: 0; }
+    .hf-bauformen .ak-geraet { inline-size: min(100%, var(--b)); }
+    .hf-telefon { inline-size: min(100%, 300px); padding: 14px 12px; border-radius: 22px; background-color: #0a0b0d; box-shadow: 0 0 0 2px #2c3036, var(--hifi-schatten-geraet, var(--schatten)); }
+    .hf-telefon .ak-geraet { display: grid; gap: 12px; }
+  </style>
+</head>
+<body data-seite="skalierung.html" data-titel="Skalierung" data-unter="ein Maßsystem für Knoten, Rack, Inspektor und Telefon">
+<div class="hf-rollt"><main class="hf-inhalt">
+
+  <section class="hf-abschnitt">
+    <h2><i class="fa-solid fa-square-root-variable"></i>Der Ansatz: Behälter, Verhältnisse, Untergrenzen, Detailstufen</h2>
+    <p class="hf-text">Ein Drehregler steht im Knoten auf dem Board (236 Pixel breit), im Rack, im Inspektor (380 Pixel) und am Telefon. Die Fensterbreite sagt darüber nichts; darum misst jedes Instrument seine eigene Zelle. Daraus folgen sechs Regeln.</p>
+    <div class="hf-katalog breit hf-ansatz">
+      <div class="hf-muster" data-karte><b>Behälter statt Fenster</b><p>Gerät und Instrument sind Behälter (container-type). Das Raster des Geräts gibt die Zelle vor: höchstens n Spalten, jede mindestens 88 Pixel, darunter bricht die Reihe um.</p>
+        <div class="hf-formel">Spalten = min(n, abgerundet((B + Lücke) / (88 px + Lücke))) · Zelle = (B - (Spalten - 1) · Lücke) / Spalten</div></div>
+      <div class="hf-muster" data-karte><b>Ein Maß, alles im Verhältnis</b><p>Die Kappe ist ein Anteil der Zelle, begrenzt nach unten (Lesbarkeit der Stellung) und oben (Ruhe im großen Inspektor). Alles an der Kappe hängt am Durchmesser.</p>
+        <div class="hf-formel">Ø = clamp(40 px, 0,72 · Zelle, 112 px) · Skala 1,32 · Ø · Riffelrand 0,15 · Ø · Schatten 0,07 bis 0,32 · Ø</div></div>
+      <div class="hf-muster" data-karte><b>Untergrenzen, die nie mitschrumpfen</b><p>Schrift und Fingerfläche folgen nicht dem Maß: Beschriftung bleibt in den Stufen des Appkerns, die ganze Zelle ist Fläche zum Greifen.</p>
+        <div class="hf-formel">Schrift ≥ 15 px · Trefferfläche = Zelle ≥ 44 px · Eingabe ≥ 17 px</div></div>
+      <div class="hf-muster" data-karte><b>Detailstufen statt Verkleinern</b><p>Was nicht mehr lesbar passt, wird weggelassen statt kleiner gezeichnet. Ein Skalenstrich braucht 8 Pixel Bogen bis zum nächsten.</p>
+        <div class="hf-formel">L = 3/4 · π · Ø ≥ 8 px · (n - 1) also 11 Striche ab Ø 34, 21 ab Ø 68, Grenzwörter ab Ø 100</div></div>
+      <div class="hf-muster" data-karte><b>Vektorgrafik mit festem Koordinatensystem</b><p>Skala, Segmente und Zeiger sind SVG mit viewBox; feine Linien behalten 1,4 Pixel (non-scaling-stroke). Segmentziffern wachsen mit der Breite der Anzeige.</p>
+        <div class="hf-formel">Ziffernhöhe = min((B - 38 px) / Stellen / 0,62, 84 px)</div></div>
+      <div class="hf-muster" data-karte><b>Fließende Seite</b><p>Ränder und Kacheln fließen mit dem Fenster, ohne Haltepunkte; nur der Kopf hat einen für das Telefon.</p>
+        <div class="hf-formel">Rand = clamp(12 px, 2,6 vw, 40 px) · Kacheln: auto-fill, minmax(min(100 %, 320 px), 1fr)</div></div>
+    </div>
+    <p class="hf-leise">Verworfen: alles mit transform: scale oder vw vergrößern (Schrift und Fingerfläche schrumpften mit, kleine Knoten würden unlesbar); feste Haltepunkte am Fenster (ein Inspektor ist im breiten Fenster genauso schmal wie am Tablet).</p>
+  </section>
+
+  <section class="hf-abschnitt">
+    <h2><i class="fa-solid fa-left-right"></i>Ein Gerät, jede Breite</h2>
+    <p class="hf-text">Breite am Schieber ziehen oder eine Bauform wählen: Spalten, Kappen und Detailstufen folgen. Darunter steht, was das Gerät gerade misst.</p>
+    <div class="hf-werkbank">
+      <div class="ak-geraet" data-bauform="inspektor" data-modul="U" style="--ak-spalten:1"><ak-schieber id="breite" art="leuchte" leuchte="bernstein" segmente="20" name="Breite des Geräts" min="200" max="1200" schritt="1" wert="380" vorgabe="380" einheit="px"></ak-schieber></div>
+      <div class="hf-knopfreihe" role="group" aria-label="Bauform wählen">
+        <button class="knopf" type="button" data-breite="236"><i class="fa-solid fa-diagram-project"></i>Knoten 236</button>
+        <button class="knopf" type="button" data-breite="300"><i class="fa-solid fa-mobile-screen"></i>Telefon 300</button>
+        <button class="knopf" type="button" data-breite="380"><i class="fa-solid fa-sliders"></i>Inspektor 380</button>
+        <button class="knopf" type="button" data-breite="760"><i class="fa-solid fa-bars-staggered"></i>Rack 760</button>
+        <button class="knopf" type="button" data-breite="1200"><i class="fa-solid fa-expand"></i>Breit 1200</button>
+      </div>
+      <div class="hf-rahmen" id="rahmen">
+        <div class="ak-geraet" data-bauform="inspektor" data-modul="E" id="probe" style="--ak-spalten:6">
+          <div class="ak-geraet-kopf"><span class="ak-schild">E1</span><b>Faltungshall</b><ak-led farbe="gruen" zustand="an" text="Aktiv"></ak-led></div>
+          <div class="ak-raster">
+            <ak-dreh name="Größe" wert="64" vorgabe="50" einheit="%" grenzen="Klein|Groß"></ak-dreh>
+            <ak-dreh name="Vorverzögerung" max="250" wert="38" vorgabe="20" einheit="ms" grenzen="Nah|Fern"></ak-dreh>
+            <ak-dreh name="Dämpfung" min="1000" max="20000" kurve="log" schritt="10" wert="6800" einheit="Hz" grenzen="Dunkel|Hell"></ak-dreh>
+            <ak-dreh name="Breite" max="200" wert="120" vorgabe="100" einheit="%" bipolar grenzen="Mono|Weit"></ak-dreh>
+            <ak-dreh kappe="schwarz" zeiger="blau" name="Mischung" wert="28" vorgabe="25" einheit="%" grenzen="Trocken|Nass"></ak-dreh>
+            <ak-dreh kappe="ring" name="Makro Raum" wert="55" einheit="%"></ak-dreh>
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 180px), 1fr)); gap:12px; margin-top:14px">
+            <ak-segmente art="14" stellen="6" farbe="cyan" text="SAAL 2"></ak-segmente>
+            <ak-pegel kanaele="2" beschriftung="Ausgang" skala="-48|-24|-12|0" style="--pegel-h:30px"></ak-pegel>
+          </div>
+        </div>
+      </div>
+      <div class="hf-messtafel" id="messtafel" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="hf-abschnitt">
+    <h2><i class="fa-solid fa-ruler-combined"></i>Prüfstand dieser Ansicht</h2>
+    <p class="hf-text">Misst alle Instrumente dieser Seite im jetzigen Fenster und meldet die kleinsten Werte. Auf jedem Bild der Ansichtsprüfung (390 bis 1920 Pixel) steht hier, ob die Untergrenzen halten.</p>
+    <div class="hf-pruefstand" id="pruefstand"></div>
+  </section>
+
+  <section class="hf-abschnitt">
+    <h2><i class="fa-solid fa-shapes"></i>Bauformen: dieselben Parameter, vier Orte</h2>
+    <p class="hf-text">Knoten und Rack in Lack der Modulfarbe, der Inspektor in Metall mit Farbakzent. Am Telefon werden Drehregler zu Schiebern: dasselbe Wertmodell, eine andere Darstellung.</p>
+    <div class="hf-bauformen">
+      <div><span class="ak-etikett">Knoten auf dem Board · 236 px</span>
+        <div class="ak-geraet" data-bauform="knoten" data-modul="E" style="--b:236px; --ak-spalten:3; --ak-zelle-min:64px">
+          <div class="ak-geraet-kopf"><span class="ak-schild">E1</span><b>Faltungshall</b></div>
+          <div class="ak-raster"><ak-dreh kappe="lack" farbe="#ebe1c8" name="Größe" wert="64" einheit="%"></ak-dreh><ak-dreh kappe="lack" farbe="#ebe1c8" name="Dämpfung" min="1000" max="20000" kurve="log" schritt="10" wert="6800" einheit="Hz"></ak-dreh><ak-dreh kappe="lack" farbe="#ebe1c8" name="Mischung" wert="28" einheit="%"></ak-dreh></div></div></div>
+      <div><span class="ak-etikett">Inspektor · 380 px</span>
+        <div class="ak-geraet" data-bauform="inspektor" data-modul="E" style="--b:380px; --ak-spalten:3">
+          <span class="ak-schraube lo"></span><span class="ak-schraube ro" style="--dreh:70deg"></span>
+          <div class="ak-geraet-kopf" style="padding:0 20px"><span class="ak-schild">E1</span><b>Faltungshall</b><ak-led farbe="gruen" zustand="an"></ak-led></div>
+          <div class="ak-raster"><ak-dreh name="Größe" wert="64" einheit="%" grenzen="Klein|Groß"></ak-dreh><ak-dreh name="Dämpfung" min="1000" max="20000" kurve="log" schritt="10" wert="6800" einheit="Hz"></ak-dreh><ak-dreh name="Mischung" wert="28" einheit="%"></ak-dreh></div></div></div>
+      <div><span class="ak-etikett">Telefon · Schieber statt Drehregler</span>
+        <div class="hf-telefon"><div class="ak-geraet" data-bauform="knoten" data-modul="E">
+          <div class="ak-geraet-kopf"><span class="ak-schild">E1</span><b>Faltungshall</b></div>
+          <ak-schieber art="leuchte" leuchte="weiss" segmente="16" name="Größe" wert="64" einheit="%"></ak-schieber>
+          <ak-schieber art="leuchte" leuchte="weiss" segmente="16" name="Dämpfung" min="1000" max="20000" kurve="log" schritt="10" wert="6800" einheit="Hz"></ak-schieber>
+          <ak-schieber art="leuchte" leuchte="weiss" segmente="16" name="Mischung" wert="28" einheit="%"></ak-schieber>
+        </div></div></div>
+    </div>
+    <div style="display:grid; gap:8px"><span class="ak-etikett">Rack · volle Breite, eine Zeile je Gerät</span>
+      <div class="ak-geraet" data-bauform="rack" data-modul="E" style="--ak-spalten:8; --ak-zelle-min:80px">
+        <div style="display:grid; grid-template-columns:minmax(0, 150px) minmax(0, 1fr); gap:16px; align-items:center">
+          <div style="display:grid; gap:8px; justify-items:start"><span class="ak-schild">E1</span><b style="font-size:var(--titel)">Faltungshall</b><ak-led farbe="weiss" zustand="an" text="Aktiv"></ak-led></div>
+          <div class="ak-raster"><ak-dreh kappe="lack" farbe="#ebe1c8" name="Größe" wert="64" einheit="%"></ak-dreh><ak-dreh kappe="lack" farbe="#ebe1c8" name="Vorverzögerung" max="250" wert="38" einheit="ms"></ak-dreh>
+            <ak-dreh kappe="lack" farbe="#ebe1c8" name="Dämpfung" min="1000" max="20000" kurve="log" schritt="10" wert="6800" einheit="Hz"></ak-dreh><ak-dreh kappe="lack" farbe="#ebe1c8" name="Breite" max="200" wert="120" vorgabe="100" bipolar einheit="%"></ak-dreh>
+            <ak-dreh kappe="lack" farbe="#ebe1c8" name="Mischung" wert="28" einheit="%"></ak-dreh></div>
+        </div></div></div>
+  </section>
+
+</main></div>
+<script src="appkern/instrumente.js"></script>
+<script src="appkern/anzeigen.js"></script>
+<script src="wahl.js"></script>
+<script src="seite.js"></script>
+<script>
+  // Werkbank: Breite des Probegeräts über den Schieber oder eine Bauform
+  const rahmen = document.getElementById("rahmen"), breite = document.getElementById("breite"), tafel = document.getElementById("messtafel");
+  const setzen = (px) => { rahmen.style.setProperty("--breite", `${px}px`); };
+  breite.addEventListener("input", () => setzen(breite.wert));
+  document.querySelectorAll("[data-breite]").forEach((k) => k.addEventListener("click", () => { breite.wert = +k.dataset.breite; setzen(breite.wert); }));
+  setzen(breite.wert);
+
+  // Messen: was jedes Instrument gerade ist (Zelle, Kappe, Striche, Schrift)
+  const px = (x) => `${Math.round(x)} px`;
+  function vermessen(dreh) {
+    const zelle = dreh.getBoundingClientRect().width, d = dreh.querySelector(".ak-dreh-kappe").getBoundingClientRect().width;
+    const sicht = (sel) => { const e = dreh.querySelector(sel); return e && getComputedStyle(e).display !== "none"; };
+    return { zelle, d, striche: sicht(".striche.s21") ? 21 : sicht(".striche.s11") ? 11 : 0, grenzen: sicht(".ak-dreh-grenzen"),
+             schrift: parseFloat(getComputedStyle(dreh.querySelector(".ak-dreh-name")).fontSize), hoehe: dreh.getBoundingClientRect().height };
+  }
+  function tafelZeigen() {
+    const probe = document.getElementById("probe"), drehs = [...probe.querySelectorAll("ak-dreh")].map(vermessen);
+    const spalten = new Set([...probe.querySelectorAll("ak-dreh")].map((d) => Math.round(d.getBoundingClientRect().left))).size;
+    const m = drehs[0];
+    tafel.innerHTML = [
+      [px(probe.getBoundingClientRect().width), "Breite des Geräts"], [`${spalten}`, "Spalten im Raster"], [px(m.zelle), "Zelle je Regler"],
+      [px(m.d), "Durchmesser der Kappe"], [`${m.striche}`, "Skalenstriche"], [m.grenzen ? "ja" : "nein", "Grenzwörter"], [px(m.schrift), "Schrift der Namen"],
+    ].map(([w, n]) => `<div data-kennzahl><b>${w}</b><span>${n}</span></div>`).join("");
+  }
+  // Prüfstand: kleinste Schrift, Fläche und Kappe aller Instrumente der Seite
+  function pruefen() {
+    const instrumente = [...document.querySelectorAll("ak-dreh, ak-schieber, ak-taster, ak-kipp, ak-wahl, ak-led, ak-segmente, ak-pegel, ak-zeiger")].filter((e) => e.getBoundingClientRect().width);
+    let schrift = Infinity, flaeche = Infinity, kappe = Infinity;
+    for (const e of instrumente) {
+      for (const t of e.querySelectorAll("span, b, button")) { if (!t.getBoundingClientRect().width || ![...t.childNodes].some((k) => k.nodeType === 3 && k.textContent.trim())) continue; schrift = Math.min(schrift, parseFloat(getComputedStyle(t).fontSize)); }
+      const r = e.matches("ak-dreh, ak-schieber") ? (e.matches("ak-schieber") ? e.querySelector(".ak-schieber-feld") : e).getBoundingClientRect()
+              : e.querySelector("button")?.getBoundingClientRect();
+      if (r) flaeche = Math.min(flaeche, r.width, r.height);
+      if (e.matches("ak-dreh")) kappe = Math.min(kappe, e.querySelector(".ak-dreh-kappe").getBoundingClientRect().width);
+    }
+    const gut = (b) => `<ak-led farbe="${b ? "gruen" : "rot"}" zustand="an" text="${b ? "hält" : "zu klein"}"></ak-led>`;
+    document.getElementById("pruefstand").innerHTML = [
+      [`${innerWidth} px`, "Breite des Fensters", null], [`${instrumente.length}`, "Instrumente gemessen", null],
+      [`${schrift} px`, "kleinste Schrift (mindestens 15)", schrift >= 15], [`${Math.round(flaeche)} px`, "kleinste Trefferfläche (mindestens 44)", flaeche >= 44],
+      [`${Math.round(kappe)} px`, "kleinste Kappe (mindestens 40)", kappe >= 39.5],
+    ].map(([w, n, ok]) => `<div data-kennzahl>${ok === null ? `<i class="fa-solid fa-ruler" style="color:var(--text-3)"></i>` : gut(ok)}<b>${w}</b><span>${n}</span></div>`).join("");
+  }
+  new ResizeObserver(() => { tafelZeigen(); pruefen(); }).observe(document.getElementById("probe"));
+  addEventListener("resize", pruefen);
+</script>
+</body>
+</html>

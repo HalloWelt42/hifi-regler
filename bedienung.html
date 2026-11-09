@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="de" data-theme="dunkel" data-vorlage="hifi" data-schrift="mittel" data-effekte="kraeftig">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Vorlage HiFi: Bedienelemente</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="vendor/schriften.css">
+  <link rel="stylesheet" href="appkern/instrumente.css">
+  <link rel="stylesheet" href="appkern/vorlagen/hifi.css">
+  <link rel="stylesheet" href="farben.css">
+  <link rel="stylesheet" href="seite.css">
+  <style>
+    .hf-formular { display: grid; gap: 14px; }
+    .hf-formular label.hf-feld { display: grid; gap: 6px; font-size: var(--klein); color: var(--text-2); }
+    .hf-formular .eingabe { block-size: 46px; }
+    .hf-formular .eingabe input { font-size: var(--gross); }
+    .hf-formular .eingabe .einheit { font-family: var(--schrift-zahl); color: var(--text-3); }
+    .hf-optionen { display: grid; gap: 10px; }
+    .hf-optionen label { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+    .hf-liste { display: grid; gap: 8px; }
+    .hf-liste .zeile { grid-template-columns: 44px minmax(0, 1fr) auto; padding: 8px 12px; border-radius: var(--r3); border: 1px solid transparent; }
+    .hf-liste .zeile .meta { font-size: var(--klein); }
+    .hf-knopfreihe { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .hf-knopfreihe .knopf { block-size: 42px; font-size: var(--klein); }
+    .hilfe-fenster { left: max(12px, calc(50vw - 260px)); top: 140px; inline-size: min(520px, calc(100vw - 24px)); }
+    .hilfe-inhalt { padding: 14px 16px; display: grid; gap: 12px; font-size: var(--gross); }
+    .hilfe-inhalt p { margin: 0; color: var(--text-2); }
+    .reiter-flaeche { padding: 14px 4px 4px; color: var(--text-2); }
+    .reiterleiste { padding: 0 0 8px; }
+    .reiterleiste button { min-block-size: 40px; }
+    .rueckfrage[hidden], .hilfe-fenster[hidden], .auswahl-liste[hidden] { display: none; }
+  </style>
+</head>
+<body data-seite="bedienung.html" data-titel="Bedienelemente" data-unter="Knöpfe, Felder, Auswahl, Reiter, Listen, Dialoge, Meldungen">
+<div class="hf-rollt"><main class="hf-inhalt">
+
+  <section class="hf-abschnitt">
+    <h2><i class="fa-solid fa-hand-pointer"></i>Ruhig gestaltet</h2>
+    <p class="hf-text">Die Bausteine des Appkerns in der Vorlage HiFi: dieselben Klassen und Teile wie in jeder App, nur mit Lichtkante, flacher Wölbung und weichem Schatten. Leuchten nur dort, wo etwas gewählt ist oder läuft. Mit <b>Klassisch</b> oben rechts lässt sich jederzeit vergleichen.</p>
+  </section>
+
+  <div class="hf-katalog">
+    <section class="hf-muster" data-karte><b>Knöpfe</b><p>Hauptknopf leuchtet leicht, gedrückt sinkt jeder Knopf ein.</p>
+      <div class="hf-knopfreihe">
+        <button class="knopf primaer" type="button"><i class="fa-solid fa-play"></i>Rendern</button>
+        <button class="knopf" type="button"><i class="fa-solid fa-floppy-disk"></i>Sichern</button>
+        <button class="knopf still" type="button">Abbrechen</button>
+        <button class="knopf gefahr" type="button"><i class="fa-solid fa-trash-can"></i>Löschen</button>
+        <button class="knopf" type="button" disabled><i class="fa-solid fa-lock"></i>Gesperrt</button>
+        <button class="rund" type="button" title="Einstellungen" aria-label="Einstellungen"><i class="fa-solid fa-gear"></i></button>
+        <button class="rund aktiv" type="button" title="Hilfe" aria-label="Hilfe"><i class="fa-solid fa-circle-question"></i></button>
+      </div></section>
+
+    <section class="hf-muster" data-karte><b>Felder</b><p>Eingelassen; mit Fokus leuchtet die Fassung.</p>
+      <div class="hf-formular">
+        <label class="hf-feld">Name des Presets<span class="eingabe"><input value="Bordstimme hell" aria-label="Name des Presets"></span></label>
+        <label class="hf-feld">Verzögerung<span class="eingabe"><input value="420" inputmode="decimal" aria-label="Verzögerung in Millisekunden"><span class="einheit">ms</span></span></label>
+        <span class="suche" role="search"><i class="fa-solid fa-magnifying-glass"></i><input type="search" placeholder="Knoten suchen" aria-label="Knoten suchen"></span>
+      </div></section>
+
+    <section class="hf-muster" data-karte><b>Auswahl</b><p>Aufklappliste des Appkerns statt nativer Auswahl; Pfeile und Escape wirken.</p>
+      <div class="hf-formular">
+        <span class="auswahl"><button class="auswahl-knopf" type="button" aria-haspopup="listbox" aria-expanded="false"><i class="fa-solid fa-microphone-lines"></i><span class="auswahl-text">Verfahren: WORLD</span><i class="fa-solid fa-chevron-down auswahl-pfeil"></i></button>
+          <span class="auswahl-liste" role="listbox"><button type="button" class="aktiv" data-titel="Verfahren: WORLD">WORLD<span class="auswahl-hinweis"> · genau, für Sprache</span></button>
+            <button type="button" data-titel="Verfahren: Phasenvocoder">Phasenvocoder<span class="auswahl-hinweis"> · schnell, für Effekte</span></button></span></span>
+        <span class="auswahl"><button class="auswahl-knopf" type="button" aria-haspopup="listbox" aria-expanded="false"><i class="fa-solid fa-wand-magic-sparkles"></i><span class="auswahl-text">Preset: Bordstimme</span><i class="fa-solid fa-chevron-down auswahl-pfeil"></i></button>
+          <span class="auswahl-liste" role="listbox"><button type="button" data-titel="Preset: Neutral">Neutral</button><button type="button" class="aktiv" data-titel="Preset: Bordstimme">Bordstimme</button>
+            <button type="button" data-titel="Preset: Roboter">Roboter</button><button type="button" data-titel="Preset: Funk">Funk</button><button type="button" data-titel="Preset: Weltraum">Weltraum</button></span></span>
+      </div></section>
+
+    <section class="hf-muster" data-karte><b>Reiter und Segmente</b>
+      <nav class="reiterleiste" data-inhalt="r1" role="tablist" aria-label="Bereiche des Knotens">
+        <button type="button" class="aktiv" data-reiter="regler" role="tab" aria-selected="true">Regler</button><button type="button" data-reiter="steuerung" role="tab">Steuerung</button><button type="button" data-reiter="info" role="tab">Info</button></nav>
+      <div class="reiter-flaeche" data-reiter-von="r1" data-reiter="regler">Alle Parameter des Knotens als Drehregler.</div>
+      <div class="reiter-flaeche" data-reiter-von="r1" data-reiter="steuerung" hidden>LFO, Hüllkurve und Makros, die diesen Knoten bewegen.</div>
+      <div class="reiter-flaeche" data-reiter-von="r1" data-reiter="info" hidden>Latenz 12 ms, Rechenlast 3 Prozent eines Kerns.</div>
+      <div class="segment" role="group" aria-label="Ansicht"><button type="button" class="aktiv">Board</button><button type="button">Rack</button><button type="button">Liste</button></div>
+    </section>
+
+    <section class="hf-muster" data-karte><b>Schalter und Ankreuzfelder</b>
+      <div class="hf-optionen">
+        <label><button class="schalter an" type="button" aria-pressed="true" aria-label="Auto-Rendern"></button>Auto-Rendern nach jeder Änderung</label>
+        <label><button class="schalter" type="button" aria-pressed="false" aria-label="Neuronal am Mac"></button>Neuronale Stufen am Mac rechnen</label>
+        <label><input type="checkbox" checked>Lautheit angleichen (-16 LUFS)</label>
+        <label><input type="checkbox">Spitzen begrenzen</label>
+        <label><input type="radio" name="format" checked>WAV, 24 Bit</label>
+        <label><input type="radio" name="format">FLAC</label>
+        <div class="chips"><button class="chip wahl an" type="button"><i class="fa-solid fa-check"></i>Stimme</button><button class="chip wahl" type="button">Hall</button><button class="chip wahl" type="button">Echo</button></div>
+      </div></section>
+
+    <section class="hf-muster" data-karte><b>Liste</b><p>Gewählte Zeile mit leuchtendem Rahmen rundum.</p>
+      <div class="hf-liste" role="listbox" aria-label="Takes">
+        <div class="zeile gewaehlt" role="option" aria-selected="true"><span class="art"><i class="fa-solid fa-microphone-lines"></i></span><span><div class="name">Take 3 · Sprecherprobe</div><div class="meta">0:18 · 48 kHz · -16,2 LUFS</div></span><span class="stand-pille fertig">bereit</span></div>
+        <div class="zeile" role="option"><span class="art"><i class="fa-solid fa-microphone-lines"></i></span><span><div class="name">Take 2 · zu leise</div><div class="meta">0:21 · 48 kHz · -27,8 LUFS</div></span><span class="stand-pille warn">leise</span></div>
+        <div class="zeile" role="option"><span class="art"><i class="fa-solid fa-file-audio"></i></span><span><div class="name">Bordstimme gerendert</div><div class="meta">0:18 · WAV 24 Bit</div></span><span class="stand-pille laeuft">rendert</span></div>
+      </div></section>
+
+    <section class="hf-muster" data-karte><b>Rückfrage und Dialog</b><p>Rückfragen an Ort und Stelle; ein Fenster schwebt und lässt sich ziehen. Nie ein Dialog des Browsers.</p>
+      <div class="hf-knopfreihe">
+        <button class="knopf gefahr" type="button" data-rueckfrage="frage1"><i class="fa-solid fa-trash-can"></i>Take löschen</button>
+        <button class="knopf" type="button" data-fenster="fenster1"><i class="fa-solid fa-circle-info"></i>Hilfe öffnen</button>
+      </div>
+      <div class="rueckfrage" id="frage1" role="alertdialog" aria-label="Take 3 löschen?" hidden><span class="frage">Take 3 löschen? Er liegt danach sieben Tage im Papierkorb.</span>
+        <span class="aktionen"><button class="knopf still" type="button" data-antwort="nein">Abbrechen</button><button class="knopf gefahr" type="button" data-antwort="ja"><i class="fa-solid fa-trash-can"></i>Löschen</button></span></div>
+    </section>
+
+    <section class="hf-muster" data-karte><b>Meldungen</b>
+      <div class="hinweis-band"><i class="fa-solid fa-circle-info"></i><span><b>Neuronale Stufe</b> rechnet am Mac.</span></div>
+      <div class="band"><i class="fa-solid fa-triangle-exclamation"></i><span><b>Übersteuert</b> bei 0:12, Spitze +1,4 dB</span></div>
+      <div class="hf-knopfreihe"><button class="knopf" type="button" data-meldung="Preset Bordstimme gesichert" data-symbol="fa-circle-check"><i class="fa-solid fa-bell"></i>Meldung zeigen</button></div>
+    </section>
+
+    <section class="hf-muster" data-karte><b>Fortschritt, Pillen, Tabelle</b>
+      <div style="display:grid; gap:10px">
+        <div style="display:flex; justify-content:space-between; font-size:var(--klein)"><span>Rendern</span><span class="hf-messwert">62 %</span></div>
+        <div class="balken"><span style="width:62%"></span></div>
+        <div class="hf-knopfreihe"><span class="pille"><span class="punkt"></span>Ablage</span><span class="pille warn"><span class="punkt"></span>Rechner langsam</span><span class="pille aktiv">läuft</span></div>
+        <div class="hf-tabelle-rollt"><table class="tabelle" style="min-width:0">
+          <thead><tr><th>Knoten</th><th>Latenz</th><th>Last</th></tr></thead>
+          <tbody><tr><td>Hochpass</td><td class="hf-messwert">0 ms</td><td class="hf-messwert">0,4 %</td></tr><tr><td>Kompressor</td><td class="hf-messwert">1,5 ms</td><td class="hf-messwert">1,1 %</td></tr><tr><td>Hall</td><td class="hf-messwert">0 ms</td><td class="hf-messwert">3,8 %</td></tr></tbody>
+        </table></div>
+      </div></section>
+  </div>
+
+  <div class="hilfe-fenster" id="fenster1" role="dialog" aria-label="Hilfe: Drehregler" hidden>
+    <div class="hilfe-kopf"><i class="fa-solid fa-circle-question"></i><span class="hilfe-titel"><b>Drehregler bedienen</b><span>am Kopf ziehen, um das Fenster zu verschieben</span></span><button type="button" data-zu aria-label="Schließen"><i class="fa-solid fa-xmark"></i></button></div>
+    <div class="hilfe-inhalt">
+      <p>Ziehen hoch und runter, Mausrad oder Pfeiltasten. Mit gehaltener Umschalttaste geht es zehnmal feiner.</p>
+      <p>Doppelklick setzt die Vorgabe; ein Klick auf den Wert öffnet ein Feld zum Eintippen, etwa "1,2 k" für 1200 Hertz.</p>
+      <div class="ak-geraet" data-bauform="inspektor" data-modul="E" style="--ak-spalten:3"><div class="ak-raster">
+        <ak-dreh name="Größe" wert="64" vorgabe="50" einheit="%"></ak-dreh><ak-dreh name="Dämpfung" min="1000" max="20000" kurve="log" schritt="10" wert="6800" einheit="Hz"></ak-dreh><ak-dreh kappe="ring" name="Mischung" wert="35" einheit="%"></ak-dreh>
+      </div></div>
+    </div>
+  </div>
+
+</main></div>
+<script src="appkern/instrumente.js"></script>
+<script src="appkern/anzeigen.js"></script>
+<script src="wahl.js"></script>
+<script src="seite.js"></script>
+<script src="bausteine.js"></script>
+</body>
+</html>

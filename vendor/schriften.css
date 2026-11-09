@@ -1,0 +1,13 @@
+/* Schriften, Symbole und Stile des Appkerns, mitgeliefert (nichts aus dem Netz). */
+@import "./schriften/barlow/400.css";
+@import "./schriften/barlow/600.css";
+@import "./schriften/chakra-petch/500.css";
+@import "./schriften/chakra-petch/600.css";
+@import "./fontawesome/css/all.min.css";
+@import "./appkern/marken.css";
+@import "./appkern/schale.css";
+@import "./appkern/rahmen.css";
+@import "./appkern/auswahl.css";
+@import "./appkern/hilfe.css";
+@import "./appkern/bausteine.css";
+@import "./appkern/gestaltung.css";

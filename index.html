@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="de" data-theme="dunkel" data-vorlage="hifi" data-schrift="mittel" data-effekte="kraeftig">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Vorlage HiFi: Übersicht</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="vendor/schriften.css">
+  <link rel="stylesheet" href="appkern/instrumente.css">
+  <link rel="stylesheet" href="appkern/vorlagen/hifi.css">
+  <link rel="stylesheet" href="farben.css">
+  <link rel="stylesheet" href="seite.css">
+  <style>
+    .hf-schau { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 24px; align-items: center; }
+    @media (max-width: 1000px) { .hf-schau { grid-template-columns: minmax(0, 1fr); } }
+    .hf-schaustueck { padding: clamp(16px, 3cqi, 30px); --ak-spalten: 4; --ak-zelle-min: 84px; }
+    .hf-schaustueck .ak-geraet-kopf { justify-content: center; padding: 0 22px; }
+    .hf-schaustueck .ak-geraet-kopf b { font-size: clamp(24px, 6cqi, 44px); letter-spacing: .14em; }
+    .hf-schau-unten { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 16px; align-items: center; margin-top: 16px; }
+    .hf-schau-unten > :last-child { justify-self: stretch; }
+    @container geraet (max-width: 520px) { .hf-schau-unten { grid-template-columns: minmax(0, 1fr); justify-items: center; } }
+    .hf-schau-text { display: grid; gap: 14px; }
+    .hf-schau-text p { margin: 0; color: var(--text-2); font-size: var(--gross); }
+    .hf-entscheidungen { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+    .hf-entscheidungen li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; align-items: start; }
+    .hf-entscheidungen li ak-led { margin-top: 5px; }
+    .hf-entscheidungen b { color: var(--text); }
+    .hf-seitenkarte { text-decoration: none; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; align-items: start; }
+    .hf-seitenkarte:hover { box-shadow: 0 0 0 2px var(--akzent-flaeche), var(--hifi-schatten-ruhig, var(--schatten)); }
+    .hf-seitenkarte > i { inline-size: 44px; block-size: 44px; border-radius: var(--r2); display: grid; place-items: center; color: var(--akzent); background-color: var(--mulde); box-shadow: var(--hifi-mulde, none); font-size: 18px; }
+    .hf-seitenkarte b { display: block; font-size: var(--gross); }
+    .hf-seitenkarte span { display: block; font-size: var(--klein); color: var(--text-2); margin-top: 2px; }
+    .hf-dateien { display: grid; gap: 8px; font-size: var(--klein); }
+    .hf-dateien code { font-family: var(--schrift-code); font-size: var(--klein); color: var(--text); background: var(--mulde); padding: 1px 6px; border-radius: var(--r1); overflow-wrap: anywhere; }
+    .hf-dateien div { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2px; }
+    .hf-dateien span { color: var(--text-2); }
+  </style>
+</head>
+<body data-seite="index.html" data-titel="Vorlage HiFi" data-unter="Kitchensink für Oberfläche und Regler, abgeleitet aus neun Bildern">
+<div class="hf-rollt"><main class="hf-inhalt">
+
+  <section class="hf-abschnitt">
+    <div class="hinweis-band"><i class="fa-solid fa-circle-info"></i><span>Interaktive Präsentation zum Artikel über die Vorlage HiFi im Blog
+      <a href="https://hallowelt42.github.io/digitales-leben/">Digitales Leben</a>. Alles läuft im Browser, ohne Server und ohne Tracking; gemerkt wird nur die Wahl von Thema und
+      Effektstufe in diesem Browser. Quelltext: <a href="https://github.com/HalloWelt42/hifi-regler">GitHub</a>, gebaut auf dem <a href="https://github.com/HalloWelt42/appkern">Appkern</a>.</span></div>
+  </section>
+
+  <section class="hf-schau">
+    <div class="ak-geraet hf-schaustueck" data-bauform="inspektor" data-modul="E">
+      <span class="ak-schraube lo" style="--dreh:18deg"></span><span class="ak-schraube ro" style="--dreh:66deg"></span><span class="ak-schraube lu" style="--dreh:-24deg"></span><span class="ak-schraube ru" style="--dreh:40deg"></span>
+      <div class="ak-geraet-kopf"><ak-led farbe="rot" zustand="an" text="Strom"></ak-led><b>Bordstimme</b><ak-led farbe="gruen" zustand="atmet" text="Aktiv"></ak-led></div>
+      <div class="ak-raster">
+        <ak-dreh id="schau-tempo" name="Tempo" min="0.1" max="10" kurve="log" schritt="0.01" wert="1.2" vorgabe="1" einheit="Hz" grenzen="Langsam|Schnell"></ak-dreh>
+        <ak-dreh id="schau-tiefe" name="Tiefe" wert="60" vorgabe="50" einheit="%" grenzen="Wenig|Viel"></ak-dreh>
+        <ak-dreh name="Mischung" wert="35" vorgabe="50" einheit="%" grenzen="Trocken|Nass"></ak-dreh>
+        <ak-dreh name="Klang" min="-12" max="12" schritt="0.1" wert="2.5" bipolar einheit="dB" grenzen="Dunkel|Hell"></ak-dreh>
+      </div>
+      <div class="hf-schau-unten">
+        <div style="display:grid; gap:10px; justify-items:start"><ak-wahl name="Modus" optionen="I|II" wert="II" farbe="bernstein"></ak-wahl><ak-wahl name="Stereo" optionen="Aus|An" wert="An" farbe="gruen"></ak-wahl></div>
+        <ak-taster art="fuss" led="gruen" text="Umgehen" an></ak-taster>
+        <ak-schirm art="lfo" farbe="gruen" tempo="#schau-tempo" tiefe="#schau-tiefe" verhaeltnis="16 / 8" fuss="LFO|Sinus" beschriftung="LFO der Bordstimme"></ak-schirm>
+      </div>
+    </div>
+    <div class="hf-schau-text">
+      <p><b>Neun Bilder von Effektgeräten wurden zu einer Vorlage des Appkerns.</b> Übernommen ist nur der Stil: gebürstetes Aluminium, Pulverlack, schwarzes Glas, Chrom, Licht von oben und leuchtende Anzeigen. Namen, Schriftzüge und Logos der Bilder nicht.</p>
+      <p>Alles hier ist echtes HTML und bedienbar: Regler ziehen, mit dem Rad drehen, mit Pfeilen stellen, doppelt klicken für die Vorgabe. Oben lässt sich Thema, Effektstufe und Vorlage umschalten.</p>
+      <ul class="hf-entscheidungen">
+        <li><ak-led farbe="gruen" zustand="an"></ak-led><span><b>Geltung:</b> neue Vorlage des Appkerns neben Glas und Futur; ein Stimmprozessor im Browser ist der erste Nutzer.</span></li>
+        <li><ak-led farbe="gruen" zustand="an"></ak-led><span><b>Effekte:</b> Geräte kräftig, Schale, Listen und Dialoge ruhig; drei Stufen zum Vergleich.</span></li>
+        <li><ak-led farbe="gruen" zustand="an"></ak-led><span><b>Gehäuse:</b> Knoten und Rack in Lack der Modulfarbe, Inspektor in Metall mit Farbakzent.</span></li>
+        <li><ak-led farbe="gruen" zustand="an"></ak-led><span><b>Hell:</b> gebürstetes Silber, Anzeigen bleiben dunkles Glas.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="hf-abschnitt">
+    <h2><i class="fa-solid fa-table-cells-large"></i>Seiten</h2>
+    <div class="hf-katalog">
+      <a class="hf-muster hf-seitenkarte" data-karte href="regler.html"><i class="fa-solid fa-sliders"></i><span><b>Regler</b><span>Drehregler mit vier Kappen, Drehwahl, Schieber, Taster, Kippschalter, Wahltasten; alle mit Ziehen, Rad, Tasten, Doppelklick und Feinschritt.</span></span></a>
+      <a class="hf-muster hf-seitenkarte" data-karte href="anzeigen.html"><i class="fa-solid fa-gauge-high"></i><span><b>Anzeigen</b><span>Leuchten, sieben und vierzehn Segmente, Punktmatrix, Zeigerinstrumente, Pegel, Oszilloskop, LFO, Spektrum, Hüllkurve, Take.</span></span></a>
+      <a class="hf-muster hf-seitenkarte" data-karte href="bedienung.html"><i class="fa-solid fa-hand-pointer"></i><span><b>Bedienelemente</b><span>Knöpfe, Felder, Auswahl, Reiter, Schalter, Listen, Rückfrage, schwebendes Fenster, Meldungen, Tabelle: ruhig gestaltet.</span></span></a>
+      <a class="hf-muster hf-seitenkarte" data-karte href="material.html"><i class="fa-solid fa-lightbulb"></i><span><b>Material und Licht</b><span>Aluminium, Lack, Rohblech, Glas, Chrom; Tiefe, Glanz, Raum, Blenden, Überstrahlen; Leistung gemessen.</span></span></a>
+      <a class="hf-muster hf-seitenkarte" data-karte href="skalierung.html"><i class="fa-solid fa-up-right-and-down-left-from-center"></i><span><b>Skalierung</b><span>Behälter, Verhältnisse, Untergrenzen, Detailstufen: ein Gerät von 200 bis 1200 Pixel, Prüfstand je Fenster, vier Bauformen.</span></span></a>
+      <a class="hf-muster hf-seitenkarte" data-karte href="studio.html"><i class="fa-solid fa-diagram-project"></i><span><b>Im Studio</b><span>Die Vorlage auf der Schale des Appkerns: Board mit Knoten in Lack, Kabel, Inspektor in Metall, Transport mit Pegeln.</span></span></a>
+    </div>
+  </section>
+
+  <section class="hf-abschnitt">
+    <h2><i class="fa-solid fa-sitemap"></i>Aufbau: so wandert es in den Appkern</h2>
+    <p class="hf-text">Gebaut wie die Vorlagen des Appkerns: Marken und Bausteine getrennt, jede Wirkung über Marken. Der Ordner <b>appkern</b> ist das, was später nach appkern-oberflaeche geht; aus den Elementen werden dort Svelte-Bausteine mit demselben Wertmodell.</p>
+    <div class="hf-katalog breit">
+      <div class="hf-muster" data-karte><b>Für den Appkern</b><div class="hf-dateien">
+        <div><code>appkern/instrumente.css</code><span>Regler und Anzeigen als neue Bausteine, Grundaussehen flach, Maßsystem und Detailstufen</span></div>
+        <div><code>appkern/instrumente.js</code><span>Wertmodell und Eingabe (eine Stelle), Drehregler, Schieber, Taster, Kippschalter, Wahl, Leuchte</span></div>
+        <div><code>appkern/anzeigen.js</code><span>Takt, Beispielquelle, Segmente, Zeiger, Pegel, Schirme</span></div>
+        <div><code>appkern/vorlagen/hifi.css</code><span>die Vorlage: hifi/marken.css (Material, Licht, drei Stufen) und hifi/bausteine.css (Geräte kräftig, Schale ruhig)</span></div>
+      </div></div>
+      <div class="hf-muster" data-karte><b>Für die App und diese Präsentation</b><div class="hf-dateien">
+        <div><code>farben.css</code><span>nur die Farben der App: Leuchtfarbe und Lack je Modul</span></div>
+        <div><code>wahl.js</code><span>Thema, Effektstufe und Vorlage wählen und merken</span></div>
+        <div><code>seite.js</code>, <code>seite.css</code><span>Kopf und Raster der Kitchensink-Seiten</span></div>
+        <div><code>bausteine.js</code>, <code>leistung.js</code><span>Verhalten der allgemeinen Bausteine im Entwurf, Messlauf</span></div>
+      </div></div>
+    </div>
+  </section>
+
+</main></div>
+<script src="appkern/instrumente.js"></script>
+<script src="appkern/anzeigen.js"></script>
+<script src="wahl.js"></script>
+<script src="seite.js"></script>
+</body>
+</html>

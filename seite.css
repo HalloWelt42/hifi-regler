@@ -1,0 +1,85 @@
+/* Rahmen der Kitchensink-Seiten: stehender Kopf mit Reitern und Wahl, darunter Abschnitte mit
+   Mustern. Die Seite selbst rollt nie, nur ihr Rollfeld; der Kopf klebt bündig an dessen Oberkante (kein Abstand oben
+   am Rollfeld). Schrift in der Stufe mittel des Appkerns (Grundschrift 17, klein 15, Etiketten 15 Pixel). */
+
+html, body { height: 100%; overflow: hidden; }
+a { color: inherit; }
+:root { --hf-rand: clamp(12px, 2.6vw, 40px); --app-farbe: #c2410c; --app-farbe-tief: color-mix(in srgb, #c2410c 72%, #000); }
+.hf-rollt { height: 100%; overflow-y: auto; overflow-x: clip; }
+
+/* ═══ Kopf ═══ */
+.hf-kopf { position: sticky; top: 0; z-index: 30; padding: env(safe-area-inset-top) var(--hf-rand) 0;
+           background-color: var(--leiste); background-image: var(--hifi-erhaben, none); box-shadow: var(--hifi-kante-ruhig, 0 1px 0 var(--rand)), var(--hifi-schatten-ruhig, none); }
+.hf-kopf-zeile { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; padding: 10px 0 8px; max-width: 1500px; margin: 0 auto; }
+.hf-marke { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; min-width: 0; }
+.hf-marke .symbol { inline-size: 38px; block-size: 38px; border-radius: var(--r2); display: grid; place-items: center; color: var(--auf-farbe); background: var(--symbol-flaeche);
+                    box-shadow: inset 0 1px 0 rgb(255 255 255 / .3), 0 2px 6px rgb(0 0 0 / .35); }
+.hf-marke b { display: block; font-size: var(--gross); line-height: 1.15; }
+.hf-marke span span { display: block; font-size: var(--marke); color: var(--text-3); }
+.hf-kopf h1 { margin: 0; font-size: var(--seitentitel); line-height: 1.2; flex: 1 1 300px; min-width: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; }
+.hf-kopf h1 small { font-size: var(--klein); font-weight: 400; color: var(--text-2); }
+.hf-wahl { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.hf-wahl .segment button { min-block-size: 36px; font-size: var(--klein); }
+.hf-wahl .segment button i { margin-right: 6px; }
+.hf-reiter { display: flex; flex-wrap: wrap; gap: 4px; padding: 0 0 8px; max-width: 1500px; margin: 0 auto; }
+.hf-reiter a { display: inline-flex; align-items: center; gap: 8px; min-block-size: 40px; padding: 0 12px; border-radius: var(--r2); text-decoration: none; color: var(--text-2); font-size: var(--klein); }
+.hf-reiter a:hover { color: var(--text); background-color: var(--flaeche-2); }
+.hf-reiter a.aktiv { color: var(--akzent); font-weight: 600; background-color: var(--flaeche-2); background-image: var(--hifi-erhaben, none);
+                     box-shadow: var(--hifi-kante-ruhig, var(--schatten)); text-shadow: 0 0 calc(10px * var(--ak-leuchten)) color-mix(in srgb, var(--akzent-flaeche) 55%, transparent); }
+.hf-reiter a:focus-visible { outline: 2px solid var(--akzent-flaeche); outline-offset: 2px; }
+.hf-zuletzt { display: flex; align-items: center; gap: 10px; margin-left: auto; min-width: 0; font-size: var(--klein); color: var(--text-2); }
+.hf-zuletzt b { font-family: var(--schrift-zahl); color: var(--text); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hf-zuletzt span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+
+/* ═══ Inhalt ═══ */
+.hf-inhalt { max-width: 1500px; margin: 0 auto; padding: 22px var(--hf-rand) 90px; display: flex; flex-direction: column; gap: 34px; }
+.hf-abschnitt { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.hf-abschnitt > h2 { margin: 0; font-size: var(--titel); display: flex; align-items: center; gap: 10px; }
+.hf-abschnitt > h2 i { color: var(--akzent); }
+.hf-text { margin: 0; color: var(--text-2); max-width: 960px; }
+.hf-text b { color: var(--text); }
+.hf-reihe { display: flex; flex-wrap: wrap; gap: 18px; align-items: flex-start; min-width: 0; }
+.hf-katalog { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--hf-kachel, 320px)), 1fr)); min-width: 0; }
+.hf-katalog.breit { --hf-kachel: 460px; }
+.hf-katalog.schmal { --hf-kachel: 230px; }
+/* Muster: Erklärung über dem Instrument; ruhige Fläche, das Instrument trägt sein Material selbst */
+.hf-muster { display: flex; flex-direction: column; gap: 12px; min-width: 0; padding: 14px; border-radius: var(--r3); background-color: var(--flaeche);
+             background-image: var(--hifi-erhaben, none); box-shadow: var(--hifi-kante-ruhig, var(--schatten)), var(--hifi-schatten-ruhig, none); }
+.hf-muster > b { font-size: var(--gross); }
+.hf-muster > p { margin: -6px 0 0; font-size: var(--klein); color: var(--text-2); }
+.hf-muster > .hf-mitte { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 18px; padding: 8px 0; }
+.hf-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.hf-chips .chip { font-size: var(--klein); }
+.hf-chips .chip kbd { font-family: var(--schrift-zahl); font-size: var(--klein); padding: 0 6px; border-radius: var(--r1); background: var(--mulde); color: var(--text); }
+.hf-formel { font-family: var(--schrift-zahl); font-size: var(--gross); padding: 10px 14px; border-radius: var(--r2); background-color: var(--ak-glas); color: var(--led-cyan);
+             box-shadow: var(--ak-glas-tiefe); overflow-wrap: anywhere; text-shadow: 0 0 calc(10px * var(--ak-leuchten)) color-mix(in srgb, var(--led-cyan) 50%, transparent); }
+.hf-leise { color: var(--text-3); font-size: var(--klein); }
+.hf-messwert { font-family: var(--schrift-zahl); }
+.hf-tabelle-rollt { overflow-x: auto; max-width: 100%; }
+.hf-tabelle-rollt .tabelle { min-width: 560px; }
+
+/* ═══ Telefon ═══ */
+@media (max-width: 700px) {
+  .hf-kopf-zeile { gap: 8px 10px; padding-top: 8px; }
+  .hf-kopf h1 { flex-basis: 100%; order: 3; font-size: var(--titel); }
+  .hf-kopf h1 small { display: none; }
+  .hf-marke > span:last-child { display: none; }
+  .hf-wahl { order: 2; margin-left: auto; gap: 6px; }
+  .hf-wahl .segment button { padding: 4px 8px; min-block-size: 40px; }
+  .hf-wahl .segment button span { display: none; }
+  .hf-wahl .segment button i { margin: 0; }
+  .hf-reiter a { padding: 0 9px; min-block-size: 44px; }
+  .hf-reiter a span { display: none; }
+  .hf-reiter a.aktiv span { display: inline; }
+  .hf-zuletzt { display: none; }
+  .hf-muster { padding: 12px 10px; }
+}
+
+/* ═══ Meldung ═══ schwebt unten in der Mitte, am body */
+.hf-meldung { position: fixed; left: 50%; bottom: max(16px, env(safe-area-inset-bottom)); translate: -50% 0; z-index: 80; display: flex; align-items: center; gap: 12px;
+              max-width: calc(100vw - 24px); padding: 10px 12px 10px 16px; border-radius: var(--r3); background-color: var(--karte); color: var(--text);
+              background-image: var(--hifi-erhaben, none); box-shadow: var(--hifi-kante-ruhig, 0 0 0 1px var(--rand)), var(--schatten-schwebend); animation: hf-ein var(--ruhig) ease-out; }
+.hf-meldung > i { color: var(--gut); }
+.hf-meldung span { min-width: 0; }
+@keyframes hf-ein { from { opacity: 0; translate: -50% 12px; } }
+@media (prefers-reduced-motion: reduce) { .hf-meldung { animation: none; } }

@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="de" data-theme="dunkel" data-vorlage="hifi" data-schrift="mittel" data-effekte="kraeftig">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Vorlage HiFi: Material und Licht</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="vendor/schriften.css">
+  <link rel="stylesheet" href="appkern/instrumente.css">
+  <link rel="stylesheet" href="appkern/vorlagen/hifi.css">
+  <link rel="stylesheet" href="farben.css">
+  <link rel="stylesheet" href="seite.css">
+  <style>
+    .hf-probe { min-block-size: 150px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 10px; }
+    .hf-probe .ak-etikett { font-size: var(--klein); }
+    .hf-lacke { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px; }
+    .hf-lacke .ak-geraet { padding: 12px; display: grid; gap: 8px; justify-items: start; }
+    .hf-lacke .ak-geraet b { font-size: var(--klein); }
+    .hf-blech { --ak-front: #8e959c; --ak-front-bild: var(--hifi-blech); --ak-tinte: #101418; --ak-tinte-2: #1f262d; min-block-size: 210px; }
+    .hf-blech .hf-schrauben { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; padding: 22px; justify-items: center; }
+    .hf-blech .ak-schraube { position: static; inline-size: 30px; block-size: 30px; }
+    .hf-chrom { display: flex; flex-wrap: wrap; gap: 26px; align-items: center; justify-content: space-around; padding: 10px; }
+    .hf-stufen { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 22px; }
+    .hf-stufen > div { display: grid; gap: 10px; }
+    .hf-buehne { position: relative; overflow: hidden; border-radius: var(--r3); padding: 48px 16px 60px; min-block-size: 360px; display: flex; flex-wrap: wrap; gap: 26px; justify-content: center; align-items: flex-end;
+      background-color: #0d0f12;
+      background-image: radial-gradient(ellipse 46% 70% at 50% -8%, rgb(255 240 210 / calc(.20 * var(--hifi-glanz, .3) + .04)), transparent 70%),
+                        linear-gradient(180deg, transparent 0 68%, rgb(255 255 255 / .05) 68.2%, rgb(0 0 0 / .4) 100%), var(--hifi-koernung, none); }
+    .hf-buehne .ak-geraet { inline-size: 150px; padding: 12px 10px 14px; z-index: 1; }
+    .hf-buehne .ak-geraet::after { content: ""; position: absolute; left: 10%; right: 10%; bottom: -34px; block-size: 40px; border-radius: 50%; pointer-events: none;
+      background: radial-gradient(ellipse at 50% 30%, color-mix(in srgb, var(--pfuetze, var(--led-bernstein)) 70%, transparent), transparent 70%); opacity: calc(.55 * var(--ak-leuchten)); }
+    .hf-buehne .ak-geraet .ak-taster-text { color: var(--ak-tinte-2); }
+    .hf-ueberblenden { display: grid; }
+    .hf-ueberblenden > * { grid-area: 1 / 1; transition: opacity 420ms ease; }
+    .hf-ueberblenden[data-zeige="b"] > :first-child, .hf-ueberblenden:not([data-zeige="b"]) > :last-child { opacity: 0; }
+    .hf-messung-stand { font-size: var(--klein); color: var(--text-2); }
+    .ak-buchse { position: relative; inline-size: 46px; block-size: 46px; border-radius: 50%; background-color: var(--ak-metall); background-image: var(--ak-metall-bild);
+      box-shadow: var(--ak-kappe-schatten), 0 0 0 1px rgb(0 0 0 / .4); }
+    .ak-buchse::after { content: ""; position: absolute; inset: 13px; border-radius: 50%; background: radial-gradient(circle at 50% 40%, #000 0 45%, #2b2f34 70%, #0b0c0e); box-shadow: inset 0 2px 3px #000; }
+  </style>
+</head>
+<body data-seite="material.html" data-titel="Material und Licht" data-unter="Metall, Lack, Glas, Chrom, Tiefe, Glanz, Raum, Blenden, Überstrahlen">
+<div class="hf-rollt"><main class="hf-inhalt">
+
+  <section class="hf-abschnitt">
+    <h2><i class="fa-solid fa-layer-group"></i>Materialien</h2>
+    <p class="hf-text">Jedes Material ist Farbe plus Struktur plus Licht. Die Struktur ist Rauschen als Vektorgrafik (gebürstet lang gezogen, Lack fein gekörnt, Blech wolkig), vom Browser einmal je Kachel gerastert; das Licht ist ein Verlauf von oben. Anzeigen sitzen immer hinter dunklem Glas, auch im hellen Thema.</p>
+    <div class="hf-katalog">
+      <div class="hf-muster" data-karte><b>Aluminium, eloxiert und gebürstet</b><p>Front des Inspektors: dunkel im dunklen, silbern im hellen Thema.</p>
+        <div style="display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:12px">
+          <div class="ak-geraet hf-probe" data-karte data-theme="dunkel" data-bauform="inspektor" data-modul="E"><span class="ak-schild">E1</span><span class="ak-etikett">Dunkel</span></div>
+          <div class="ak-geraet hf-probe" data-karte data-theme="hell" data-bauform="inspektor" data-modul="E"><span class="ak-schild">E1</span><span class="ak-etikett">Hell</span></div>
+        </div></div>
+      <div class="hf-muster" data-karte><b>Rohblech mit Schrauben</b><p>Gestrahlter Stahl mit Wolken im Walzbild; Kreuzschlitze, jede Schraube anders gedreht.</p>
+        <div class="ak-geraet hf-blech"><div class="hf-schrauben">
+          <span class="ak-schraube" style="--dreh:10deg"></span><span class="ak-schraube" style="--dreh:55deg"></span><span class="ak-schraube" style="--dreh:-20deg"></span><span class="ak-schraube" style="--dreh:35deg"></span>
+          <span class="ak-schraube" style="--dreh:-40deg"></span><span class="ak-schraube" style="--dreh:5deg"></span><span class="ak-schraube" style="--dreh:70deg"></span><span class="ak-schraube" style="--dreh:-8deg"></span>
+        </div></div></div>
+      <div class="hf-muster" data-karte><b>Glas</b><p>Tiefschwarz, innen beschattet, mit einem schrägen Lichtstreif, der stillsteht.</p>
+        <div class="ak-geraet" data-bauform="inspektor" data-modul="U"><div style="display:grid; gap:12px">
+          <div class="ak-glas ak-schirmtext" data-kennzahl style="--farbe:var(--led-cyan)"><b>Bordstimme</b><span>Preset 4 von 12</span></div>
+          <ak-segmente art="7" stellen="5" farbe="rot" text="-16.2"></ak-segmente>
+        </div></div></div>
+      <div class="hf-muster" data-karte><b>Chrom</b><p>Fußtaster mit Sechskantmutter, Buchse, Kippschalter, Schraube.</p>
+        <div class="ak-geraet" data-bauform="inspektor" data-modul="U"><div class="hf-chrom">
+          <ak-taster art="fuss" text="Umgehen" led="rot"></ak-taster><span class="ak-buchse" title="Buchse: Eingang"></span>
+          <ak-kipp beschriftung="An|Aus" stellung="oben"></ak-kipp><span class="ak-schraube" style="position:static; inline-size:26px; block-size:26px"></span>
+        </div></div></div>
+    </div>
+    <div class="hf-muster"><b>Lack in den Farben der Module</b><p>Kleine Bauformen (Knoten, Rack) tragen Lack; die Schrift darauf hat mindestens 4,5 : 1. Lack bleibt in beiden Themen gleich, er ist Farbe auf Metall.</p>
+      <div class="hf-lacke">
+        <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="A"><span class="ak-schild">A</span><b>Reinigung</b></div>
+        <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="B"><span class="ak-schild">B</span><b>Tonhöhe</b></div>
+        <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="C"><span class="ak-schild">C</span><b>Dynamik</b></div>
+        <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="D"><span class="ak-schild">D</span><b>Klangfarbe</b></div>
+        <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="E"><span class="ak-schild">E</span><b>Raum</b></div>
+        <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="F"><span class="ak-schild">F</span><b>Übertragung</b></div>
+        <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="G"><span class="ak-schild">G</span><b>Neuronal</b></div>
+        <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="S"><span class="ak-schild">S</span><b>Steuerung</b></div>
+      </div></div>
+  </section>
+
+  <section class="hf-abschnitt">
+    <h2><i class="fa-solid fa-sliders"></i>Drei Stufen nebeneinander</h2>
+    <p class="hf-text">Drei Zahlen bestimmen alle Effekte: <b>Tiefe</b> (Schatten, Kanten, Wölbung), <b>Glanz</b> (Glanzlichter, Spiegelungen) und <b>Leuchten</b> (Überstrahlen). Jede abgeleitete Marke rechnet mit ihnen; darum gilt eine Stufe auch für einen Teil der Seite, wie hier.</p>
+    <div class="hf-stufen">
+      <div data-effekte="flach"><span class="ak-etikett">Flach · Tiefe 0,18 · Glanz 0 · Leuchten 0,3</span>
+        <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="E" style="--ak-spalten:3; --ak-zelle-min:72px"><div class="ak-geraet-kopf"><span class="ak-schild">E1</span><b>Hall</b><ak-led farbe="gruen" zustand="an"></ak-led></div><div class="ak-raster">
+          <ak-dreh name="Größe" wert="64" einheit="%"></ak-dreh><ak-dreh name="Dämpfung" wert="40" einheit="%"></ak-dreh><ak-dreh name="Mischung" wert="28" einheit="%"></ak-dreh></div></div></div>
+      <div data-effekte="mittel"><span class="ak-etikett">Mittel · Tiefe 0,6 · Glanz 0,55 · Leuchten 0,6</span>
+        <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="E" style="--ak-spalten:3; --ak-zelle-min:72px"><div class="ak-geraet-kopf"><span class="ak-schild">E1</span><b>Hall</b><ak-led farbe="gruen" zustand="an"></ak-led></div><div class="ak-raster">
+          <ak-dreh name="Größe" wert="64" einheit="%"></ak-dreh><ak-dreh name="Dämpfung" wert="40" einheit="%"></ak-dreh><ak-dreh name="Mischung" wert="28" einheit="%"></ak-dreh></div></div></div>
+      <div data-effekte="kraeftig"><span class="ak-etikett">Kräftig · Tiefe 1 · Glanz 1 · Leuchten 1</span>
+        <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="E" style="--ak-spalten:3; --ak-zelle-min:72px"><div class="ak-geraet-kopf"><span class="ak-schild">E1</span><b>Hall</b><ak-led farbe="gruen" zustand="an"></ak-led></div><div class="ak-raster">
+          <ak-dreh name="Größe" wert="64" einheit="%"></ak-dreh><ak-dreh name="Dämpfung" wert="40" einheit="%"></ak-dreh><ak-dreh name="Mischung" wert="28" einheit="%"></ak-dreh></div></div></div>
+    </div>
+  </section>
+
+  <section class="hf-abschnitt">
+    <h2><i class="fa-solid fa-cube"></i>Raum, Licht von oben, Überstrahlen</h2>
+    <p class="hf-text">Eine Bühne wie im Studio: Lichtkegel von oben (Blende), Boden mit Kante, Geräte mit Kontaktschatten, und unter jeder Leuchte ein farbiger Lichtfleck auf dem Boden. Alles Verläufe und Schatten, kein Weichzeichner; die Stärke folgt der Stufe.</p>
+    <div class="hf-buehne">
+      <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="D" style="--pfuetze:var(--led-violett); --ak-spalten:2; --ak-zelle-min:60px"><div class="ak-raster"><ak-dreh kappe="lack" farbe="#ebe1c8" name="Formant" wert="60" einheit="%"></ak-dreh><ak-dreh kappe="lack" farbe="#ebe1c8" name="Tiefe" wert="30" einheit="%"></ak-dreh></div>
+        <div style="display:grid; justify-items:center; gap:8px; margin-top:6px"><ak-led farbe="violett" zustand="an"></ak-led><ak-taster art="fuss" text="Roboter"></ak-taster></div></div>
+      <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="G" style="--pfuetze:var(--led-bernstein); --ak-spalten:2; --ak-zelle-min:60px"><div class="ak-raster"><ak-dreh kappe="lack" farbe="#c99b3c" name="Stärke" wert="72" einheit="%"></ak-dreh><ak-dreh kappe="lack" farbe="#c99b3c" name="Klarheit" wert="45" einheit="%"></ak-dreh></div>
+        <div style="display:grid; justify-items:center; gap:8px; margin-top:6px"><ak-led farbe="bernstein" zustand="atmet"></ak-led><ak-taster art="fuss" text="Entrauschen"></ak-taster></div></div>
+      <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="S" style="--pfuetze:var(--led-tuerkis); --ak-spalten:2; --ak-zelle-min:60px"><div class="ak-raster"><ak-dreh kappe="lack" farbe="#ebe1c8" name="Tempo" min="0.1" max="10" kurve="log" schritt="0.01" wert="1.2" einheit="Hz"></ak-dreh><ak-dreh kappe="lack" farbe="#ebe1c8" name="Tiefe" wert="55" einheit="%"></ak-dreh></div>
+        <div style="display:grid; justify-items:center; gap:8px; margin-top:6px"><ak-led farbe="tuerkis" zustand="an"></ak-led><ak-taster art="fuss" text="LFO"></ak-taster></div></div>
+    </div>
+    <div class="hf-katalog">
+      <div class="hf-muster" data-karte><b>Überblenden</b><p>Zustände wechseln über die Deckkraft (nur Zusammensetzen, kein Neuzeichnen): hier A und B einer Einstellung.</p>
+        <div class="ak-geraet" data-bauform="inspektor" data-modul="U"><div style="display:grid; gap:12px">
+          <div class="hf-ueberblenden" id="ab"><div class="ak-glas ak-schirmtext" data-kennzahl style="--farbe:var(--led-cyan)"><b>A · Bordstimme</b><span>Hall 28 %</span></div><div class="ak-glas ak-schirmtext" data-kennzahl style="--farbe:var(--led-bernstein)"><b>B · Funk</b><span>Band 300 bis 3400 Hz</span></div></div>
+          <ak-wahl id="ab-wahl" name="Vergleich" optionen="A|B" wert="A" farbe="cyan"></ak-wahl>
+        </div></div></div>
+      <div class="hf-muster" data-karte><b>Glanz, der stillsteht</b><p>Drehen: Zeiger und Riffelrand wandern, der Lichtkegel des Drehschliffs nicht.</p>
+        <div class="ak-geraet" data-bauform="inspektor" data-modul="U" style="--ak-spalten:1; --ak-d-max:150px"><div class="ak-raster" style="--ak-zelle-min:200px">
+          <ak-dreh name="Drehen zum Prüfen" wert="30" einheit="%" grenzen="Links|Rechts"></ak-dreh></div></div></div>
+    </div>
+  </section>
+
+  <section class="hf-abschnitt" id="leistung">
+    <h2><i class="fa-solid fa-stopwatch"></i>Leistung: gemessen</h2>
+    <p class="hf-text">Der Messlauf dreht alle Regler dieser Seite in jedem Bild (wie eine abgespielte Automation) und hält alle Anzeigen in Bewegung, je Stufe vier Sekunden. <b>Bildabstand</b>: Zeit zwischen zwei Bildern (zeigt auch, wenn das Rastern zu lange dauert). <b>Hauptfaden</b>: Skript, Stil, Layout und Malen je Bild. Regeln, die das tragen: Texturen werden einmal gerastert, bewegt wird nur transform und Deckkraft, Leuchten ist Schatten statt Weichzeichner, Pegel und Schirme zeichnen in eine Leinwand, ein Takt für die ganze Seite, nichts außerhalb des Bildes läuft.</p>
+    <div class="hf-knopfreihe" style="display:flex; gap:12px; align-items:center; flex-wrap:wrap">
+      <button class="knopf primaer" type="button" id="messen"><i class="fa-solid fa-stopwatch"></i>Messen (12 Sekunden)</button>
+      <span class="hf-messung-stand" id="mess-stand" aria-live="polite">Noch nicht gemessen in diesem Browser.</span>
+    </div>
+    <div class="hf-tabelle-rollt"><table class="tabelle" id="mess-tabelle">
+      <thead><tr><th>Stufe</th><th>Bilder je Sekunde</th><th>Bildabstand Mitte</th><th>Bildabstand 95 %</th><th>Hauptfaden Mitte</th><th>Hauptfaden 95 %</th><th>verpasste Bilder</th></tr></thead>
+      <tbody id="mess-zeilen"><tr class="leer"><td colspan="7">Messlauf starten: Ergebnis erscheint hier.</td></tr></tbody>
+    </table></div>
+    <p class="hf-leise" id="mess-referenz">Gemessen am 09.11.2026 im unsichtbaren Chrome des Appkerns mit Rastern auf der Grafikkarte, alle Regler drehen in jedem Bild: Material, Anzeigen und Studio in allen drei Stufen mit 60 Bildern je Sekunde und ohne verpasstes Bild, Hauptfaden je Bild 3 bis 5 ms (95 Prozent unter 6,3 ms) bei 1440 Pixel; am Telefon (390 Pixel, doppelte Pixeldichte) höchstens 4,6 ms. Gegenprobe mit Weichzeichnern (filter und backdrop-filter statt Schatten): im Studio 10 von 230 Bildern verpasst, Hauptfaden 95 Prozent 8,8 ms.</p>
+  </section>
+
+</main></div>
+<script src="appkern/instrumente.js"></script>
+<script src="appkern/anzeigen.js"></script>
+<script src="wahl.js"></script>
+<script src="seite.js"></script>
+<script src="leistung.js"></script>
+<script>
+  document.getElementById("ab-wahl").addEventListener("input", (e) => { document.getElementById("ab").dataset.zeige = e.currentTarget.getAttribute("wert") === "B" ? "b" : "a"; });
+  const zahl = (x, s = 1) => x.toLocaleString("de-DE", { minimumFractionDigits: s, maximumFractionDigits: s });
+  const NAMEN = { flach: "Flach", mittel: "Mittel", kraeftig: "Kräftig" };
+  const zeile = (z) => `<tr><td>${NAMEN[z.stufe]}</td><td class="hf-messwert">${zahl(z.fps)}</td><td class="hf-messwert">${zahl(z.abstand50)} ms</td><td class="hf-messwert">${zahl(z.abstand95)} ms</td>
+    <td class="hf-messwert">${zahl(z.haupt50)} ms</td><td class="hf-messwert">${zahl(z.haupt95)} ms</td><td class="hf-messwert">${z.verpasst} von ${z.bilder}</td></tr>`;
+  document.getElementById("messen").addEventListener("click", async (e) => {
+    const k = e.currentTarget, stand = document.getElementById("mess-stand");
+    k.disabled = true;
+    const zeilen = await HiFiLeistung.alleStufen({ melden: (t) => { stand.textContent = `Messlauf ${t} ...`; } });
+    document.getElementById("mess-zeilen").innerHTML = zeilen.map(zeile).join("");
+    stand.textContent = `Gemessen in diesem Browser, ${innerWidth} Pixel breit, Bildschirmdichte ${devicePixelRatio}.`;
+    k.disabled = false;
+    window.HiFiMessung = zeilen;
+  });
+</script>
+</body>
+</html>

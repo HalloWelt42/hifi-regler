@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="de" data-theme="dunkel" data-vorlage="hifi" data-schrift="mittel" data-effekte="kraeftig">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Vorlage HiFi: Regler</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="vendor/schriften.css">
+  <link rel="stylesheet" href="appkern/instrumente.css">
+  <link rel="stylesheet" href="appkern/vorlagen/hifi.css">
+  <link rel="stylesheet" href="farben.css">
+  <link rel="stylesheet" href="seite.css">
+</head>
+<body data-seite="regler.html" data-titel="Regler" data-unter="drehen, schieben, tasten, kippen, wählen">
+<div class="hf-rollt"><main class="hf-inhalt">
+
+  <section class="hf-abschnitt">
+    <h2><i class="fa-solid fa-hand-pointer"></i>So bedient man jeden Regler</h2>
+    <p class="hf-text">Alle Regler teilen ein Wertmodell (Bereich, Schritt, Kurve, Vorgabe, Einheit) und eine Eingabe. Was oben rechts unter <b>Zuletzt bedient</b> erscheint, kam wirklich an.</p>
+    <div class="hf-chips">
+      <span class="chip"><i class="fa-solid fa-arrows-up-down"></i>Ziehen hoch und runter</span>
+      <span class="chip"><i class="fa-solid fa-computer-mouse"></i>Mausrad</span>
+      <span class="chip"><kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd> ein Schritt</span>
+      <span class="chip"><kbd>Bild ↑</kbd><kbd>Bild ↓</kbd> zehn Schritte</span>
+      <span class="chip"><kbd>Pos1</kbd><kbd>Ende</kbd> Anfang und Ende</span>
+      <span class="chip"><kbd>⇧</kbd> gehalten: fein (ein Zehntel)</span>
+      <span class="chip"><i class="fa-solid fa-rotate-left"></i>Doppelklick, Doppeltipp oder <kbd>Entf</kbd>: Vorgabe</span>
+      <span class="chip"><i class="fa-solid fa-keyboard"></i>Klick auf den Wert oder <kbd>Eingabe</kbd>: eintippen</span>
+      <span class="chip"><i class="fa-solid fa-hand"></i>Finger: ganze Zelle ist Fläche</span>
+    </div>
+  </section>
+
+  <section class="hf-abschnitt">
+    <h2><i class="fa-solid fa-circle-dot"></i>Drehregler: vier Kappen</h2>
+    <p class="hf-text">Der Glanz des Drehschliffs steht still, nur Zeiger und Riffelrand drehen mit: das Licht kommt immer von oben. Ab einer Zelle von 94 Pixel zeigt die Skala 21 Striche, ab 139 Pixel die Grenzwörter.</p>
+    <div class="hf-katalog">
+      <div class="hf-muster" data-karte><b>Alu mit Riffelrand</b><p>Vorgabe für Parameter mit Bereich und Einheit. Wertbogen zeigt die Stellung, auch von der Seite gesehen.</p>
+        <div class="ak-geraet" data-bauform="inspektor" data-modul="E" style="--ak-spalten:2"><div class="ak-raster">
+          <ak-dreh name="Größe" min="0" max="100" wert="64" vorgabe="50" einheit="%" grenzen="Kabine|Halle"></ak-dreh>
+          <ak-dreh name="Vorverzögerung" min="0" max="250" wert="38" vorgabe="20" einheit="ms" grenzen="Nah|Fern"></ak-dreh>
+        </div></div></div>
+      <div class="hf-muster" data-karte><b>Lackkappe</b><p>Kleine farbige Kappe, gut für viele Regler auf engem Raum (Knoten). Farbe frei, hier Gold und Creme.</p>
+        <div class="ak-geraet" data-bauform="knoten" data-modul="E" style="--ak-spalten:3; --ak-zelle-min:72px"><div class="ak-raster">
+          <ak-dreh kappe="lack" farbe="#c99b3c" name="Zeit" min="20" max="2000" kurve="log" wert="420" vorgabe="250" einheit="ms"></ak-dreh>
+          <ak-dreh kappe="lack" farbe="#c99b3c" name="Wiederholen" min="0" max="95" wert="45" vorgabe="30" einheit="%"></ak-dreh>
+          <ak-dreh kappe="lack" farbe="#ebe1c8" name="Dämpfung" min="1000" max="20000" kurve="log" schritt="10" wert="6800" vorgabe="12000" einheit="Hz"></ak-dreh>
+        </div></div></div>
+      <div class="hf-muster" data-karte><b>Schwarz mit Leuchtzeiger</b><p>Zeiger leuchtet in der Farbe des Moduls; liest sich auch im dunklen Rack auf einen Blick.</p>
+        <div class="ak-geraet" data-bauform="inspektor" data-modul="C" style="--ak-spalten:2"><div class="ak-raster">
+          <ak-dreh kappe="schwarz" zeiger="rot" name="Antrieb" min="0" max="40" schritt="0.1" wert="14.5" vorgabe="6" einheit="dB"></ak-dreh>
+          <ak-dreh kappe="schwarz" zeiger="bernstein" name="Klang" min="-12" max="12" schritt="0.1" wert="3.5" bipolar einheit="dB" grenzen="Dunkel|Hell"></ak-dreh>
+        </div></div></div>
+      <div class="hf-muster" data-karte><b>Endlos mit Leuchtkranz</b><p>Fünfzehn Leuchtpunkte statt Bogen: für Makros und Werte, die sich auch von außen bewegen (Automation, MIDI).</p>
+        <div class="ak-geraet" data-bauform="inspektor" data-modul="S" style="--ak-spalten:2"><div class="ak-raster">
+          <ak-dreh kappe="ring" name="Makro Wärme" min="0" max="100" wert="70" vorgabe="0" einheit="%"></ak-dreh>
+          <ak-dreh kappe="ring" name="Breite" min="0" max="200" wert="120" vorgabe="100" einheit="%" bipolar></ak-dreh>
+        </div></div></div>
+    </div>
+  </section>
+
+  <section class="hf-abschnitt">
+    <h2><i class="fa-solid fa-wave-square"></i>Zustände: zweipolig, moduliert, automatisiert, gesperrt</h2>
+    <div class="ak-geraet" data-bauform="inspektor" data-modul="D" style="--ak-spalten:6">
+      <span class="ak-schraube lo" style="--dreh:12deg"></span><span class="ak-schraube ro" style="--dreh:64deg"></span><span class="ak-schraube lu" style="--dreh:-30deg"></span><span class="ak-schraube ru" style="--dreh:40deg"></span>
+      <div class="ak-geraet-kopf" style="padding:0 18px"><span class="ak-schild">D3</span><b>Ringmodulation</b><ak-led farbe="gruen" zustand="an" text="Aktiv"></ak-led></div>
+      <div class="ak-raster" style="padding:0 6px 8px">
+        <ak-dreh name="Trägerfrequenz" min="20" max="5000" kurve="log" schritt="0.1" wert="440" vorgabe="440" einheit="Hz" grenzen="Tief|Hoch"></ak-dreh>
+        <ak-dreh name="Verstimmung" min="-50" max="50" wert="-12" bipolar einheit="Cent" grenzen="Tiefer|Höher"></ak-dreh>
+        <ak-dreh name="Mischung" min="0" max="100" wert="35" vorgabe="50" einheit="%" mod="0.18" grenzen="Trocken|Nass"></ak-dreh>
+        <ak-dreh id="auto" name="Automation" min="0" max="100" wert="50" einheit="%" kappe="ring"></ak-dreh>
+        <ak-dreh name="Gesperrt" min="0" max="100" wert="30" einheit="%" gesperrt></ak-dreh>
+        <ak-dreh name="Fein (0,01)" min="0" max="1" schritt="0.01" wert="0.25" vorgabe="0.5" einheit="x"></ak-dreh>
+      </div>
+    </div>
+    <p class="hf-leise">Türkiser Innenbogen: Bereich, den ein LFO oder eine Hüllkurve gerade überstreicht (Steuerung türkis). Automation: der Kranz folgt einem Verlauf, solange niemand dreht.</p>
+  </section>
+
+  <section class="hf-abschnitt">
+    <h2><i class="fa-solid fa-arrows-spin"></i>Drehwahl mit Rasten</h2>
+    <p class="hf-text">Feste Stellungen statt stufenloser Werte. Namen rund um die Kappe ab 150 Pixel Zellbreite, darunter steht nur der gewählte Name unter der Kappe. Rad und Pfeile springen eine Raste.</p>
+    <div class="hf-katalog">
+      <div class="hf-muster" data-karte><b>Groß, mit Namen</b>
+        <div class="ak-geraet" data-bauform="inspektor" data-modul="E" style="--ak-spalten:1; --ak-d-max:96px"><div class="ak-raster">
+          <ak-dreh name="Raum" raster="Kabine|Zimmer|Studio|Saal|Kirche|Platte" wert="3" vorgabe="1"></ak-dreh>
+        </div></div></div>
+      <div class="hf-muster" data-karte><b>Klein, im Knoten</b>
+        <div class="ak-geraet" data-bauform="knoten" data-modul="C" style="--ak-spalten:2; --ak-zelle-min:72px"><div class="ak-raster">
+          <ak-dreh kappe="lack" farbe="#ebe1c8" name="Überabtastung" raster="1×|2×|4×|8×" wert="2" vorgabe="1"></ak-dreh>
+          <ak-dreh kappe="lack" farbe="#ebe1c8" name="Kennlinie" raster="Röhre|Band|Diode|Weich" wert="0"></ak-dreh>
+        </div></div></div>
+    </div>
+  </section>
+
+  <section class="hf-abschnitt">
+    <h2><i class="fa-solid fa-sliders"></i>Schieber</h2>
+    <p class="hf-text">Klick auf die Bahn springt dorthin, danach zieht man weiter; der Griff selbst zieht relativ. Am Telefon wird jeder Drehregler zu so einem Schieber, mit Finger quer zur Seite, senkrecht rollt die Seite weiter.</p>
+    <div class="hf-katalog breit">
+      <div class="hf-muster" data-karte><b>Leuchtschiene</b><p>Segmente, die Füllung leuchtet, der Griff ist ein Lichtpunkt.</p>
+        <div class="ak-geraet" data-bauform="inspektor" data-modul="E"><div style="display:grid; gap:14px">
+          <ak-schieber art="leuchte" leuchte="blau" segmente="24" name="Mischung" min="0" max="100" wert="42" vorgabe="50" einheit="%" grenzen="Trocken|Nass"></ak-schieber>
+          <ak-schieber art="leuchte" leuchte="bernstein" segmente="24" name="Modulation" min="0" max="100" wert="60" vorgabe="0" einheit="%" grenzen="Aus|Stark"></ak-schieber>
+        </div></div></div>
+      <div class="hf-muster" data-karte><b>Leuchtbalken als Eingabe</b><p>Eine LED-Kette, die man zieht: nur ganze Segmente leuchten.</p>
+        <div class="ak-geraet" data-bauform="inspektor" data-modul="E"><div style="display:grid; gap:14px">
+          <ak-schieber art="balken" leuchte="cyan" segmente="20" name="Verzögerung" min="20" max="2000" kurve="log" wert="480" vorgabe="250" einheit="ms"></ak-schieber>
+          <ak-schieber art="balken" leuchte="bernstein" segmente="20" name="Rückkopplung" min="0" max="95" wert="55" vorgabe="30" einheit="%"></ak-schieber>
+        </div></div></div>
+      <div class="hf-muster" data-karte><b>Fader und Raster</b><p>Fader mit Querstrich; Rasterschieber für Notenwerte, der gewählte Name leuchtet.</p>
+        <div class="ak-geraet" data-bauform="inspektor" data-modul="U"><div style="display:grid; gap:14px">
+          <ak-schieber art="fader" name="Pegel" min="-60" max="6" schritt="0.1" wert="-3.5" vorgabe="0" einheit="dB" grenzen="-60|+6"></ak-schieber>
+          <ak-schieber name="Notenwert" raster="1/2|1/4|1/8 punktiert|1/8|1/16" wert="1"></ak-schieber>
+        </div></div></div>
+      <div class="hf-muster" data-karte><b>Senkrecht: kleines Pult</b><p>Vier Fader mit Pegel daneben; Bahnhöhe fest, Griff über transform.</p>
+        <div class="ak-geraet" data-bauform="rack" data-modul="A"><div style="display:flex; justify-content:space-around; align-items:flex-end; gap:8px; flex-wrap:wrap">
+          <ak-schieber art="fader" richtung="senkrecht" name="Stimme" min="-60" max="6" schritt="0.1" wert="0" einheit="dB"></ak-schieber>
+          <ak-schieber art="fader" richtung="senkrecht" name="Hall" min="-60" max="6" schritt="0.1" wert="-12" vorgabe="-12" einheit="dB"></ak-schieber>
+          <ak-schieber art="fader" richtung="senkrecht" name="Echo" min="-60" max="6" schritt="0.1" wert="-18" vorgabe="-18" einheit="dB"></ak-schieber>
+          <ak-pegel richtung="senkrecht" kanaele="2" skala="0|-6|-12|-24|-36|-48" style="--pegel-h:clamp(150px, 26vh, 240px)" beschriftung="Pegel der Summe"></ak-pegel>
+        </div></div></div>
+    </div>
+  </section>
+
+  <section class="hf-abschnitt">
+    <h2><i class="fa-solid fa-circle-stop"></i>Taster</h2>
+    <p class="hf-text">Rastend (an und aus), tastend (an, solange gedrückt) oder tippend (Tempo aus dem Abstand der Tipps). Leertaste und Eingabe drücken wie ein Finger.</p>
+    <div class="hf-katalog">
+      <div class="hf-muster" data-karte><b>Fußtaster und Pillen</b>
+        <div class="ak-geraet" data-bauform="inspektor" data-modul="B"><div class="hf-mitte" style="display:flex; flex-wrap:wrap; justify-content:space-around; align-items:flex-end; gap:22px">
+          <ak-taster art="fuss" led="gruen" text="Umgehen" an></ak-taster>
+          <ak-taster art="pille" beschriftung="An" text="Strom" farbe="weiss" an></ak-taster>
+          <ak-taster id="tippen" art="pille" modus="tippen" beschriftung="Tippen" text="Tempo" farbe="bernstein" led="bernstein"></ak-taster>
+          <ak-segmente id="tempo" art="7" stellen="4" farbe="bernstein" text="120.0" style="--ak-zelle:150px"></ak-segmente>
+        </div></div></div>
+      <div class="hf-muster" data-karte><b>Flachtaster mit Leuchtstreifen</b>
+        <div class="ak-geraet" data-bauform="inspektor" data-modul="U"><div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center">
+          <ak-taster art="flach" beschriftung="Presets" modus="tasten" farbe="weiss"></ak-taster>
+          <ak-taster art="flach" beschriftung="Sichern" modus="tasten" farbe="bernstein"></ak-taster>
+          <ak-taster art="flach" beschriftung="Umgehen" farbe="bernstein"></ak-taster>
+          <ak-taster art="flach" beschriftung="Strom" farbe="gruen" an></ak-taster>
+        </div></div></div>
+      <div class="hf-muster" data-karte><b>Glastaster</b><p>Die ganze Kappe leuchtet: Stumm, Solo, Aufnahme.</p>
+        <div class="ak-geraet" data-bauform="inspektor" data-modul="U"><div style="display:flex; flex-wrap:wrap; gap:16px; justify-content:center">
+          <ak-taster art="glas" symbol="fa-volume-xmark" text="Stumm" farbe="blau"></ak-taster>
+          <ak-taster art="glas" symbol="fa-headphones" text="Solo" farbe="gelb" an></ak-taster>
+          <ak-taster art="glas" symbol="fa-circle" text="Aufnahme" farbe="rot"></ak-taster>
+        </div></div></div>
+    </div>
+  </section>
+
+  <section class="hf-abschnitt">
+    <h2><i class="fa-solid fa-toggle-on"></i>Kippschalter, Wahltasten, Schiebeschalter</h2>
+    <p class="hf-text">Kippschalter: oberes Drittel klicken stellt nach oben, unteres nach unten; Pfeiltasten auch. Wahltasten und Schiebeschalter: genau eine Wahl, Pfeile wandern.</p>
+    <div class="ak-geraet" data-bauform="inspektor" data-modul="E">
+      <div style="display:flex; flex-wrap:wrap; gap:22px 34px; align-items:flex-end; justify-content:center">
+        <ak-kipp name="Stereo" beschriftung="An|Aus" stellung="oben"></ak-kipp>
+        <ak-kipp name="Höhen" beschriftung="Anhebung|Aus|Absenkung" stellung="mitte"></ak-kipp>
+        <ak-wahl name="Modus" optionen="I|II" wert="I" farbe="bernstein"></ak-wahl>
+        <ak-wahl name="Stereo" optionen="Aus|An" wert="An" farbe="gruen"></ak-wahl>
+        <ak-wahl name="Vergleich" optionen="A|B" wert="A" farbe="cyan"></ak-wahl>
+        <ak-wahl name="Kanal" art="schiebe" optionen="L|L+R|R" wert="L+R"></ak-wahl>
+      </div>
+    </div>
+  </section>
+
+</main></div>
+<script src="appkern/instrumente.js"></script>
+<script src="appkern/anzeigen.js"></script>
+<script src="wahl.js"></script>
+<script src="seite.js"></script>
+<script>
+  // Tippen stellt die Tempoanzeige; die Automation dreht den Leuchtkranz, solange niemand ihn anfasst
+  document.getElementById("tippen").addEventListener("tempo", (e) => { document.getElementById("tempo").text = e.detail.tempo.toFixed(1); });
+  const auto = document.getElementById("auto");
+  auto.schritt = (t) => { if (!auto.classList.contains("zieht") && document.activeElement !== auto) auto.anteil = 0.5 + 0.42 * Math.sin(t * 0.9); };
+  Appkern.Takt.anmelden(auto);
+</script>
+</body>
+</html>

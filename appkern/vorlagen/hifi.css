@@ -1,0 +1,7 @@
+/* Vorlage HiFi: Material, Licht und Leuchten nach dem Vorbild von Effektgeräten und Studiotechnik;
+   Geräte kräftig, Schale ruhig. Umschaltbar über data-vorlage="hifi" am Wurzelelement, in allen Breiten; Stufen über
+   data-effekte (flach, mittel, kräftig). Laden nach den Bausteinen des Appkerns und nach instrumente.css.
+   Zum Ansehen: index.html der Präsentation. */
+@import "../../vendor/schriften/barlow/700.css";
+@import "./hifi/marken.css";
+@import "./hifi/bausteine.css";

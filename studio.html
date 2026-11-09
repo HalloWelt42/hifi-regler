@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="de" data-theme="dunkel" data-vorlage="hifi" data-schrift="mittel" data-effekte="kraeftig">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Vorlage HiFi: Im Studio</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="vendor/schriften.css">
+  <link rel="stylesheet" href="appkern/instrumente.css">
+  <link rel="stylesheet" href="appkern/vorlagen/hifi.css">
+  <link rel="stylesheet" href="farben.css">
+  <link rel="stylesheet" href="seite.css">
+  <link rel="stylesheet" href="studio.css">
+  <style>
+    /* Board: Knoten in Lack an festen Stellen, Kabel als Gummi mit Lichtkante; passt sich der Fläche an */
+    .hf-board { position: absolute; left: 0; top: 0; inline-size: 900px; block-size: 560px; transform-origin: 0 0; }
+    .hf-board .ak-geraet { position: absolute; inline-size: 236px; padding: 10px 10px 12px; --ak-spalten: 3; --ak-zelle-min: 64px; }
+    .hf-board .ak-geraet.gewaehlt { outline: 2px solid var(--akzent-flaeche); outline-offset: 4px; }
+    .hf-board .ak-geraet-kopf { margin-bottom: 6px; }
+    .hf-board .ak-geraet-kopf b { font-size: var(--klein); }
+    .hf-kabel { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; overflow: visible; pointer-events: none; }
+    .hf-kabel .gummi { fill: none; stroke: #23272d; stroke-width: 7; stroke-linecap: round; }
+    .hf-kabel .glanz { fill: none; stroke: rgb(255 255 255 / calc(.26 * var(--ak-glanz) + .06)); stroke-width: 1.6; stroke-linecap: round; transform: translateY(-1.6px); }
+    .hf-kabel .fluss { fill: none; stroke: var(--akzent-flaeche); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 2 26; opacity: calc(.4 + .6 * var(--ak-leuchten)); animation: hf-fluss 1.2s linear infinite; }
+    .hf-kabel .steuer { fill: none; stroke: var(--tuerkis); stroke-width: 3; stroke-dasharray: 4 7; stroke-linecap: round; }
+    @keyframes hf-fluss { to { stroke-dashoffset: -28; } }
+    @media (prefers-reduced-motion: reduce) { .hf-kabel .fluss { animation: none; } }
+    .hf-port { position: absolute; inline-size: 16px; block-size: 16px; border-radius: 50%; top: 46px; background-color: var(--ak-metall); background-image: var(--ak-metall-bild);
+               box-shadow: 0 0 0 1px rgb(0 0 0 / .5), 0 2px 3px rgb(0 0 0 / .5); }
+    .hf-port::after { content: ""; position: absolute; inset: 4px; border-radius: 50%; background: #050607; }
+    .hf-port.ein { left: -9px; } .hf-port.aus { right: -9px; }
+    .hf-port.steuer { top: -8px; left: calc(50% - 7px); inline-size: 14px; block-size: 14px; border-radius: 3px; transform: rotate(45deg); background: var(--tuerkis); box-shadow: 0 0 calc(8px * var(--ak-leuchten)) var(--tuerkis); }
+    .hf-port.steuer::after { display: none; }
+    .hf-zoom { position: absolute; right: 12px; top: 12px; display: flex; gap: 6px; align-items: center; z-index: 2; }
+    .hf-zoom .pille { font-family: var(--schrift-zahl); }
+    .hf-inspektor { display: grid; gap: 14px; }
+    .hf-inspektor .ak-geraet-kopf { padding: 0 18px; }
+    .hf-transport { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; padding: 10px 16px; }
+    .hf-transport .gruppe { display: flex; align-items: center; gap: 10px; }
+    .hf-transport ak-taster[art="glas"] .ak-taster-knopf { inline-size: 46px; block-size: 46px; font-size: 17px; }
+    .hf-transport ak-pegel { inline-size: 240px; }
+    .hf-transport ak-zeiger { inline-size: 140px; }
+    .hf-transport .ak-etikett { white-space: nowrap; }
+    :root[data-vorlage="hifi"] .st-board-rahmen { background-color: #0c0e11; }
+    :root[data-vorlage="hifi"][data-theme="hell"] .st-board-rahmen { background-color: #b9bec4; }
+  </style>
+</head>
+<body data-seite="studio.html" data-titel="Im Studio" data-unter="Board mit Knoten in Lack, Inspektor in Metall, Transport">
+<div class="hf-rollt"><main class="hf-inhalt">
+  <section class="hf-abschnitt">
+    <p class="hf-text">So sieht die Vorlage in einer App aus: Knoten auf dem Board in Lack ihrer Modulfarbe, verbunden mit Kabeln, der gewählte Knoten groß im Inspektor in Metall, unten Transport, Zeit, Pegel und Lautheit. Alle Regler sind bedienbar, das Board passt sich der Fläche an.</p>
+  <div class="hf-studio">
+<div class="hf-studio-leiste">
+  <span class="segment"><button type="button" class="aktiv"><i class="fa-solid fa-diagram-project"></i> Board</button><button type="button"><i class="fa-solid fa-bars-staggered"></i> Rack</button></span>
+  <button class="knopf" type="button" title="Rückgängig (100 Schritte)" aria-label="Rückgängig"><i class="fa-solid fa-rotate-left"></i></button>
+  <button class="knopf" type="button" title="Wiederholen" aria-label="Wiederholen"><i class="fa-solid fa-rotate-right"></i></button>
+  <button class="knopf" type="button"><i class="fa-solid fa-plus"></i> Knoten</button>
+  <button class="knopf primaer" type="button"><i class="fa-solid fa-play"></i> Rendern</button>
+</div>
+  <div class="st-werkbank">
+    <div class="st-board-rahmen" id="rahmen">
+      <div class="hf-board" id="board">
+        <svg class="hf-kabel" id="kabel" aria-hidden="true"></svg>
+        <div class="ak-geraet" data-bauform="knoten" data-modul="A" id="k-hochpass" style="left:20px; top:40px">
+          <span class="hf-port ein"></span><span class="hf-port aus"></span>
+          <div class="ak-geraet-kopf"><span class="ak-schild">A2</span><b>Hochpass</b><ak-led farbe="weiss" zustand="an" groesse="klein"></ak-led></div>
+          <div class="ak-raster"><ak-dreh kappe="lack" farbe="#ebe1c8" name="Grenze" min="20" max="400" kurve="log" wert="80" einheit="Hz"></ak-dreh><ak-dreh kappe="lack" farbe="#ebe1c8" name="Flanke" raster="12|24|48" wert="1"></ak-dreh><ak-dreh kappe="lack" farbe="#ebe1c8" name="Rauschen" wert="35" einheit="%"></ak-dreh></div></div>
+        <div class="ak-geraet" data-bauform="knoten" data-modul="C" id="k-kompressor" style="left:330px; top:20px">
+          <span class="hf-port ein"></span><span class="hf-port aus"></span>
+          <div class="ak-geraet-kopf"><span class="ak-schild">C1</span><b>Kompressor</b><ak-led farbe="bernstein" zustand="atmet" groesse="klein"></ak-led></div>
+          <div class="ak-raster"><ak-dreh kappe="lack" farbe="#c99b3c" name="Schwelle" min="-48" max="0" schritt="0.5" wert="-18" einheit="dB"></ak-dreh><ak-dreh kappe="lack" farbe="#c99b3c" name="Verhältnis" min="1" max="20" schritt="0.1" wert="3" einheit="x"></ak-dreh><ak-dreh kappe="lack" farbe="#c99b3c" name="Aufholen" min="0" max="24" schritt="0.5" wert="6" einheit="dB"></ak-dreh></div>
+          <ak-pegel art="gr" kanaele="1" farbe="bernstein" segmente="16" skala="" style="--pegel-h:16px; margin-top:8px" beschriftung="Pegelminderung"></ak-pegel></div>
+        <div class="ak-geraet" data-bauform="knoten" data-modul="B" id="k-tonhoehe" style="left:330px; top:300px">
+          <span class="hf-port ein"></span><span class="hf-port aus"></span><span class="hf-port steuer"></span>
+          <div class="ak-geraet-kopf"><span class="ak-schild">B5</span><b>Tonkorrektur</b><ak-led farbe="weiss" zustand="an" groesse="klein"></ak-led></div>
+          <div class="ak-raster"><ak-dreh kappe="lack" farbe="#ebe1c8" name="Stärke" wert="40" einheit="%" mod="0.15"></ak-dreh><ak-dreh kappe="lack" farbe="#ebe1c8" name="Tempo" min="0" max="200" wert="60" einheit="ms"></ak-dreh><ak-dreh kappe="lack" farbe="#ebe1c8" name="Formant" min="-12" max="12" schritt="0.1" wert="0" bipolar einheit="dB"></ak-dreh></div></div>
+        <div class="ak-geraet gewaehlt" data-bauform="knoten" data-modul="E" id="k-hall" style="left:640px; top:150px">
+          <span class="hf-port ein"></span><span class="hf-port aus"></span>
+          <div class="ak-geraet-kopf"><span class="ak-schild">E1</span><b>Faltungshall</b><ak-led farbe="weiss" zustand="an" groesse="klein"></ak-led></div>
+          <div class="ak-raster"><ak-dreh kappe="lack" farbe="#ebe1c8" name="Größe" wert="64" einheit="%"></ak-dreh><ak-dreh kappe="lack" farbe="#ebe1c8" name="Dämpfung" min="1000" max="20000" kurve="log" schritt="10" wert="6800" einheit="Hz"></ak-dreh><ak-dreh kappe="lack" farbe="#ebe1c8" name="Mischung" wert="28" einheit="%"></ak-dreh></div></div>
+        <div class="ak-geraet" data-bauform="knoten" data-modul="S" id="k-lfo" style="left:20px; top:330px">
+          <span class="hf-port aus" style="background:var(--tuerkis); border-radius:3px; transform:rotate(45deg)"></span>
+          <div class="ak-geraet-kopf"><span class="ak-schild">S1</span><b>LFO</b><ak-led farbe="tuerkis" zustand="atmet" groesse="klein"></ak-led></div>
+          <ak-schirm art="lfo" farbe="tuerkis" tempo="#lfo-tempo" tiefe="#lfo-tiefe" verhaeltnis="16 / 6" beschriftung="LFO"></ak-schirm>
+          <div class="ak-raster" style="margin-top:6px; --ak-spalten:2"><ak-dreh id="lfo-tempo" kappe="lack" farbe="#ebe1c8" name="Tempo" min="0.1" max="10" kurve="log" schritt="0.01" wert="0.8" einheit="Hz"></ak-dreh><ak-dreh id="lfo-tiefe" kappe="lack" farbe="#ebe1c8" name="Tiefe" wert="60" einheit="%"></ak-dreh></div></div>
+      </div>
+      <div class="hf-zoom"><span class="pille" id="zoom">100 %</span></div>
+    </div>
+    <aside class="st-inspektor">
+      <div class="ak-geraet hf-inspektor" data-bauform="inspektor" data-modul="E" style="--ak-spalten:3">
+        <span class="ak-schraube lo" style="--dreh:15deg"></span><span class="ak-schraube ro" style="--dreh:60deg"></span>
+        <div class="ak-geraet-kopf"><span class="ak-schild">E1</span><b>Faltungshall</b><ak-led farbe="gruen" zustand="an"></ak-led></div>
+        <div class="ak-raster">
+          <ak-dreh name="Größe" wert="64" vorgabe="50" einheit="%" grenzen="Klein|Groß"></ak-dreh>
+          <ak-dreh name="Vorverzögerung" max="250" wert="38" vorgabe="20" einheit="ms"></ak-dreh>
+          <ak-dreh name="Dämpfung" min="1000" max="20000" kurve="log" schritt="10" wert="6800" vorgabe="12000" einheit="Hz"></ak-dreh>
+          <ak-dreh name="Breite" max="200" wert="120" vorgabe="100" bipolar einheit="%"></ak-dreh>
+          <ak-dreh kappe="schwarz" zeiger="blau" name="Mischung" wert="28" vorgabe="25" einheit="%"></ak-dreh>
+          <ak-dreh kappe="ring" name="Makro Raum" wert="55" einheit="%"></ak-dreh>
+        </div>
+        <div class="ak-glas ak-schirmtext" data-kennzahl style="--farbe:var(--led-cyan)"><b>Saal 2</b><span>Nachhall 2,4 s · 48 kHz</span></div>
+        <ak-schirm art="linie" farbe="blau" verhaeltnis="16 / 7" fuss="20 Hz|200 Hz|2 kHz|20 kHz" beschriftung="Spektrum am Ausgang"></ak-schirm>
+        <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; align-items:center">
+          <ak-wahl name="Stereo" optionen="Aus|An" wert="An" farbe="gruen"></ak-wahl>
+          <ak-taster art="flach" beschriftung="Umgehen" farbe="bernstein"></ak-taster>
+        </div>
+      </div>
+    </aside>
+  </div>
+  <div class="st-unten"><div class="hf-transport">
+    <div class="gruppe"><ak-taster art="glas" symbol="fa-circle" farbe="rot" text="Aufnahme"></ak-taster><ak-taster art="glas" symbol="fa-play" farbe="gruen" text="Hören" an></ak-taster><ak-taster art="glas" symbol="fa-stop" farbe="weiss" text="Stopp" modus="tasten"></ak-taster></div>
+    <ak-segmente id="uhr" art="7" stellen="6" farbe="rot" text="00:00.0" style="--ak-zelle:190px"></ak-segmente>
+    <ak-wahl name="Vergleich" optionen="A|B" wert="B" farbe="cyan"></ak-wahl>
+    <div class="gruppe"><ak-pegel kanaele="2" beschriftung="Ausgang" skala="-48|-24|-12|0" style="--pegel-h:28px"></ak-pegel></div>
+    <div class="gruppe"><ak-zeiger art="vu" kanal="links" beschriftung="VU L"></ak-zeiger><ak-zeiger art="vu" kanal="rechts" beschriftung="VU R"></ak-zeiger></div>
+    <div class="gruppe"><ak-segmente art="7" stellen="5" farbe="gruen" text="-16.2" style="--ak-zelle:140px"></ak-segmente><span class="ak-etikett">LUFS</span></div>
+  </div></div>
+  </div>
+  </section>
+</main></div>
+<script src="wahl.js"></script>
+<script src="seite.js"></script>
+<script src="appkern/instrumente.js"></script>
+<script src="appkern/anzeigen.js"></script>
+<script>
+  // Board: auf die Fläche einpassen (höchstens 100 Prozent) und Kabel zwischen den Anschlüssen ziehen
+  const rahmen = document.getElementById("rahmen"), board = document.getElementById("board"), kabel = document.getElementById("kabel");
+  const KANTEN = [["k-hochpass", "k-kompressor"], ["k-kompressor", "k-tonhoehe"], ["k-tonhoehe", "k-hall"]];
+  const lage = (id, seite) => { const k = document.getElementById(id), p = k.querySelector(`.hf-port.${seite}`);
+    return [k.offsetLeft + p.offsetLeft + 8, k.offsetTop + p.offsetTop + 8]; };
+  function kabelZiehen() {
+    const kurve = ([x1, y1], [x2, y2]) => { const d = Math.max(60, Math.abs(x2 - x1) * 0.5); return `M${x1} ${y1}C${x1 + d} ${y1 + 30} ${x2 - d} ${y2 + 30} ${x2} ${y2}`; };
+    const audio = KANTEN.map(([a, b]) => kurve(lage(a, "aus"), lage(b, "ein")));
+    const s = lage("k-lfo", "aus"), z = lage("k-tonhoehe", "steuer");
+    kabel.innerHTML = audio.map((d) => `<path class="gummi" d="${d}"/><path class="glanz" d="${d}"/><path class="fluss" d="${d}"/>`).join("")
+      + `<path class="steuer" d="M${s[0]} ${s[1]}C${s[0] + 120} ${s[1]} ${z[0]} ${z[1] - 120} ${z[0]} ${z[1]}"/>`;
+  }
+  function einpassen() {
+    const m = Math.min(1, (rahmen.clientWidth - 24) / 900, (rahmen.clientHeight - 24) / 560);
+    board.style.transform = `translate(12px, 12px) scale(${m.toFixed(3)})`;
+    document.getElementById("zoom").textContent = `${Math.round(m * 100)} %`;
+  }
+  new ResizeObserver(einpassen).observe(rahmen);
+  requestAnimationFrame(kabelZiehen);
+  addEventListener("load", kabelZiehen);
+
+  // Uhr im Transport
+  const uhr = document.getElementById("uhr"), zwei = (n) => String(Math.floor(n)).padStart(2, "0");
+  let zuletzt = "";
+  uhr.schritt = (t) => { const s = t % 3600, text = `${zwei(s / 60)}:${zwei(s % 60)}.${Math.floor((s * 10) % 10)}`; if (text !== zuletzt) { zuletzt = text; uhr.text = text; } };
+  Appkern.Takt.anmelden(uhr);
+</script>
+</body>
+</html>
