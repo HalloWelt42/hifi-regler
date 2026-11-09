@@ -71,18 +71,18 @@
       </div>
       <div class="hf-rahmen" id="rahmen">
         <div class="ak-geraet" data-bauform="inspektor" data-modul="E" id="probe" style="--ak-spalten:6">
-          <div class="ak-geraet-kopf"><span class="ak-schild">E1</span><b>Faltungshall</b><ak-led farbe="gruen" zustand="an" text="Aktiv"></ak-led></div>
+          <div class="ak-geraet-kopf"><span class="ak-schild">E1</span><b title="Faltungshall">Convolution Reverb</b><ak-led farbe="gruen" zustand="an" text="Active" hilfe="Aktiv"></ak-led></div>
           <div class="ak-raster">
-            <ak-dreh name="Größe" wert="64" vorgabe="50" einheit="%" grenzen="Klein|Groß"></ak-dreh>
-            <ak-dreh name="Vorverzögerung" max="250" wert="38" vorgabe="20" einheit="ms" grenzen="Nah|Fern"></ak-dreh>
-            <ak-dreh name="Dämpfung" min="1000" max="20000" kurve="log" schritt="10" wert="6800" einheit="Hz" grenzen="Dunkel|Hell"></ak-dreh>
-            <ak-dreh name="Breite" max="200" wert="120" vorgabe="100" einheit="%" bipolar grenzen="Mono|Weit"></ak-dreh>
-            <ak-dreh kappe="schwarz" zeiger="blau" name="Mischung" wert="28" vorgabe="25" einheit="%" grenzen="Trocken|Nass"></ak-dreh>
-            <ak-dreh kappe="ring" name="Makro Raum" wert="55" einheit="%"></ak-dreh>
+            <ak-dreh name="Size" hilfe="Größe des Raums" wert="64" vorgabe="50" einheit="%" grenzen="Small|Large"></ak-dreh>
+            <ak-dreh name="Pre-Delay" hilfe="Vorverzögerung: Zeit bis zum ersten Nachhall" max="250" wert="38" vorgabe="20" einheit="ms" grenzen="Short|Long"></ak-dreh>
+            <ak-dreh name="Damping" hilfe="Dämpfung: oberhalb dieser Frequenz verliert der Nachhall seine Höhen" min="1000" max="20000" kurve="log" schritt="10" wert="6800" einheit="Hz" grenzen="Dark|Bright"></ak-dreh>
+            <ak-dreh name="Width" hilfe="Stereobreite: 0 ist Mono, 100 unverändert, darüber breiter" max="200" wert="120" vorgabe="100" einheit="%" bipolar grenzen="Mono|Wide"></ak-dreh>
+            <ak-dreh kappe="schwarz" zeiger="blau" name="Mix" hilfe="Mischung aus Original (trocken) und Effekt (nass)" wert="28" vorgabe="25" einheit="%" grenzen="Dry|Wet"></ak-dreh>
+            <ak-dreh kappe="ring" name="Macro Space" hilfe="Makro Raum: bewegt mehrere Parameter zugleich" wert="55" einheit="%"></ak-dreh>
           </div>
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 180px), 1fr)); gap:12px; margin-top:14px">
-            <ak-segmente art="14" stellen="6" farbe="cyan" text="SAAL 2"></ak-segmente>
-            <ak-pegel kanaele="2" beschriftung="Ausgang" skala="-48|-24|-12|0" style="--pegel-h:30px"></ak-pegel>
+            <ak-segmente art="14" stellen="6" farbe="cyan" text="HALL 2" hilfe="Raum: Saal 2"></ak-segmente>
+            <ak-pegel kanaele="2" beschriftung="Output" hilfe="Ausgangspegel" skala="-48|-24|-12|0" style="--pegel-h:30px"></ak-pegel>
           </div>
         </div>
       </div>
@@ -102,28 +102,28 @@
     <div class="hf-bauformen">
       <div><span class="ak-etikett">Knoten auf dem Board · 236 px</span>
         <div class="ak-geraet" data-bauform="knoten" data-modul="E" style="--b:236px; --ak-spalten:3; --ak-zelle-min:64px">
-          <div class="ak-geraet-kopf"><span class="ak-schild">E1</span><b>Faltungshall</b></div>
-          <div class="ak-raster"><ak-dreh kappe="lack" farbe="#ebe1c8" name="Größe" wert="64" einheit="%"></ak-dreh><ak-dreh kappe="lack" farbe="#ebe1c8" name="Dämpfung" min="1000" max="20000" kurve="log" schritt="10" wert="6800" einheit="Hz"></ak-dreh><ak-dreh kappe="lack" farbe="#ebe1c8" name="Mischung" wert="28" einheit="%"></ak-dreh></div></div></div>
+          <div class="ak-geraet-kopf"><span class="ak-schild">E1</span><b title="Faltungshall">Convolution Reverb</b></div>
+          <div class="ak-raster"><ak-dreh kappe="lack" farbe="#ebe1c8" name="Size" hilfe="Größe des Raums" wert="64" einheit="%"></ak-dreh><ak-dreh kappe="lack" farbe="#ebe1c8" name="Damping" hilfe="Dämpfung: oberhalb dieser Frequenz verliert der Nachhall seine Höhen" min="1000" max="20000" kurve="log" schritt="10" wert="6800" einheit="Hz"></ak-dreh><ak-dreh kappe="lack" farbe="#ebe1c8" name="Mix" hilfe="Mischung aus Original (trocken) und Effekt (nass)" wert="28" einheit="%"></ak-dreh></div></div></div>
       <div><span class="ak-etikett">Inspektor · 380 px</span>
         <div class="ak-geraet" data-bauform="inspektor" data-modul="E" style="--b:380px; --ak-spalten:3">
           <span class="ak-schraube lo"></span><span class="ak-schraube ro" style="--dreh:70deg"></span>
-          <div class="ak-geraet-kopf" style="padding:0 20px"><span class="ak-schild">E1</span><b>Faltungshall</b><ak-led farbe="gruen" zustand="an"></ak-led></div>
-          <div class="ak-raster"><ak-dreh name="Größe" wert="64" einheit="%" grenzen="Klein|Groß"></ak-dreh><ak-dreh name="Dämpfung" min="1000" max="20000" kurve="log" schritt="10" wert="6800" einheit="Hz"></ak-dreh><ak-dreh name="Mischung" wert="28" einheit="%"></ak-dreh></div></div></div>
+          <div class="ak-geraet-kopf" style="padding:0 20px"><span class="ak-schild">E1</span><b title="Faltungshall">Convolution Reverb</b><ak-led farbe="gruen" zustand="an"></ak-led></div>
+          <div class="ak-raster"><ak-dreh name="Size" hilfe="Größe des Raums" wert="64" einheit="%" grenzen="Small|Large"></ak-dreh><ak-dreh name="Damping" hilfe="Dämpfung: oberhalb dieser Frequenz verliert der Nachhall seine Höhen" min="1000" max="20000" kurve="log" schritt="10" wert="6800" einheit="Hz"></ak-dreh><ak-dreh name="Mix" hilfe="Mischung aus Original (trocken) und Effekt (nass)" wert="28" einheit="%"></ak-dreh></div></div></div>
       <div><span class="ak-etikett">Telefon · Schieber statt Drehregler</span>
         <div class="hf-telefon"><div class="ak-geraet" data-bauform="knoten" data-modul="E">
-          <div class="ak-geraet-kopf"><span class="ak-schild">E1</span><b>Faltungshall</b></div>
-          <ak-schieber art="leuchte" leuchte="weiss" segmente="16" name="Größe" wert="64" einheit="%"></ak-schieber>
-          <ak-schieber art="leuchte" leuchte="weiss" segmente="16" name="Dämpfung" min="1000" max="20000" kurve="log" schritt="10" wert="6800" einheit="Hz"></ak-schieber>
-          <ak-schieber art="leuchte" leuchte="weiss" segmente="16" name="Mischung" wert="28" einheit="%"></ak-schieber>
+          <div class="ak-geraet-kopf"><span class="ak-schild">E1</span><b title="Faltungshall">Convolution Reverb</b></div>
+          <ak-schieber art="leuchte" leuchte="weiss" segmente="16" name="Size" hilfe="Größe des Raums" wert="64" einheit="%"></ak-schieber>
+          <ak-schieber art="leuchte" leuchte="weiss" segmente="16" name="Damping" hilfe="Dämpfung: oberhalb dieser Frequenz verliert der Nachhall seine Höhen" min="1000" max="20000" kurve="log" schritt="10" wert="6800" einheit="Hz"></ak-schieber>
+          <ak-schieber art="leuchte" leuchte="weiss" segmente="16" name="Mix" hilfe="Mischung aus Original (trocken) und Effekt (nass)" wert="28" einheit="%"></ak-schieber>
         </div></div></div>
     </div>
     <div style="display:grid; gap:8px"><span class="ak-etikett">Rack · volle Breite, eine Zeile je Gerät</span>
       <div class="ak-geraet" data-bauform="rack" data-modul="E" style="--ak-spalten:8; --ak-zelle-min:80px">
         <div style="display:grid; grid-template-columns:minmax(0, 150px) minmax(0, 1fr); gap:16px; align-items:center">
-          <div style="display:grid; gap:8px; justify-items:start"><span class="ak-schild">E1</span><b style="font-size:var(--titel)">Faltungshall</b><ak-led farbe="weiss" zustand="an" text="Aktiv"></ak-led></div>
-          <div class="ak-raster"><ak-dreh kappe="lack" farbe="#ebe1c8" name="Größe" wert="64" einheit="%"></ak-dreh><ak-dreh kappe="lack" farbe="#ebe1c8" name="Vorverzögerung" max="250" wert="38" einheit="ms"></ak-dreh>
-            <ak-dreh kappe="lack" farbe="#ebe1c8" name="Dämpfung" min="1000" max="20000" kurve="log" schritt="10" wert="6800" einheit="Hz"></ak-dreh><ak-dreh kappe="lack" farbe="#ebe1c8" name="Breite" max="200" wert="120" vorgabe="100" bipolar einheit="%"></ak-dreh>
-            <ak-dreh kappe="lack" farbe="#ebe1c8" name="Mischung" wert="28" einheit="%"></ak-dreh></div>
+          <div style="display:grid; gap:8px; justify-items:start"><span class="ak-schild">E1</span><b style="font-size:var(--titel)" title="Faltungshall">Convolution Reverb</b><ak-led farbe="weiss" zustand="an" text="Active" hilfe="Aktiv"></ak-led></div>
+          <div class="ak-raster"><ak-dreh kappe="lack" farbe="#ebe1c8" name="Size" hilfe="Größe des Raums" wert="64" einheit="%"></ak-dreh><ak-dreh kappe="lack" farbe="#ebe1c8" name="Pre-Delay" hilfe="Vorverzögerung: Zeit bis zum ersten Nachhall" max="250" wert="38" einheit="ms"></ak-dreh>
+            <ak-dreh kappe="lack" farbe="#ebe1c8" name="Damping" hilfe="Dämpfung: oberhalb dieser Frequenz verliert der Nachhall seine Höhen" min="1000" max="20000" kurve="log" schritt="10" wert="6800" einheit="Hz"></ak-dreh><ak-dreh kappe="lack" farbe="#ebe1c8" name="Width" hilfe="Stereobreite: 0 ist Mono, 100 unverändert, darüber breiter" max="200" wert="120" vorgabe="100" bipolar einheit="%"></ak-dreh>
+            <ak-dreh kappe="lack" farbe="#ebe1c8" name="Mix" hilfe="Mischung aus Original (trocken) und Effekt (nass)" wert="28" einheit="%"></ak-dreh></div>
         </div></div></div>
   </section>
 

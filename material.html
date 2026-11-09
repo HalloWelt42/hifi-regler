@@ -59,25 +59,25 @@
         </div></div></div>
       <div class="hf-muster" data-karte><b>Glas</b><p>Tiefschwarz, innen beschattet, mit einem schrägen Lichtstreif, der stillsteht.</p>
         <div class="ak-geraet" data-bauform="inspektor" data-modul="U"><div style="display:grid; gap:12px">
-          <div class="ak-glas ak-schirmtext" data-kennzahl style="--farbe:var(--led-cyan)"><b>Bordstimme</b><span>Preset 4 von 12</span></div>
+          <div class="ak-glas ak-schirmtext" data-kennzahl style="--farbe:var(--led-cyan)"><b>Bordstimme</b><span>Preset 4/12</span></div>
           <ak-segmente art="7" stellen="5" farbe="rot" text="-16.2"></ak-segmente>
         </div></div></div>
       <div class="hf-muster" data-karte><b>Chrom</b><p>Fußtaster mit Sechskantmutter, Buchse, Kippschalter, Schraube.</p>
         <div class="ak-geraet" data-bauform="inspektor" data-modul="U"><div class="hf-chrom">
-          <ak-taster art="fuss" text="Umgehen" led="rot"></ak-taster><span class="ak-buchse" title="Buchse: Eingang"></span>
-          <ak-kipp beschriftung="An|Aus" stellung="oben"></ak-kipp><span class="ak-schraube" style="position:static; inline-size:26px; block-size:26px"></span>
+          <ak-taster art="fuss" text="Bypass" hilfe="Umgehen: das Signal unverändert durchlassen" led="rot"></ak-taster><span class="ak-buchse" title="Buchse: Eingang"></span>
+          <ak-kipp beschriftung="On|Off" hilfe="An oder aus" stellung="oben"></ak-kipp><span class="ak-schraube" style="position:static; inline-size:26px; block-size:26px"></span>
         </div></div></div>
     </div>
     <div class="hf-muster"><b>Lack in den Farben der Module</b><p>Kleine Bauformen (Knoten, Rack) tragen Lack; die Schrift darauf hat mindestens 4,5 : 1. Lack bleibt in beiden Themen gleich, er ist Farbe auf Metall.</p>
       <div class="hf-lacke">
-        <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="A"><span class="ak-schild">A</span><b>Reinigung</b></div>
-        <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="B"><span class="ak-schild">B</span><b>Tonhöhe</b></div>
-        <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="C"><span class="ak-schild">C</span><b>Dynamik</b></div>
-        <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="D"><span class="ak-schild">D</span><b>Klangfarbe</b></div>
-        <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="E"><span class="ak-schild">E</span><b>Raum</b></div>
-        <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="F"><span class="ak-schild">F</span><b>Übertragung</b></div>
-        <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="G"><span class="ak-schild">G</span><b>Neuronal</b></div>
-        <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="S"><span class="ak-schild">S</span><b>Steuerung</b></div>
+        <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="A"><span class="ak-schild">A</span><b title="Reinigung">Cleanup</b></div>
+        <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="B"><span class="ak-schild">B</span><b title="Tonhöhe und Formanten">Pitch</b></div>
+        <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="C"><span class="ak-schild">C</span><b title="Dynamik und Sättigung">Dynamics</b></div>
+        <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="D"><span class="ak-schild">D</span><b title="Klangfarbe">Timbre</b></div>
+        <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="E"><span class="ak-schild">E</span><b title="Raum">Space</b></div>
+        <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="F"><span class="ak-schild">F</span><b title="Übertragung">Transmission</b></div>
+        <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="G"><span class="ak-schild">G</span><b title="Neuronal, am Mac">Neural</b></div>
+        <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="S"><span class="ak-schild">S</span><b title="Steuerung: LFO, Hüllkurve, Makros">Control</b></div>
       </div></div>
   </section>
 
@@ -86,14 +86,14 @@
     <p class="hf-text">Drei Zahlen bestimmen alle Effekte: <b>Tiefe</b> (Schatten, Kanten, Wölbung), <b>Glanz</b> (Glanzlichter, Spiegelungen) und <b>Leuchten</b> (Überstrahlen). Jede abgeleitete Marke rechnet mit ihnen; darum gilt eine Stufe auch für einen Teil der Seite, wie hier.</p>
     <div class="hf-stufen">
       <div data-effekte="flach"><span class="ak-etikett">Flach · Tiefe 0,18 · Glanz 0 · Leuchten 0,3</span>
-        <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="E" style="--ak-spalten:3; --ak-zelle-min:72px"><div class="ak-geraet-kopf"><span class="ak-schild">E1</span><b>Hall</b><ak-led farbe="gruen" zustand="an"></ak-led></div><div class="ak-raster">
-          <ak-dreh name="Größe" wert="64" einheit="%"></ak-dreh><ak-dreh name="Dämpfung" wert="40" einheit="%"></ak-dreh><ak-dreh name="Mischung" wert="28" einheit="%"></ak-dreh></div></div></div>
+        <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="E" style="--ak-spalten:3; --ak-zelle-min:72px"><div class="ak-geraet-kopf"><span class="ak-schild">E1</span><b title="Hall">Reverb</b><ak-led farbe="gruen" zustand="an"></ak-led></div><div class="ak-raster">
+          <ak-dreh name="Size" hilfe="Größe des Raums" wert="64" einheit="%"></ak-dreh><ak-dreh name="Damping" hilfe="Dämpfung: oberhalb dieser Frequenz verliert der Nachhall seine Höhen" wert="40" einheit="%"></ak-dreh><ak-dreh name="Mix" hilfe="Mischung aus Original (trocken) und Effekt (nass)" wert="28" einheit="%"></ak-dreh></div></div></div>
       <div data-effekte="mittel"><span class="ak-etikett">Mittel · Tiefe 0,6 · Glanz 0,55 · Leuchten 0,6</span>
-        <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="E" style="--ak-spalten:3; --ak-zelle-min:72px"><div class="ak-geraet-kopf"><span class="ak-schild">E1</span><b>Hall</b><ak-led farbe="gruen" zustand="an"></ak-led></div><div class="ak-raster">
-          <ak-dreh name="Größe" wert="64" einheit="%"></ak-dreh><ak-dreh name="Dämpfung" wert="40" einheit="%"></ak-dreh><ak-dreh name="Mischung" wert="28" einheit="%"></ak-dreh></div></div></div>
+        <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="E" style="--ak-spalten:3; --ak-zelle-min:72px"><div class="ak-geraet-kopf"><span class="ak-schild">E1</span><b title="Hall">Reverb</b><ak-led farbe="gruen" zustand="an"></ak-led></div><div class="ak-raster">
+          <ak-dreh name="Size" hilfe="Größe des Raums" wert="64" einheit="%"></ak-dreh><ak-dreh name="Damping" hilfe="Dämpfung: oberhalb dieser Frequenz verliert der Nachhall seine Höhen" wert="40" einheit="%"></ak-dreh><ak-dreh name="Mix" hilfe="Mischung aus Original (trocken) und Effekt (nass)" wert="28" einheit="%"></ak-dreh></div></div></div>
       <div data-effekte="kraeftig"><span class="ak-etikett">Kräftig · Tiefe 1 · Glanz 1 · Leuchten 1</span>
-        <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="E" style="--ak-spalten:3; --ak-zelle-min:72px"><div class="ak-geraet-kopf"><span class="ak-schild">E1</span><b>Hall</b><ak-led farbe="gruen" zustand="an"></ak-led></div><div class="ak-raster">
-          <ak-dreh name="Größe" wert="64" einheit="%"></ak-dreh><ak-dreh name="Dämpfung" wert="40" einheit="%"></ak-dreh><ak-dreh name="Mischung" wert="28" einheit="%"></ak-dreh></div></div></div>
+        <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="E" style="--ak-spalten:3; --ak-zelle-min:72px"><div class="ak-geraet-kopf"><span class="ak-schild">E1</span><b title="Hall">Reverb</b><ak-led farbe="gruen" zustand="an"></ak-led></div><div class="ak-raster">
+          <ak-dreh name="Size" hilfe="Größe des Raums" wert="64" einheit="%"></ak-dreh><ak-dreh name="Damping" hilfe="Dämpfung: oberhalb dieser Frequenz verliert der Nachhall seine Höhen" wert="40" einheit="%"></ak-dreh><ak-dreh name="Mix" hilfe="Mischung aus Original (trocken) und Effekt (nass)" wert="28" einheit="%"></ak-dreh></div></div></div>
     </div>
   </section>
 
@@ -101,22 +101,22 @@
     <h2><i class="fa-solid fa-cube"></i>Raum, Licht von oben, Überstrahlen</h2>
     <p class="hf-text">Eine Bühne wie im Studio: Lichtkegel von oben (Blende), Boden mit Kante, Geräte mit Kontaktschatten, und unter jeder Leuchte ein farbiger Lichtfleck auf dem Boden. Alles Verläufe und Schatten, kein Weichzeichner; die Stärke folgt der Stufe.</p>
     <div class="hf-buehne">
-      <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="D" style="--pfuetze:var(--led-violett); --ak-spalten:2; --ak-zelle-min:60px"><div class="ak-raster"><ak-dreh kappe="lack" farbe="#ebe1c8" name="Formant" wert="60" einheit="%"></ak-dreh><ak-dreh kappe="lack" farbe="#ebe1c8" name="Tiefe" wert="30" einheit="%"></ak-dreh></div>
-        <div style="display:grid; justify-items:center; gap:8px; margin-top:6px"><ak-led farbe="violett" zustand="an"></ak-led><ak-taster art="fuss" text="Roboter"></ak-taster></div></div>
-      <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="G" style="--pfuetze:var(--led-bernstein); --ak-spalten:2; --ak-zelle-min:60px"><div class="ak-raster"><ak-dreh kappe="lack" farbe="#c99b3c" name="Stärke" wert="72" einheit="%"></ak-dreh><ak-dreh kappe="lack" farbe="#c99b3c" name="Klarheit" wert="45" einheit="%"></ak-dreh></div>
-        <div style="display:grid; justify-items:center; gap:8px; margin-top:6px"><ak-led farbe="bernstein" zustand="atmet"></ak-led><ak-taster art="fuss" text="Entrauschen"></ak-taster></div></div>
-      <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="S" style="--pfuetze:var(--led-tuerkis); --ak-spalten:2; --ak-zelle-min:60px"><div class="ak-raster"><ak-dreh kappe="lack" farbe="#ebe1c8" name="Tempo" min="0.1" max="10" kurve="log" schritt="0.01" wert="1.2" einheit="Hz"></ak-dreh><ak-dreh kappe="lack" farbe="#ebe1c8" name="Tiefe" wert="55" einheit="%"></ak-dreh></div>
+      <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="D" style="--pfuetze:var(--led-violett); --ak-spalten:2; --ak-zelle-min:60px"><div class="ak-raster"><ak-dreh kappe="lack" farbe="#ebe1c8" name="Formant" hilfe="Formanten verschieben: Klangfarbe der Stimme, unabhängig von der Tonhöhe" wert="60" einheit="%"></ak-dreh><ak-dreh kappe="lack" farbe="#ebe1c8" name="Depth" hilfe="Tiefe: wie weit der LFO den Wert bewegt" wert="30" einheit="%"></ak-dreh></div>
+        <div style="display:grid; justify-items:center; gap:8px; margin-top:6px"><ak-led farbe="violett" zustand="an"></ak-led><ak-taster art="fuss" text="Robot" hilfe="Roboter"></ak-taster></div></div>
+      <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="G" style="--pfuetze:var(--led-bernstein); --ak-spalten:2; --ak-zelle-min:60px"><div class="ak-raster"><ak-dreh kappe="lack" farbe="#c99b3c" name="Amount" hilfe="Stärke der Wirkung" wert="72" einheit="%"></ak-dreh><ak-dreh kappe="lack" farbe="#c99b3c" name="Clarity" hilfe="Klarheit der Stimme" wert="45" einheit="%"></ak-dreh></div>
+        <div style="display:grid; justify-items:center; gap:8px; margin-top:6px"><ak-led farbe="bernstein" zustand="atmet"></ak-led><ak-taster art="fuss" text="Denoise" hilfe="Entrauschen"></ak-taster></div></div>
+      <div class="ak-geraet" data-karte data-bauform="knoten" data-modul="S" style="--pfuetze:var(--led-tuerkis); --ak-spalten:2; --ak-zelle-min:60px"><div class="ak-raster"><ak-dreh kappe="lack" farbe="#ebe1c8" name="Rate" hilfe="Tempo des LFO in Hertz" min="0.1" max="10" kurve="log" schritt="0.01" wert="1.2" einheit="Hz"></ak-dreh><ak-dreh kappe="lack" farbe="#ebe1c8" name="Depth" hilfe="Tiefe: wie weit der LFO den Wert bewegt" wert="55" einheit="%"></ak-dreh></div>
         <div style="display:grid; justify-items:center; gap:8px; margin-top:6px"><ak-led farbe="tuerkis" zustand="an"></ak-led><ak-taster art="fuss" text="LFO"></ak-taster></div></div>
     </div>
     <div class="hf-katalog">
       <div class="hf-muster" data-karte><b>Überblenden</b><p>Zustände wechseln über die Deckkraft (nur Zusammensetzen, kein Neuzeichnen): hier A und B einer Einstellung.</p>
         <div class="ak-geraet" data-bauform="inspektor" data-modul="U"><div style="display:grid; gap:12px">
-          <div class="hf-ueberblenden" id="ab"><div class="ak-glas ak-schirmtext" data-kennzahl style="--farbe:var(--led-cyan)"><b>A · Bordstimme</b><span>Hall 28 %</span></div><div class="ak-glas ak-schirmtext" data-kennzahl style="--farbe:var(--led-bernstein)"><b>B · Funk</b><span>Band 300 bis 3400 Hz</span></div></div>
-          <ak-wahl id="ab-wahl" name="Vergleich" optionen="A|B" wert="A" farbe="cyan"></ak-wahl>
+          <div class="hf-ueberblenden" id="ab"><div class="ak-glas ak-schirmtext" data-kennzahl style="--farbe:var(--led-cyan)"><b>A · Bordstimme</b><span>Reverb 28 %</span></div><div class="ak-glas ak-schirmtext" data-kennzahl style="--farbe:var(--led-bernstein)"><b>B · Funk</b><span>Bandpass 300/3400 Hz</span></div></div>
+          <ak-wahl id="ab-wahl" name="Compare" hilfe="Vergleich zweier Einstellungen A und B" optionen="A|B" wert="A" farbe="cyan"></ak-wahl>
         </div></div></div>
       <div class="hf-muster" data-karte><b>Glanz, der stillsteht</b><p>Drehen: Zeiger und Riffelrand wandern, der Lichtkegel des Drehschliffs nicht.</p>
         <div class="ak-geraet" data-bauform="inspektor" data-modul="U" style="--ak-spalten:1; --ak-d-max:150px"><div class="ak-raster" style="--ak-zelle-min:200px">
-          <ak-dreh name="Drehen zum Prüfen" wert="30" einheit="%" grenzen="Links|Rechts"></ak-dreh></div></div></div>
+          <ak-dreh name="Test" hilfe="Drehen zum Prüfen: der Glanz steht still" wert="30" einheit="%" grenzen="Left|Right"></ak-dreh></div></div></div>
     </div>
   </section>
 

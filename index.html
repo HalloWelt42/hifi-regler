@@ -49,17 +49,17 @@
   <section class="hf-schau">
     <div class="ak-geraet hf-schaustueck" data-bauform="inspektor" data-modul="E">
       <span class="ak-schraube lo" style="--dreh:18deg"></span><span class="ak-schraube ro" style="--dreh:66deg"></span><span class="ak-schraube lu" style="--dreh:-24deg"></span><span class="ak-schraube ru" style="--dreh:40deg"></span>
-      <div class="ak-geraet-kopf"><ak-led farbe="rot" zustand="an" text="Strom"></ak-led><b>Bordstimme</b><ak-led farbe="gruen" zustand="atmet" text="Aktiv"></ak-led></div>
+      <div class="ak-geraet-kopf"><ak-led farbe="rot" zustand="an" text="Power" hilfe="Strom"></ak-led><b>Bordstimme</b><ak-led farbe="gruen" zustand="atmet" text="Active" hilfe="Aktiv: das Gerät verarbeitet das Signal"></ak-led></div>
       <div class="ak-raster">
-        <ak-dreh id="schau-tempo" name="Tempo" min="0.1" max="10" kurve="log" schritt="0.01" wert="1.2" vorgabe="1" einheit="Hz" grenzen="Langsam|Schnell"></ak-dreh>
-        <ak-dreh id="schau-tiefe" name="Tiefe" wert="60" vorgabe="50" einheit="%" grenzen="Wenig|Viel"></ak-dreh>
-        <ak-dreh name="Mischung" wert="35" vorgabe="50" einheit="%" grenzen="Trocken|Nass"></ak-dreh>
-        <ak-dreh name="Klang" min="-12" max="12" schritt="0.1" wert="2.5" bipolar einheit="dB" grenzen="Dunkel|Hell"></ak-dreh>
+        <ak-dreh id="schau-tempo" name="Rate" hilfe="Tempo des LFO in Hertz" min="0.1" max="10" kurve="log" schritt="0.01" wert="1.2" vorgabe="1" einheit="Hz" grenzen="Slow|Fast"></ak-dreh>
+        <ak-dreh id="schau-tiefe" name="Depth" hilfe="Tiefe: wie weit der LFO den Klang bewegt" wert="60" vorgabe="50" einheit="%" grenzen="Min|Max"></ak-dreh>
+        <ak-dreh name="Mix" hilfe="Mischung aus Original (trocken) und Effekt (nass)" wert="35" vorgabe="50" einheit="%" grenzen="Dry|Wet"></ak-dreh>
+        <ak-dreh name="Tone" hilfe="Klangfarbe: dunkler oder heller, in der Mitte neutral" min="-12" max="12" schritt="0.1" wert="2.5" bipolar einheit="dB" grenzen="Dark|Bright"></ak-dreh>
       </div>
       <div class="hf-schau-unten">
-        <div style="display:grid; gap:10px; justify-items:start"><ak-wahl name="Modus" optionen="I|II" wert="II" farbe="bernstein"></ak-wahl><ak-wahl name="Stereo" optionen="Aus|An" wert="An" farbe="gruen"></ak-wahl></div>
-        <ak-taster art="fuss" led="gruen" text="Umgehen" an></ak-taster>
-        <ak-schirm art="lfo" farbe="gruen" tempo="#schau-tempo" tiefe="#schau-tiefe" verhaeltnis="16 / 8" fuss="LFO|Sinus" beschriftung="LFO der Bordstimme"></ak-schirm>
+        <div style="display:grid; gap:10px; justify-items:start"><ak-wahl name="Mode" hilfe="Modus I oder II" optionen="I|II" wert="II" farbe="bernstein"></ak-wahl><ak-wahl name="Stereo" hilfe="Stereo aus oder an" optionen="Off|On" wert="On" farbe="gruen"></ak-wahl></div>
+        <ak-taster art="fuss" led="gruen" text="Bypass" hilfe="Umgehen: das Gerät lässt das Signal unverändert durch" an></ak-taster>
+        <ak-schirm art="lfo" farbe="gruen" tempo="#schau-tempo" tiefe="#schau-tiefe" verhaeltnis="16 / 8" fuss="LFO|Sine" hilfe="LFO, Wellenform Sinus" beschriftung="LFO der Bordstimme"></ak-schirm>
       </div>
     </div>
     <div class="hf-schau-text">

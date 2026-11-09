@@ -17,7 +17,7 @@
 
   <section class="hf-abschnitt">
     <h2><i class="fa-solid fa-hand-pointer"></i>So bedient man jeden Regler</h2>
-    <p class="hf-text">Alle Regler teilen ein Wertmodell (Bereich, Schritt, Kurve, Vorgabe, Einheit) und eine Eingabe. Was oben rechts unter <b>Zuletzt bedient</b> erscheint, kam wirklich an.</p>
+    <p class="hf-text">Alle Regler teilen ein Wertmodell (Bereich, Schritt, Kurve, Vorgabe, Einheit) und eine Eingabe. Was oben rechts unter <b>Zuletzt bedient</b> erscheint, kam wirklich an. Beschriftet sind die Regler mit den üblichen Fachbegriffen der Tontechnik; die deutsche Erklärung steht im Hover.</p>
     <div class="hf-chips">
       <span class="chip"><i class="fa-solid fa-arrows-up-down"></i>Ziehen hoch und runter</span>
       <span class="chip"><i class="fa-solid fa-computer-mouse"></i>Mausrad</span>
@@ -37,24 +37,24 @@
     <div class="hf-katalog">
       <div class="hf-muster" data-karte><b>Alu mit Riffelrand</b><p>Vorgabe für Parameter mit Bereich und Einheit. Wertbogen zeigt die Stellung, auch von der Seite gesehen.</p>
         <div class="ak-geraet" data-bauform="inspektor" data-modul="E" style="--ak-spalten:2"><div class="ak-raster">
-          <ak-dreh name="Größe" min="0" max="100" wert="64" vorgabe="50" einheit="%" grenzen="Kabine|Halle"></ak-dreh>
-          <ak-dreh name="Vorverzögerung" min="0" max="250" wert="38" vorgabe="20" einheit="ms" grenzen="Nah|Fern"></ak-dreh>
+          <ak-dreh name="Size" hilfe="Größe des Raums: von der Kabine bis zur Halle" min="0" max="100" wert="64" vorgabe="50" einheit="%" grenzen="Small|Large"></ak-dreh>
+          <ak-dreh name="Pre-Delay" hilfe="Vorverzögerung: Zeit bis zum ersten Nachhall, wirkt wie Abstand zur Wand" min="0" max="250" wert="38" vorgabe="20" einheit="ms" grenzen="Short|Long"></ak-dreh>
         </div></div></div>
       <div class="hf-muster" data-karte><b>Lackkappe</b><p>Kleine farbige Kappe, gut für viele Regler auf engem Raum (Knoten). Farbe frei, hier Gold und Creme.</p>
         <div class="ak-geraet" data-bauform="knoten" data-modul="E" style="--ak-spalten:3; --ak-zelle-min:72px"><div class="ak-raster">
-          <ak-dreh kappe="lack" farbe="#c99b3c" name="Zeit" min="20" max="2000" kurve="log" wert="420" vorgabe="250" einheit="ms"></ak-dreh>
-          <ak-dreh kappe="lack" farbe="#c99b3c" name="Wiederholen" min="0" max="95" wert="45" vorgabe="30" einheit="%"></ak-dreh>
-          <ak-dreh kappe="lack" farbe="#ebe1c8" name="Dämpfung" min="1000" max="20000" kurve="log" schritt="10" wert="6800" vorgabe="12000" einheit="Hz"></ak-dreh>
+          <ak-dreh kappe="lack" farbe="#c99b3c" name="Time" hilfe="Verzögerungszeit des Echos" min="20" max="2000" kurve="log" wert="420" vorgabe="250" einheit="ms"></ak-dreh>
+          <ak-dreh kappe="lack" farbe="#c99b3c" name="Feedback" hilfe="Rückkopplung: wie oft das Echo wiederkehrt" min="0" max="95" wert="45" vorgabe="30" einheit="%"></ak-dreh>
+          <ak-dreh kappe="lack" farbe="#ebe1c8" name="Damping" hilfe="Dämpfung: oberhalb dieser Frequenz verlieren die Wiederholungen ihre Höhen" min="1000" max="20000" kurve="log" schritt="10" wert="6800" vorgabe="12000" einheit="Hz"></ak-dreh>
         </div></div></div>
       <div class="hf-muster" data-karte><b>Schwarz mit Leuchtzeiger</b><p>Zeiger leuchtet in der Farbe des Moduls; liest sich auch im dunklen Rack auf einen Blick.</p>
         <div class="ak-geraet" data-bauform="inspektor" data-modul="C" style="--ak-spalten:2"><div class="ak-raster">
-          <ak-dreh kappe="schwarz" zeiger="rot" name="Antrieb" min="0" max="40" schritt="0.1" wert="14.5" vorgabe="6" einheit="dB"></ak-dreh>
-          <ak-dreh kappe="schwarz" zeiger="bernstein" name="Klang" min="-12" max="12" schritt="0.1" wert="3.5" bipolar einheit="dB" grenzen="Dunkel|Hell"></ak-dreh>
+          <ak-dreh kappe="schwarz" zeiger="rot" name="Drive" hilfe="Antrieb: wie stark das Signal in die Sättigung gefahren wird" min="0" max="40" schritt="0.1" wert="14.5" vorgabe="6" einheit="dB"></ak-dreh>
+          <ak-dreh kappe="schwarz" zeiger="bernstein" name="Tone" hilfe="Klangfarbe: dunkler oder heller, in der Mitte neutral" min="-12" max="12" schritt="0.1" wert="3.5" bipolar einheit="dB" grenzen="Dark|Bright"></ak-dreh>
         </div></div></div>
       <div class="hf-muster" data-karte><b>Endlos mit Leuchtkranz</b><p>Fünfzehn Leuchtpunkte statt Bogen: für Makros und Werte, die sich auch von außen bewegen (Automation, MIDI).</p>
         <div class="ak-geraet" data-bauform="inspektor" data-modul="S" style="--ak-spalten:2"><div class="ak-raster">
-          <ak-dreh kappe="ring" name="Makro Wärme" min="0" max="100" wert="70" vorgabe="0" einheit="%"></ak-dreh>
-          <ak-dreh kappe="ring" name="Breite" min="0" max="200" wert="120" vorgabe="100" einheit="%" bipolar></ak-dreh>
+          <ak-dreh kappe="ring" name="Macro Warmth" hilfe="Makro Wärme: bewegt mehrere Parameter zugleich" min="0" max="100" wert="70" vorgabe="0" einheit="%"></ak-dreh>
+          <ak-dreh kappe="ring" name="Width" hilfe="Stereobreite: 0 ist Mono, 100 unverändert, darüber breiter" min="0" max="200" wert="120" vorgabe="100" einheit="%" bipolar></ak-dreh>
         </div></div></div>
     </div>
   </section>
@@ -63,14 +63,14 @@
     <h2><i class="fa-solid fa-wave-square"></i>Zustände: zweipolig, moduliert, automatisiert, gesperrt</h2>
     <div class="ak-geraet" data-bauform="inspektor" data-modul="D" style="--ak-spalten:6">
       <span class="ak-schraube lo" style="--dreh:12deg"></span><span class="ak-schraube ro" style="--dreh:64deg"></span><span class="ak-schraube lu" style="--dreh:-30deg"></span><span class="ak-schraube ru" style="--dreh:40deg"></span>
-      <div class="ak-geraet-kopf" style="padding:0 18px"><span class="ak-schild">D3</span><b>Ringmodulation</b><ak-led farbe="gruen" zustand="an" text="Aktiv"></ak-led></div>
+      <div class="ak-geraet-kopf" style="padding:0 18px"><span class="ak-schild">D3</span><b>Ring Modulator</b><ak-led farbe="gruen" zustand="an" text="Active" hilfe="Aktiv: der Knoten verarbeitet das Signal"></ak-led></div>
       <div class="ak-raster" style="padding:0 6px 8px">
-        <ak-dreh name="Trägerfrequenz" min="20" max="5000" kurve="log" schritt="0.1" wert="440" vorgabe="440" einheit="Hz" grenzen="Tief|Hoch"></ak-dreh>
-        <ak-dreh name="Verstimmung" min="-50" max="50" wert="-12" bipolar einheit="Cent" grenzen="Tiefer|Höher"></ak-dreh>
-        <ak-dreh name="Mischung" min="0" max="100" wert="35" vorgabe="50" einheit="%" mod="0.18" grenzen="Trocken|Nass"></ak-dreh>
-        <ak-dreh id="auto" name="Automation" min="0" max="100" wert="50" einheit="%" kappe="ring"></ak-dreh>
-        <ak-dreh name="Gesperrt" min="0" max="100" wert="30" einheit="%" gesperrt></ak-dreh>
-        <ak-dreh name="Fein (0,01)" min="0" max="1" schritt="0.01" wert="0.25" vorgabe="0.5" einheit="x"></ak-dreh>
+        <ak-dreh name="Carrier" hilfe="Trägerfrequenz, mit der die Stimme multipliziert wird" min="20" max="5000" kurve="log" schritt="0.1" wert="440" vorgabe="440" einheit="Hz" grenzen="Low|High"></ak-dreh>
+        <ak-dreh name="Detune" hilfe="Verstimmung des Trägers in Cent, tiefer oder höher" min="-50" max="50" wert="-12" bipolar einheit="Cent" grenzen="Flat|Sharp"></ak-dreh>
+        <ak-dreh name="Mix" hilfe="Mischung aus Original (trocken) und Effekt (nass); der türkise Bogen zeigt die Modulation" min="0" max="100" wert="35" vorgabe="50" einheit="%" mod="0.18" grenzen="Dry|Wet"></ak-dreh>
+        <ak-dreh id="auto" name="Automation" hilfe="Automation: der Wert folgt einem aufgezeichneten Verlauf, solange niemand dreht" min="0" max="100" wert="50" einheit="%" kappe="ring"></ak-dreh>
+        <ak-dreh name="Locked" hilfe="Gesperrt: im Moment nicht bedienbar" min="0" max="100" wert="30" einheit="%" gesperrt></ak-dreh>
+        <ak-dreh name="Fine" hilfe="Feiner Regler: Schritte von 0,01" min="0" max="1" schritt="0.01" wert="0.25" vorgabe="0.5" einheit="x"></ak-dreh>
       </div>
     </div>
     <p class="hf-leise">Türkiser Innenbogen: Bereich, den ein LFO oder eine Hüllkurve gerade überstreicht (Steuerung türkis). Automation: der Kranz folgt einem Verlauf, solange niemand dreht.</p>
@@ -82,12 +82,12 @@
     <div class="hf-katalog">
       <div class="hf-muster" data-karte><b>Groß, mit Namen</b>
         <div class="ak-geraet" data-bauform="inspektor" data-modul="E" style="--ak-spalten:1; --ak-d-max:96px"><div class="ak-raster">
-          <ak-dreh name="Raum" raster="Kabine|Zimmer|Studio|Saal|Kirche|Platte" wert="3" vorgabe="1"></ak-dreh>
+          <ak-dreh name="Room" hilfe="Raumart des Halls: Kabine, Zimmer, Studio, Saal, Kirche, Hallplatte" raster="Booth|Room|Studio|Hall|Church|Plate" wert="3" vorgabe="1"></ak-dreh>
         </div></div></div>
       <div class="hf-muster" data-karte><b>Klein, im Knoten</b>
         <div class="ak-geraet" data-bauform="knoten" data-modul="C" style="--ak-spalten:2; --ak-zelle-min:72px"><div class="ak-raster">
-          <ak-dreh kappe="lack" farbe="#ebe1c8" name="Überabtastung" raster="1×|2×|4×|8×" wert="2" vorgabe="1"></ak-dreh>
-          <ak-dreh kappe="lack" farbe="#ebe1c8" name="Kennlinie" raster="Röhre|Band|Diode|Weich" wert="0"></ak-dreh>
+          <ak-dreh kappe="lack" farbe="#ebe1c8" name="Oversampling" hilfe="Überabtastung: rechnet intern mit höherer Abtastrate gegen Aliasing" raster="1×|2×|4×|8×" wert="2" vorgabe="1"></ak-dreh>
+          <ak-dreh kappe="lack" farbe="#ebe1c8" name="Curve" hilfe="Kennlinie der Sättigung: Röhre, Band, Diode, weich" raster="Tube|Tape|Diode|Soft" wert="0"></ak-dreh>
         </div></div></div>
     </div>
   </section>
@@ -98,25 +98,25 @@
     <div class="hf-katalog breit">
       <div class="hf-muster" data-karte><b>Leuchtschiene</b><p>Segmente, die Füllung leuchtet, der Griff ist ein Lichtpunkt.</p>
         <div class="ak-geraet" data-bauform="inspektor" data-modul="E"><div style="display:grid; gap:14px">
-          <ak-schieber art="leuchte" leuchte="blau" segmente="24" name="Mischung" min="0" max="100" wert="42" vorgabe="50" einheit="%" grenzen="Trocken|Nass"></ak-schieber>
-          <ak-schieber art="leuchte" leuchte="bernstein" segmente="24" name="Modulation" min="0" max="100" wert="60" vorgabe="0" einheit="%" grenzen="Aus|Stark"></ak-schieber>
+          <ak-schieber art="leuchte" leuchte="blau" segmente="24" name="Mix" hilfe="Mischung aus Original (trocken) und Effekt (nass)" min="0" max="100" wert="42" vorgabe="50" einheit="%" grenzen="Dry|Wet"></ak-schieber>
+          <ak-schieber art="leuchte" leuchte="bernstein" segmente="24" name="Modulation" hilfe="Stärke der Modulation" min="0" max="100" wert="60" vorgabe="0" einheit="%" grenzen="Off|Deep"></ak-schieber>
         </div></div></div>
       <div class="hf-muster" data-karte><b>Leuchtbalken als Eingabe</b><p>Eine LED-Kette, die man zieht: nur ganze Segmente leuchten.</p>
         <div class="ak-geraet" data-bauform="inspektor" data-modul="E"><div style="display:grid; gap:14px">
-          <ak-schieber art="balken" leuchte="cyan" segmente="20" name="Verzögerung" min="20" max="2000" kurve="log" wert="480" vorgabe="250" einheit="ms"></ak-schieber>
-          <ak-schieber art="balken" leuchte="bernstein" segmente="20" name="Rückkopplung" min="0" max="95" wert="55" vorgabe="30" einheit="%"></ak-schieber>
+          <ak-schieber art="balken" leuchte="cyan" segmente="20" name="Delay" hilfe="Verzögerungszeit" min="20" max="2000" kurve="log" wert="480" vorgabe="250" einheit="ms"></ak-schieber>
+          <ak-schieber art="balken" leuchte="bernstein" segmente="20" name="Feedback" hilfe="Rückkopplung: wie oft das Echo wiederkehrt" min="0" max="95" wert="55" vorgabe="30" einheit="%"></ak-schieber>
         </div></div></div>
       <div class="hf-muster" data-karte><b>Fader und Raster</b><p>Fader mit Querstrich; Rasterschieber für Notenwerte, der gewählte Name leuchtet.</p>
         <div class="ak-geraet" data-bauform="inspektor" data-modul="U"><div style="display:grid; gap:14px">
-          <ak-schieber art="fader" name="Pegel" min="-60" max="6" schritt="0.1" wert="-3.5" vorgabe="0" einheit="dB" grenzen="-60|+6"></ak-schieber>
-          <ak-schieber name="Notenwert" raster="1/2|1/4|1/8 punktiert|1/8|1/16" wert="1"></ak-schieber>
+          <ak-schieber art="fader" name="Level" hilfe="Pegel in Dezibel" min="-60" max="6" schritt="0.1" wert="-3.5" vorgabe="0" einheit="dB" grenzen="-60|+6"></ak-schieber>
+          <ak-schieber name="Division" hilfe="Notenwert der Verzögerung zum Tempo" raster="1/2|1/4|1/8 dotted|1/8|1/16" wert="1"></ak-schieber>
         </div></div></div>
       <div class="hf-muster" data-karte><b>Senkrecht: kleines Pult</b><p>Vier Fader mit Pegel daneben; Bahnhöhe fest, Griff über transform.</p>
         <div class="ak-geraet" data-bauform="rack" data-modul="A"><div style="display:flex; justify-content:space-around; align-items:flex-end; gap:8px; flex-wrap:wrap">
-          <ak-schieber art="fader" richtung="senkrecht" name="Stimme" min="-60" max="6" schritt="0.1" wert="0" einheit="dB"></ak-schieber>
-          <ak-schieber art="fader" richtung="senkrecht" name="Hall" min="-60" max="6" schritt="0.1" wert="-12" vorgabe="-12" einheit="dB"></ak-schieber>
-          <ak-schieber art="fader" richtung="senkrecht" name="Echo" min="-60" max="6" schritt="0.1" wert="-18" vorgabe="-18" einheit="dB"></ak-schieber>
-          <ak-pegel richtung="senkrecht" kanaele="2" skala="0|-6|-12|-24|-36|-48" style="--pegel-h:clamp(150px, 26vh, 240px)" beschriftung="Pegel der Summe"></ak-pegel>
+          <ak-schieber art="fader" richtung="senkrecht" name="Voice" hilfe="Pegel der Stimme" min="-60" max="6" schritt="0.1" wert="0" einheit="dB"></ak-schieber>
+          <ak-schieber art="fader" richtung="senkrecht" name="Reverb" hilfe="Pegel des Halls" min="-60" max="6" schritt="0.1" wert="-12" vorgabe="-12" einheit="dB"></ak-schieber>
+          <ak-schieber art="fader" richtung="senkrecht" name="Echo" hilfe="Pegel des Echos" min="-60" max="6" schritt="0.1" wert="-18" vorgabe="-18" einheit="dB"></ak-schieber>
+          <ak-pegel richtung="senkrecht" kanaele="2" skala="0|-6|-12|-24|-36|-48" style="--pegel-h:clamp(150px, 26vh, 240px)" beschriftung="Master" hilfe="Pegel der Summe"></ak-pegel>
         </div></div></div>
     </div>
   </section>
@@ -127,23 +127,23 @@
     <div class="hf-katalog">
       <div class="hf-muster" data-karte><b>Fußtaster und Pillen</b>
         <div class="ak-geraet" data-bauform="inspektor" data-modul="B"><div class="hf-mitte" style="display:flex; flex-wrap:wrap; justify-content:space-around; align-items:flex-end; gap:22px">
-          <ak-taster art="fuss" led="gruen" text="Umgehen" an></ak-taster>
-          <ak-taster art="pille" beschriftung="An" text="Strom" farbe="weiss" an></ak-taster>
-          <ak-taster id="tippen" art="pille" modus="tippen" beschriftung="Tippen" text="Tempo" farbe="bernstein" led="bernstein"></ak-taster>
+          <ak-taster art="fuss" led="gruen" text="Bypass" hilfe="Umgehen: das Gerät lässt das Signal unverändert durch" an></ak-taster>
+          <ak-taster art="pille" beschriftung="On" text="Power" hilfe="Strom an oder aus" farbe="weiss" an></ak-taster>
+          <ak-taster id="tippen" art="pille" modus="tippen" beschriftung="Tap" text="Tempo" hilfe="Im Takt tippen: das Tempo ergibt sich aus dem Abstand der Tipps" farbe="bernstein" led="bernstein"></ak-taster>
           <ak-segmente id="tempo" art="7" stellen="4" farbe="bernstein" text="120.0" style="--ak-zelle:150px"></ak-segmente>
         </div></div></div>
       <div class="hf-muster" data-karte><b>Flachtaster mit Leuchtstreifen</b>
         <div class="ak-geraet" data-bauform="inspektor" data-modul="U"><div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center">
-          <ak-taster art="flach" beschriftung="Presets" modus="tasten" farbe="weiss"></ak-taster>
-          <ak-taster art="flach" beschriftung="Sichern" modus="tasten" farbe="bernstein"></ak-taster>
-          <ak-taster art="flach" beschriftung="Umgehen" farbe="bernstein"></ak-taster>
-          <ak-taster art="flach" beschriftung="Strom" farbe="gruen" an></ak-taster>
+          <ak-taster art="flach" beschriftung="Presets" hilfe="Voreinstellungen öffnen" modus="tasten" farbe="weiss"></ak-taster>
+          <ak-taster art="flach" beschriftung="Save" hilfe="Sichern" modus="tasten" farbe="bernstein"></ak-taster>
+          <ak-taster art="flach" beschriftung="Bypass" hilfe="Umgehen: das Signal unverändert durchlassen" farbe="bernstein"></ak-taster>
+          <ak-taster art="flach" beschriftung="Power" hilfe="Strom an oder aus" farbe="gruen" an></ak-taster>
         </div></div></div>
-      <div class="hf-muster" data-karte><b>Glastaster</b><p>Die ganze Kappe leuchtet: Stumm, Solo, Aufnahme.</p>
+      <div class="hf-muster" data-karte><b>Glastaster</b><p>Die ganze Kappe leuchtet: Mute, Solo, Record.</p>
         <div class="ak-geraet" data-bauform="inspektor" data-modul="U"><div style="display:flex; flex-wrap:wrap; gap:16px; justify-content:center">
-          <ak-taster art="glas" symbol="fa-volume-xmark" text="Stumm" farbe="blau"></ak-taster>
-          <ak-taster art="glas" symbol="fa-headphones" text="Solo" farbe="gelb" an></ak-taster>
-          <ak-taster art="glas" symbol="fa-circle" text="Aufnahme" farbe="rot"></ak-taster>
+          <ak-taster art="glas" symbol="fa-volume-xmark" text="Mute" hilfe="Stumm schalten" farbe="blau"></ak-taster>
+          <ak-taster art="glas" symbol="fa-headphones" text="Solo" hilfe="Nur diese Spur hören" farbe="gelb" an></ak-taster>
+          <ak-taster art="glas" symbol="fa-circle" text="Record" hilfe="Aufnahme starten" farbe="rot"></ak-taster>
         </div></div></div>
     </div>
   </section>
@@ -153,12 +153,12 @@
     <p class="hf-text">Kippschalter: oberes Drittel klicken stellt nach oben, unteres nach unten; Pfeiltasten auch. Wahltasten und Schiebeschalter: genau eine Wahl, Pfeile wandern.</p>
     <div class="ak-geraet" data-bauform="inspektor" data-modul="E">
       <div style="display:flex; flex-wrap:wrap; gap:22px 34px; align-items:flex-end; justify-content:center">
-        <ak-kipp name="Stereo" beschriftung="An|Aus" stellung="oben"></ak-kipp>
-        <ak-kipp name="Höhen" beschriftung="Anhebung|Aus|Absenkung" stellung="mitte"></ak-kipp>
-        <ak-wahl name="Modus" optionen="I|II" wert="I" farbe="bernstein"></ak-wahl>
-        <ak-wahl name="Stereo" optionen="Aus|An" wert="An" farbe="gruen"></ak-wahl>
-        <ak-wahl name="Vergleich" optionen="A|B" wert="A" farbe="cyan"></ak-wahl>
-        <ak-wahl name="Kanal" art="schiebe" optionen="L|L+R|R" wert="L+R"></ak-wahl>
+        <ak-kipp name="Stereo" hilfe="Stereo an oder aus" beschriftung="On|Off" stellung="oben"></ak-kipp>
+        <ak-kipp name="Treble" hilfe="Höhen: anheben, neutral oder absenken" beschriftung="Boost|Off|Cut" stellung="mitte"></ak-kipp>
+        <ak-wahl name="Mode" hilfe="Modus I oder II" optionen="I|II" wert="I" farbe="bernstein"></ak-wahl>
+        <ak-wahl name="Stereo" hilfe="Stereo aus oder an" optionen="Off|On" wert="On" farbe="gruen"></ak-wahl>
+        <ak-wahl name="Compare" hilfe="Vergleich zweier Einstellungen A und B" optionen="A|B" wert="A" farbe="cyan"></ak-wahl>
+        <ak-wahl name="Channel" hilfe="Kanal: links, beide oder rechts" art="schiebe" optionen="L|L+R|R" wert="L+R"></ak-wahl>
       </div>
     </div>
   </section>

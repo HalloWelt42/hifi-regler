@@ -4,6 +4,9 @@
 // Eingaben (bedienen: Ziehen, Mausrad, Tasten, Doppelklick, Doppeltipp, Feinschritt, Werteingabe). Die Elemente
 // unterscheiden sich nur in der Darstellung.
 //
+// Beschriftung: die üblichen (meist englischen) Fachbegriffe der Tontechnik; die deutsche Erklärung steht im Attribut
+// "hilfe" und erscheint im Hover.
+//
 // Bedienung aller Regler:
 //   Ziehen hoch und runter (Schieber: entlang der Bahn), Mausrad, Pfeiltasten, Bild auf und ab (zehnmal), Pos1 und Ende;
 //   Umschalttaste hält: ein Zehntel (fein); Doppelklick oder Doppeltipp: Vorgabe; Entf: Vorgabe; Klick auf den Wert oder
@@ -219,6 +222,12 @@
   const R_BOGEN = 43, R_MOD = 40.2;
 
   const attr = (el, n, vorgabe) => (el.hasAttribute(n) ? el.getAttribute(n) : vorgabe);
+  /** Erklärung im Hover: die Beschriftung bleibt der übliche Fachbegriff, "hilfe" erklärt ihn (Titel und für Vorleser) */
+  const hilfe = (el, ziel = el) => {
+    if (!el.hasAttribute("hilfe")) return;
+    el.title = el.getAttribute("hilfe");
+    ziel.setAttribute("aria-description", el.getAttribute("hilfe"));
+  };
   const num = (el, n, vorgabe) => (el.hasAttribute(n) ? parseFloat(el.getAttribute(n)) : vorgabe);
   const modellAus = (el) => new Wert({
     min: num(el, "min", 0), max: num(el, "max", 100), schritt: num(el, "schritt", 1), wert: num(el, "wert", undefined),
@@ -240,6 +249,7 @@
       if (this.hasAttribute("leuchte")) this.style.setProperty("--ak-wert", `var(--led-${this.getAttribute("leuchte")})`);
       if (this.hasAttribute("zeiger")) this.style.setProperty("--zeiger-farbe", `var(--led-${this.getAttribute("zeiger")})`);
       this.bauen();
+      hilfe(this);
       bedienen(this.ziel());
       this.zeigen();
     }
@@ -361,6 +371,7 @@
       this.knopf = this.querySelector("button");
       this.led = this.querySelector("ak-led");
       this.tipps = [];
+      hilfe(this, this.knopf);
       if (modus === "rasten") this.knopf.setAttribute("aria-pressed", String(this.hasAttribute("an")));
       const druecken = (an) => { this.classList.toggle("gedrueckt", an); if (modus === "tasten") this.setzen(an); };
       this.knopf.addEventListener("pointerdown", () => druecken(true));
@@ -411,6 +422,7 @@
       if (namen.length === 3) { this.knopf.setAttribute("role", "slider"); this.knopf.setAttribute("aria-valuemin", "0"); this.knopf.setAttribute("aria-valuemax", "2"); }
       else this.knopf.setAttribute("role", "switch");
       this.knopf.setAttribute("aria-label", attr(this, "name", namen.join(" oder ")));
+      hilfe(this, this.knopf);
       this.knopf.addEventListener("click", (e) => {
         const r = this.knopf.getBoundingClientRect();
         const lage = e.detail === 0 ? null : (e.clientY - r.top) / r.height;       // Tastatur: detail 0
@@ -454,6 +466,7 @@
         ${this.getAttribute("art") === "schiebe" ? `<span class="ak-wahl-schieber"></span>` : ""}${optionen.map((o) => `<button type="button" role="radio">${o}</button>`).join("")}</div>`;
       this.knoepfe = [...this.querySelectorAll("button")];
       this.optionen = optionen;
+      hilfe(this, this.querySelector(".ak-wahl-reihe"));
       this.knoepfe.forEach((k, i) => {
         k.addEventListener("click", () => this.waehlen(i));
         k.addEventListener("keydown", (e) => {
@@ -487,6 +500,7 @@
         this.innerHTML = `<span class="ak-led-licht"></span>${text ? `<span class="ak-led-text">${text}</span>` : ""}`;
       }
       this.setAttribute("role", "img");
+      hilfe(this);
       this.attributeChangedCallback();
     }
     attributeChangedCallback() {

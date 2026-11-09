@@ -1,15 +1,19 @@
 /* Farben der App in der Vorlage HiFi: nur ihre eigenen Farben. Je Modul eine Farbe für Leuchten und Akzente
    (aus der Palette des Appkerns, folgt dem Thema) und ein Lack für die Fronten kleiner Bauformen (Knoten, Rack). Lack ist
-   Farbe auf Metall und bleibt in beiden Themen gleich; die Schrift darauf hat mindestens 4,5 : 1 (gelb und weiß dunkel). */
-[data-modul="A"] { --ak-farbe: var(--stahl);   --ak-lack: #5f6b78; --ak-lack-tinte: #ffffff; }  /* Reinigung: grau */
-[data-modul="B"] { --ak-farbe: var(--minze);   --ak-lack: #23804a; --ak-lack-tinte: #ffffff; }  /* Tonhöhe und Formanten: grün */
-[data-modul="C"] { --ak-farbe: var(--rose);    --ak-lack: #b3302c; --ak-lack-tinte: #ffffff; }  /* Dynamik und Sättigung: rot */
-[data-modul="D"] { --ak-farbe: var(--violett); --ak-lack: #7442b8; --ak-lack-tinte: #ffffff; }  /* Klangfarbe: violett */
-[data-modul="E"] { --ak-farbe: var(--himmel);  --ak-lack: #2759a6; --ak-lack-tinte: #ffffff; }  /* Raum: blau */
-[data-modul="F"] { --ak-farbe: var(--sand);    --ak-lack: #8d5229; --ak-lack-tinte: #ffffff; }  /* Übertragung: braun */
-[data-modul="G"] { --ak-farbe: var(--honig);   --ak-lack: #e0ae1a; --ak-lack-tinte: #15181c; }  /* Neuronal: gelb */
-[data-modul="S"] { --ak-farbe: var(--tuerkis); --ak-lack: #11807a; --ak-lack-tinte: #ffffff; }  /* Steuerung: türkis */
-[data-modul="U"] { --ak-farbe: var(--text-2);  --ak-lack: #d8dce1; --ak-lack-tinte: #15181c; }  /* Grundknoten: weiß */
+   Farbe auf Metall und bleibt in beiden Themen gleich, darum auch seine Schrift und seine aktive Schrift (mindestens 3,5 : 1).
+   Die Modulfarbe dagegen wechselt mit dem Thema (hell tief, dunkel leuchtend), darum wechselt die Schrift auf ihr mit. */
+:root, [data-theme="hell"] { --msk-auf-modul: #ffffff; }
+[data-theme="dunkel"] { --msk-auf-modul: #0b0d10; }
+[data-modul] { --ak-auf-farbe: var(--msk-auf-modul); }
+[data-modul="A"] { --ak-farbe: var(--stahl);   --ak-lack: #5f6b78; --ak-lack-tinte: #ffffff; --ak-lack-aktiv: #ffe39a; }  /* Reinigung: grau */
+[data-modul="B"] { --ak-farbe: var(--minze);   --ak-lack: #23804a; --ak-lack-tinte: #ffffff; --ak-lack-aktiv: #ffe39a; }  /* Tonhöhe und Formanten: grün */
+[data-modul="C"] { --ak-farbe: var(--rose);    --ak-lack: #b3302c; --ak-lack-tinte: #ffffff; --ak-lack-aktiv: #ffe39a; }  /* Dynamik und Sättigung: rot */
+[data-modul="D"] { --ak-farbe: var(--violett); --ak-lack: #7442b8; --ak-lack-tinte: #ffffff; --ak-lack-aktiv: #ffe39a; }  /* Klangfarbe: violett */
+[data-modul="E"] { --ak-farbe: var(--himmel);  --ak-lack: #2759a6; --ak-lack-tinte: #ffffff; --ak-lack-aktiv: #ffe39a; }  /* Raum: blau */
+[data-modul="F"] { --ak-farbe: var(--sand);    --ak-lack: #8d5229; --ak-lack-tinte: #ffffff; --ak-lack-aktiv: #ffe39a; }  /* Übertragung: braun */
+[data-modul="G"] { --ak-farbe: var(--honig);   --ak-lack: #e0ae1a; --ak-lack-tinte: #15181c; --ak-lack-aktiv: #3a2400; }  /* Neuronal: gelb */
+[data-modul="S"] { --ak-farbe: var(--tuerkis); --ak-lack: #11807a; --ak-lack-tinte: #ffffff; --ak-lack-aktiv: #ffe39a; }  /* Steuerung: türkis */
+[data-modul="U"] { --ak-farbe: var(--text-2);  --ak-lack: #d8dce1; --ak-lack-tinte: #15181c; --ak-lack-aktiv: #7a4b00; }  /* Grundknoten: weiß */
 
 /* Flächen des Studios (Seite studio.html) in der Vorlage: Inspektor und Transport als ruhige Leisten mit Lichtkante */
 :root[data-vorlage="hifi"] :is(.st-inspektor, .st-unten) { background-color: var(--leiste); background-image: var(--hifi-erhaben); }

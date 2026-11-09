@@ -15,7 +15,8 @@
      also passen 11 Striche ab Ø 34, 21 ab Ø 68 und Grenzwörter ab Ø 100; mit Ø = 0,72 · Zelle schalten die Abfragen
      unten bei 47, 94 und 139 Pixel Zellbreite. */
 
-:root {
+/* Die Marken stehen an der Wurzel und an jedem Teil mit eigenem Thema: dort rechnen sie mit dessen Farben neu */
+:root, [data-theme] {
   /* == Maße == */
   --ak-zelle-min: 88px;           /* schmalste Zelle eines Reglers im Raster; darunter bricht die Reihe um */
   --ak-spalten: 4;                /* höchstens so viele Regler nebeneinander */
@@ -53,12 +54,17 @@
   --ak-metall: var(--flaeche-2);              /* Chrom an Tastern, Muttern, Schrauben, Hebeln */
   --ak-metall-bild: none;
   --ak-glanz: 0;                              /* Deckkraft der Glanzlichter (0 bis 1) */
+  /* Lichtmodell der Teile: Licht oben links; ein Teil wirft je Millimeter Höhe so weit Schatten (mal Tiefe der Stufe) */
+  --ak-mm-x: calc(1px * var(--ak-tiefe-n));   /* nach rechts je Millimeter */
+  --ak-mm-y: calc(1.5px * var(--ak-tiefe-n)); /* nach unten je Millimeter */
   --ak-leuchten: 0.35;                        /* Stärke des Überstrahlens (0 bis 1) */
   --ak-skala: var(--text-3);                  /* Skalenstriche */
   --ak-bahn: var(--rand-stark);               /* Bahn unter dem Wertbogen */
   --ak-wert: var(--akzent-flaeche);           /* Wertbogen, Füllung, Griff */
   --ak-mod: var(--tuerkis);                   /* Modulation (Steuerung türkis) */
   --ak-farbe: var(--akzent-flaeche);          /* Farbe des Geräts (Modul); die App setzt sie */
+  --ak-auf-farbe: var(--auf-akzent);          /* Schrift auf der Gerätefarbe (Schild); die App setzt sie mit der Farbe als Paar */
+  --ak-aktiv: var(--akzent);                  /* Schrift im aktiven Zustand (gezogen, Fokus) auf der Front; folgt der Front, nicht nur dem Thema */
   --ak-lack: var(--flaeche-2);                /* Lack der Front in kleinen Bauformen; die App setzt ihn */
   --ak-lack-tinte: var(--text);               /* Schrift auf dem Lack */
 
@@ -95,7 +101,7 @@
 @container geraet (max-width: 420px) { .ak-geraet-kopf .ak-led-text { display: none; } }
 .ak-geraet-kopf .ak-led { margin-left: auto; }
 .ak-schild { display: inline-flex; align-items: center; gap: 8px; padding: 2px 10px; border-radius: var(--r1); font-weight: 600;
-             background-color: var(--ak-farbe); color: var(--auf-akzent); min-width: 0; }
+             background-color: var(--ak-farbe); color: var(--ak-auf-farbe); min-width: 0; }
 .ak-etikett { font-size: var(--marke); color: var(--ak-tinte-2); letter-spacing: .04em; }
 
 /* ═══ Drehregler ═══ */
@@ -131,6 +137,21 @@ ak-dreh[aria-disabled="true"] { cursor: default; opacity: .45; }
 .ak-dreh-zeiger { position: absolute; inset: 0; transform: rotate(var(--winkel)); }
 .ak-dreh-zeiger::after { content: ""; position: absolute; left: 50%; top: 8%; inline-size: max(2px, calc(var(--d) * .055)); block-size: 30%;
                          translate: -50% 0; border-radius: 99px; background: var(--ak-zeiger); }
+/* Schatten des Zeigerstrichs: der Strich steht erhaben auf der Kappe, das Licht kommt fest von oben links, also fällt
+   der Schatten auf dem Bildschirm immer nach rechts unten. Der Strich dreht mit; sein Versatz wird um den Drehwinkel
+   zurückgedreht (x' = dx · cos w + dy · sin w, y' = dy · cos w - dx · sin w). Flach gehalten, mit der Tiefe der Stufe. */
+ak-dreh {
+  --zs-dx: calc(var(--d) * .03 * var(--ak-tiefe-n));
+  --zs-dy: calc(var(--d) * .045 * var(--ak-tiefe-n));
+  --zs-x: calc(var(--zs-dx) * cos(var(--winkel)) + var(--zs-dy) * sin(var(--winkel)));
+  --zs-y: calc(var(--zs-dy) * cos(var(--winkel)) - var(--zs-dx) * sin(var(--winkel)));
+}
+.ak-dreh-zeiger::after {
+  box-shadow:
+    calc(var(--zs-x) * .45) calc(var(--zs-y) * .45) calc(var(--d) * .012) rgb(0 0 0 / calc(.72 * var(--ak-tiefe-n))),   /* Kernschatten */
+    var(--zs-x) var(--zs-y) calc(var(--d) * .024) rgb(0 0 0 / calc(.5 * var(--ak-tiefe-n))),                            /* Halbschatten */
+    calc(var(--zs-x) * -.18) calc(var(--zs-y) * -.18) 0 rgb(255 255 255 / calc(.8 * var(--ak-glanz)));                  /* Lichtkante */
+}
 /* Glanzlicht oben links: steht still */
 .ak-dreh-kappe::after { content: ""; position: absolute; inset: 0; border-radius: 50%; pointer-events: none; opacity: var(--ak-glanz);
   background: radial-gradient(circle at 34% 26%, rgba(255, 255, 255, .55), rgba(255, 255, 255, 0) 38%),
@@ -161,7 +182,7 @@ ak-dreh:not([kappe="ring"]) .ak-dreh-skala .kranz { display: none; }
 @container regler (min-width: 150px) { .ak-dreh-rastname { display: block; } ak-dreh[raster] .ak-dreh-koerper { margin: 18px 0 10px; } }
 /* Fokus und Ziehen: Ring um die Kappe, Wert hervorgehoben */
 ak-dreh:focus-visible .ak-dreh-kappe { outline: 3px solid var(--akzent-flaeche); outline-offset: 4px; }
-ak-dreh:is(.zieht, :focus-visible) .ak-dreh-wert { color: var(--akzent); }
+ak-dreh:is(.zieht, :focus-visible) .ak-dreh-wert { color: var(--ak-aktiv); }
 .ak-eingabe { font: inherit; font-family: var(--schrift-zahl); font-size: max(17px, var(--klein)); inline-size: 100%; max-inline-size: 9em; text-align: center;
               border: 0; border-radius: var(--r1); padding: 2px 4px; background: var(--ak-glas); color: var(--ak-glas-tinte); outline: 2px solid var(--akzent-flaeche); }
 
@@ -187,7 +208,7 @@ ak-schieber[bipolar] .ak-schieber-fuellung { transform-origin: center; transform
 .ak-schieber-grenzen span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .ak-schieber-grenzen span.an { color: var(--ak-tinte); font-weight: 600; }
 ak-schieber:focus-visible .ak-schieber-griff { box-shadow: var(--ak-kappe-schatten), 0 0 0 3px var(--ak-front), 0 0 0 6px var(--akzent-flaeche); }
-ak-schieber:is(.zieht, :focus-visible) .ak-dreh-wert { color: var(--akzent); }
+ak-schieber:is(.zieht, :focus-visible) .ak-dreh-wert { color: var(--ak-aktiv); }
 /* Fader: Rille, flacher Griff mit Querstrich */
 ak-schieber[art="fader"] { --griff: 30px; --bahn-h: 6px; }
 ak-schieber[art="fader"] .ak-schieber-griff { border-radius: var(--r2); block-size: 40px; margin-top: -20px; }
@@ -235,6 +256,8 @@ ak-taster[art="fuss"] .ak-taster-knopf { inline-size: 72px; block-size: 72px; pa
 ak-taster[art="fuss"] .ak-taster-knopf::before { content: ""; position: absolute; inset: 15px; z-index: 1; border-radius: 50%; background-color: var(--ak-metall); background-image: var(--ak-metall-bild);
   box-shadow: 0 2px 4px color-mix(in srgb, var(--schattenfarbe) 45%, transparent), inset 0 1px 1px rgba(255, 255, 255, calc(.5 * var(--ak-glanz))); transition: transform var(--schnell); }
 ak-taster[art="fuss"].gedrueckt .ak-taster-knopf::before { transform: scale(.94); }
+/* gedrückt sinkt nur der Stößel, die Mutter bleibt stehen */
+ak-taster[art="fuss"] .ak-taster-knopf:active, ak-taster[art="fuss"].gedrueckt .ak-taster-knopf { transform: none; }
 /* Pillentaster: rund mit Leuchtring */
 ak-taster[art="pille"] .ak-taster-knopf { inline-size: 76px; block-size: 76px; padding: 0; border-radius: 50%; font-size: var(--klein); }
 ak-taster[art="pille"] .ak-taster-knopf::before { content: ""; position: absolute; inset: -5px; border-radius: 50%; pointer-events: none;

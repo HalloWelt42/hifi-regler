@@ -10,6 +10,8 @@
   const attr = (el, n, v) => (el.hasAttribute(n) ? el.getAttribute(n) : v);
   const num = (el, n, v) => (el.hasAttribute(n) ? parseFloat(el.getAttribute(n)) : v);
   const ns = "http://www.w3.org/2000/svg";
+  /** Erklärung im Hover wie bei den Reglern (instrumente.js): die Beschriftung bleibt der Fachbegriff */
+  const hilfe = (el) => { if (el.hasAttribute("hilfe")) { el.title = el.getAttribute("hilfe"); el.setAttribute("aria-description", el.getAttribute("hilfe")); } };
 
   // ═══ Takt ═══
   const ruhig = matchMedia("(prefers-reduced-motion: reduce)");
@@ -128,6 +130,7 @@
       this.stellen = num(this, "stellen", 4);
       if (this.hasAttribute("farbe")) this.style.setProperty("--farbe", `var(--led-${this.getAttribute("farbe")})`);
       this.setAttribute("role", "img");
+      hilfe(this);
       this.innerHTML = `<div class="ak-glas ak-segmente-glas"></div>`;
       this.glas = this.firstElementChild;
       this.lauf = num(this, "lauf", 0);
@@ -243,6 +246,7 @@
       this.winkel = winkel; this.th = a.von; this.om = 0;
       this.setAttribute("role", "img");
       this.setAttribute("aria-label", attr(this, "beschriftung", a.name));
+      hilfe(this);
       Takt.anmelden(this);
     }
     schritt(t, dt) {
@@ -314,6 +318,7 @@
       this.innerHTML = `<div class="ak-glas ak-pegel-glas"></div>${skala ? `<div class="ak-pegel-skala" aria-hidden="true">${skala.split("|").map((s) => `<span>${s}</span>`).join("")}</div>` : ""}`;
       this.setAttribute("role", "img");
       this.setAttribute("aria-label", attr(this, "beschriftung", "Pegel"));
+      hilfe(this);
       this.stand = [this.von, this.von]; this.halten = [{ w: this.von, t: 0 }, { w: this.von, t: 0 }];
       this.leinwandBauen(this.firstElementChild);
     }
@@ -366,6 +371,7 @@
       this.innerHTML = `<div class="ak-glas ak-schirm-glas"></div>${fuss ? `<div class="ak-schirm-fuss" aria-hidden="true">${fuss.split("|").map((s) => `<span>${s}</span>`).join("")}</div>` : ""}`;
       this.setAttribute("role", "img");
       this.setAttribute("aria-label", attr(this, "beschriftung", "Schirm"));
+      hilfe(this);
       this.spitzen = Quelle.BAENDER.map(() => -90);
       this.leinwandBauen(this.firstElementChild);
     }

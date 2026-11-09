@@ -26,10 +26,11 @@
   --ak-skala: color-mix(in srgb, var(--ak-lack-tinte) 60%, transparent);
   --ak-wert: var(--ak-lack-tinte);
   --ak-bahn: rgb(0 0 0 / .26);
+  --ak-aktiv: var(--ak-lack-aktiv, var(--ak-lack-tinte));   /* Lack bleibt in beiden Themen gleich, also auch die aktive Schrift */
 }
 :root[data-vorlage="hifi"] .ak-geraet[data-bauform="inspektor"] { --ak-wert: var(--ak-farbe); }
 :root[data-vorlage="hifi"] .ak-geraet { border-radius: calc(var(--r3) + 4px); }
-:root[data-vorlage="hifi"] .ak-schild { background-color: var(--ak-farbe); color: #0b0d10; letter-spacing: .06em; text-transform: uppercase;
+:root[data-vorlage="hifi"] .ak-schild { background-color: var(--ak-farbe); color: var(--ak-auf-farbe); letter-spacing: .06em; text-transform: uppercase;
   box-shadow: inset 0 1px 0 rgb(255 255 255 / calc(.4 * var(--hifi-glanz))), 0 1px 2px rgb(0 0 0 / calc(.4 * var(--hifi-tiefe))), 0 0 calc(14px * var(--ak-leuchten)) color-mix(in srgb, var(--ak-farbe) 40%, transparent); }
 :root[data-vorlage="hifi"] .ak-geraet-kopf b { text-transform: uppercase; letter-spacing: .05em; font-weight: 700;
   text-shadow: 0 1px 0 rgb(0 0 0 / calc(.35 * var(--hifi-tiefe))); }
@@ -37,11 +38,14 @@
 
 /* Schrauben in den Ecken: Kreuzschlitz, jede etwas anders gedreht */
 .ak-schraube { position: absolute; inline-size: 14px; block-size: 14px; border-radius: 50%; pointer-events: none; transform: rotate(var(--dreh, 20deg));
-  background-color: #9aa1a8;
-  background-image: linear-gradient(90deg, transparent 44%, rgb(0 0 0 / .65) 44% 56%, transparent 56%), linear-gradient(0deg, transparent 44%, rgb(0 0 0 / .65) 44% 56%, transparent 56%),
-                    radial-gradient(circle at 35% 30%, rgb(255 255 255 / calc(.9 * var(--ak-glanz))), rgb(255 255 255 / 0) 60%);
-  background-size: 64% 64%, 64% 64%, 100% 100%; background-position: center; background-repeat: no-repeat;
-  box-shadow: 0 0 0 2px rgb(0 0 0 / calc(.2 + .3 * var(--hifi-tiefe, .2))), 0 1px 2px 2px rgb(0 0 0 / calc(.3 * var(--hifi-tiefe, .2))); }
+  --sx: calc(var(--ak-mm-x) * cos(var(--dreh, 20deg)) + var(--ak-mm-y) * sin(var(--dreh, 20deg)));   /* Schatten in Bildschirmrichtung, */
+  --sy: calc(var(--ak-mm-y) * cos(var(--dreh, 20deg)) - var(--ak-mm-x) * sin(var(--dreh, 20deg)));   /* obwohl der Kopf gedreht ist */
+  background-color: #b3b9c0;
+  background-image: linear-gradient(90deg, transparent 38%, rgb(0 0 0 / .32) 45% 55%, transparent 62%), linear-gradient(0deg, transparent 38%, rgb(0 0 0 / .32) 45% 55%, transparent 62%),
+                    radial-gradient(circle at 35% 30%, rgb(255 255 255 / calc(.85 * var(--ak-glanz))), rgb(255 255 255 / 0) 58%),
+                    radial-gradient(circle, transparent 60%, rgb(0 0 0 / calc(.18 * var(--ak-tiefe-n))) 100%);
+  background-size: 66% 66%, 66% 66%, 100% 100%, 100% 100%; background-position: center; background-repeat: no-repeat;
+  box-shadow: var(--sx) var(--sy) 2px rgb(0 0 0 / calc(.12 + .25 * var(--ak-tiefe-n))); }
 .ak-schraube.lo { left: 10px; top: 10px; } .ak-schraube.ro { right: 10px; top: 10px; }
 .ak-schraube.lu { left: 10px; bottom: 10px; } .ak-schraube.ru { right: 10px; bottom: 10px; }
 :root:not([data-vorlage="hifi"]) .ak-schraube { display: none; }

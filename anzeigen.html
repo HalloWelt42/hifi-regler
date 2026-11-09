@@ -26,46 +26,46 @@
     <div class="hf-katalog breit">
       <div class="hf-muster" data-karte><b>Farben</b>
         <div class="ak-geraet" data-bauform="inspektor" data-modul="U"><div class="hf-led-tafel">
-          <ak-led farbe="rot" zustand="an" text="Übersteuert"></ak-led><ak-led farbe="bernstein" zustand="an" text="Läuft"></ak-led>
-          <ak-led farbe="gelb" zustand="an" text="Wartet"></ak-led><ak-led farbe="gruen" zustand="an" text="Bereit"></ak-led>
-          <ak-led farbe="tuerkis" zustand="an" text="Moduliert"></ak-led><ak-led farbe="blau" zustand="an" text="Verbunden"></ak-led>
-          <ak-led farbe="violett" zustand="an" text="Klangfarbe"></ak-led><ak-led farbe="weiss" zustand="an" text="Strom"></ak-led>
+          <ak-led farbe="rot" zustand="an" text="Clip" hilfe="Übersteuert"></ak-led><ak-led farbe="bernstein" zustand="an" text="Run" hilfe="Läuft"></ak-led>
+          <ak-led farbe="gelb" zustand="an" text="Wait" hilfe="Wartet"></ak-led><ak-led farbe="gruen" zustand="an" text="Ready" hilfe="Bereit"></ak-led>
+          <ak-led farbe="tuerkis" zustand="an" text="Mod" hilfe="Moduliert: eine Steuerung bewegt diesen Wert"></ak-led><ak-led farbe="blau" zustand="an" text="Link" hilfe="Verbunden"></ak-led>
+          <ak-led farbe="violett" zustand="an" text="Timbre" hilfe="Klangfarbe"></ak-led><ak-led farbe="weiss" zustand="an" text="Power" hilfe="Strom"></ak-led>
         </div></div></div>
       <div class="hf-muster" data-karte><b>Zustände und Größen</b>
         <div class="ak-geraet" data-bauform="inspektor" data-modul="U"><div class="hf-led-tafel">
-          <ak-led farbe="gruen" zustand="aus" text="Aus"></ak-led><ak-led farbe="gruen" zustand="an" text="An"></ak-led>
-          <ak-led farbe="rot" zustand="blinkt" text="Blinkt"></ak-led><ak-led farbe="bernstein" zustand="atmet" text="Atmet"></ak-led>
-          <ak-led farbe="tuerkis" zustand="flackert" text="Flackert"></ak-led><ak-led farbe="bernstein" zustand="an" groesse="klein" text="Klein"></ak-led>
-          <ak-led farbe="bernstein" zustand="an" text="Mittel"></ak-led><ak-led farbe="bernstein" zustand="an" groesse="gross" text="Groß"></ak-led>
+          <ak-led farbe="gruen" zustand="aus" text="Off" hilfe="Aus"></ak-led><ak-led farbe="gruen" zustand="an" text="On" hilfe="An"></ak-led>
+          <ak-led farbe="rot" zustand="blinkt" text="Blink" hilfe="Blinkt"></ak-led><ak-led farbe="bernstein" zustand="atmet" text="Pulse" hilfe="Atmet: leuchtet langsam auf und ab"></ak-led>
+          <ak-led farbe="tuerkis" zustand="flackert" text="Flicker" hilfe="Flackert"></ak-led><ak-led farbe="bernstein" zustand="an" groesse="klein" text="Small" hilfe="Klein"></ak-led>
+          <ak-led farbe="bernstein" zustand="an" text="Medium" hilfe="Mittel"></ak-led><ak-led farbe="bernstein" zustand="an" groesse="gross" text="Large" hilfe="Groß"></ak-led>
         </div></div></div>
     </div>
   </section>
 
   <section class="hf-abschnitt">
     <h2><i class="fa-solid fa-calculator"></i>Segmentanzeigen</h2>
-    <p class="hf-text">Sieben und vierzehn Segmente und eine Punktmatrix aus fünf mal sieben Punkten, alles Vektorgrafik: die Ziffernhöhe folgt der Breite der Anzeige und der Zahl der Stellen. Unbeleuchtete Segmente schimmern schwach (wie echtes Glas), Punkt und Doppelpunkt hängen an der Stelle davor. Die vierzehn Segmente kennen Umlaute (zwei Punkte über dem Zeichen).</p>
+    <p class="hf-text">Sieben und vierzehn Segmente und eine Punktmatrix aus fünf mal sieben Punkten, alles Vektorgrafik: die Ziffernhöhe folgt der Breite der Anzeige und der Zahl der Stellen. Unbeleuchtete Segmente schimmern schwach (wie echtes Glas), Punkt und Doppelpunkt hängen an der Stelle davor. Die vierzehn Segmente kennen Umlaute für Namen von Presets (zwei Punkte über dem Zeichen).</p>
     <div class="hf-katalog">
       <div class="hf-muster" data-karte><b>Sieben Segmente</b><p>Zahlen: Tempo, Zeit, Grundton live aus dem Signal.</p>
         <div class="ak-geraet" data-bauform="inspektor" data-modul="U"><div class="hf-stapel">
           <ak-segmente id="uhr" art="7" stellen="6" farbe="rot" text="00:00.0"></ak-segmente>
           <div class="hf-paar"><ak-segmente art="7" stellen="4" farbe="bernstein" text="128.0"></ak-segmente><ak-segmente id="grundton" art="7" stellen="3" farbe="gruen" text="142"></ak-segmente></div>
-          <span class="ak-etikett">Zeit · Tempo · Grundton in Hertz</span>
+          <span class="ak-etikett" title="Zeit, Tempo und Grundton der Stimme in Hertz">Time · Tempo · Pitch Hz</span>
         </div></div></div>
       <div class="hf-muster" data-karte><b>Vierzehn Segmente</b><p>Buchstaben und Zahlen; längere Namen laufen durch.</p>
         <div class="ak-geraet" data-bauform="inspektor" data-modul="U"><div class="hf-stapel">
-          <ak-segmente art="14" stellen="8" farbe="cyan" text="BORDSTIMME FERTIG" lauf="320"></ak-segmente>
-          <ak-segmente art="14" stellen="8" farbe="bernstein" text="TONHÖHE"></ak-segmente>
+          <ak-segmente art="14" stellen="8" farbe="cyan" text="BORDSTIMME READY" hilfe="Preset Bordstimme fertig gerendert" lauf="320"></ak-segmente>
+          <ak-segmente art="14" stellen="8" farbe="bernstein" text="HÖHE HELL" hilfe="Name des Presets Höhe hell, mit Umlaut"></ak-segmente>
           <ak-segmente id="note" art="14" stellen="4" farbe="gruen" text="A4 +3"></ak-segmente>
         </div></div></div>
       <div class="hf-muster" data-karte><b>Punktmatrix</b><p>Fünf mal sieben Punkte je Zeichen, mit Umlauten und ß.</p>
         <div class="ak-geraet" data-bauform="inspektor" data-modul="U"><div class="hf-stapel">
-          <ak-segmente art="punkt" stellen="10" farbe="bernstein" text="GRÖSSE 64%"></ak-segmente>
-          <ak-segmente id="matrix" art="punkt" stellen="10" farbe="rot" text="PEGEL -18" ></ak-segmente>
+          <ak-segmente art="punkt" stellen="10" farbe="bernstein" text="HÖLZERN 64%" hilfe="Preset Hölzern, Stärke 64 Prozent"></ak-segmente>
+          <ak-segmente id="matrix" art="punkt" stellen="10" farbe="rot" text="LEVEL -18" hilfe="Pegel in Dezibel"></ak-segmente>
         </div></div></div>
       <div class="hf-muster" data-karte><b>Leuchtschirm mit Schrift</b><p>Wie der kleine Bildschirm im Gerät: echte Schrift, darum beliebig lang und für Leser lesbar.</p>
         <div class="ak-geraet" data-bauform="inspektor" data-modul="U"><div class="hf-paar">
-          <div class="ak-glas ak-schirmtext" data-kennzahl style="--farbe:var(--led-cyan)"><b>Bandecho</b><span>420 ms · 45 %</span></div>
-          <div class="ak-glas ak-schirmtext" data-kennzahl style="--farbe:var(--led-bernstein)"><b>Klassisch</b><span>Tiefe 60 %</span></div>
+          <div class="ak-glas ak-schirmtext" data-kennzahl style="--farbe:var(--led-cyan)"><b>Tape Echo</b><span>420 ms · 45 %</span></div>
+          <div class="ak-glas ak-schirmtext" data-kennzahl style="--farbe:var(--led-bernstein)"><b>Classic</b><span>Depth 60 %</span></div>
         </div></div></div>
     </div>
   </section>
@@ -76,15 +76,15 @@
     <div class="hf-katalog breit">
       <div class="hf-muster" data-karte><b>Aussteuerung, Stereo</b>
         <div class="ak-geraet" data-bauform="inspektor" data-modul="U"><div class="hf-paar">
-          <ak-zeiger art="vu" kanal="links" beschriftung="VU Links" spitze></ak-zeiger>
-          <ak-zeiger art="vu" kanal="rechts" beschriftung="VU Rechts" spitze></ak-zeiger>
+          <ak-zeiger art="vu" kanal="links" beschriftung="VU L" hilfe="Aussteuerung links" spitze></ak-zeiger>
+          <ak-zeiger art="vu" kanal="rechts" beschriftung="VU R" hilfe="Aussteuerung rechts" spitze></ak-zeiger>
         </div></div></div>
       <div class="hf-muster" data-karte><b>Stimmgerät</b>
         <div class="ak-geraet" data-bauform="inspektor" data-modul="B"><div class="hf-paar">
-          <ak-zeiger art="stimmen" beschriftung="Cent" style="--farbe:#bdf5d2"></ak-zeiger>
+          <ak-zeiger art="stimmen" beschriftung="Cent" hilfe="Stimmgerät: Abweichung vom Ton in Cent" style="--farbe:#bdf5d2"></ak-zeiger>
           <div class="hf-stapel" style="align-content:center">
             <ak-segmente id="stimm-note" art="14" stellen="3" farbe="gruen" text="A4"></ak-segmente>
-            <div style="display:flex; justify-content:space-around; gap:10px; flex-wrap:wrap"><ak-led id="tief" farbe="rot" text="Tiefer"></ak-led><ak-led id="genau" farbe="gruen" text="Genau"></ak-led><ak-led id="hoch" farbe="rot" text="Höher"></ak-led></div>
+            <div style="display:flex; justify-content:space-around; gap:10px; flex-wrap:wrap"><ak-led id="tief" farbe="rot" text="Flat" hilfe="Zu tief"></ak-led><ak-led id="genau" farbe="gruen" text="In Tune" hilfe="Genau gestimmt"></ak-led><ak-led id="hoch" farbe="rot" text="Sharp" hilfe="Zu hoch"></ak-led></div>
           </div>
         </div></div></div>
     </div>
@@ -96,16 +96,16 @@
     <div class="hf-katalog breit">
       <div class="hf-muster" data-karte><b>LED-Kette, Stereo</b>
         <div class="ak-geraet" data-bauform="inspektor" data-modul="U"><div class="hf-stapel">
-          <ak-pegel kanaele="2" beschriftung="Eingang Stereo" style="--pegel-h:34px"></ak-pegel>
-          <ak-pegel art="balken" kanaele="1" farbe="cyan" segmente="60" beschriftung="Ausgang" skala="-48|-24|-12|-6|0"></ak-pegel>
+          <ak-pegel kanaele="2" beschriftung="Input" hilfe="Eingangspegel, Stereo" style="--pegel-h:34px"></ak-pegel>
+          <ak-pegel art="balken" kanaele="1" farbe="cyan" segmente="60" beschriftung="Output" hilfe="Ausgangspegel" skala="-48|-24|-12|-6|0"></ak-pegel>
         </div></div></div>
       <div class="hf-muster" data-karte><b>Pegelminderung und senkrecht</b>
         <div class="ak-geraet" data-bauform="inspektor" data-modul="C"><div style="display:flex; gap:20px; align-items:flex-start; flex-wrap:wrap">
-          <ak-pegel richtung="senkrecht" kanaele="2" beschriftung="Pegel senkrecht" skala="0|-6|-12|-24|-36|-48" style="--pegel-h:200px"></ak-pegel>
+          <ak-pegel richtung="senkrecht" kanaele="2" beschriftung="Level" hilfe="Pegel, senkrecht" skala="0|-6|-12|-24|-36|-48" style="--pegel-h:200px"></ak-pegel>
           <div class="hf-stapel" style="flex:1; min-width:180px">
-            <span class="ak-etikett">Pegelminderung des Kompressors</span>
-            <ak-pegel art="gr" kanaele="1" farbe="bernstein" segmente="24" beschriftung="Pegelminderung"></ak-pegel>
-            <ak-schieber art="balken" leuchte="gelb" segmente="12" name="Rückkopplung" min="0" max="100" wert="55" einheit="%"></ak-schieber>
+            <span class="ak-etikett" title="Pegelminderung des Kompressors">Gain Reduction</span>
+            <ak-pegel art="gr" kanaele="1" farbe="bernstein" segmente="24" beschriftung="Gain Reduction" hilfe="Pegelminderung des Kompressors"></ak-pegel>
+            <ak-schieber art="balken" leuchte="gelb" segmente="12" name="Feedback" hilfe="Rückkopplung: wie oft das Echo wiederkehrt" min="0" max="100" wert="55" einheit="%"></ak-schieber>
           </div>
         </div></div></div>
     </div>
@@ -116,23 +116,23 @@
     <p class="hf-text">Phosphor leuchtet nach (das alte Bild verblasst statt zu verschwinden), Linien leuchten ohne Weichzeichner: zweimal breit und blass, einmal schmal und hell. Der LFO folgt den beiden Reglern daneben.</p>
     <div class="hf-katalog breit">
       <div class="hf-muster" data-karte><b>Oszilloskop</b>
-        <div class="ak-geraet" data-bauform="inspektor" data-modul="U"><ak-schirm art="welle" farbe="gruen" fuss="Stimme|2,5 Perioden" beschriftung="Oszilloskop der Stimme"></ak-schirm></div></div>
+        <div class="ak-geraet" data-bauform="inspektor" data-modul="U"><ak-schirm art="welle" farbe="gruen" fuss="Voice|2.5 Cycles" hilfe="Oszilloskop der Stimme, zweieinhalb Perioden" beschriftung="Oszilloskop der Stimme"></ak-schirm></div></div>
       <div class="hf-muster" data-karte><b>LFO mit Reglern</b>
         <div class="ak-geraet" data-bauform="inspektor" data-modul="S"><div style="display:grid; grid-template-columns:minmax(0, 1fr) auto; gap:12px; align-items:center">
-          <ak-schirm art="lfo" farbe="tuerkis" tempo="#lfo-tempo" tiefe="#lfo-tiefe" fuss="LFO|Sinus" beschriftung="LFO"></ak-schirm>
+          <ak-schirm art="lfo" farbe="tuerkis" tempo="#lfo-tempo" tiefe="#lfo-tiefe" fuss="LFO|Sine" hilfe="LFO, Wellenform Sinus" beschriftung="LFO"></ak-schirm>
           <div class="ak-raster" style="--ak-spalten:1; --ak-zelle-min:88px; width:96px">
-            <ak-dreh id="lfo-tempo" kappe="schwarz" zeiger="tuerkis" name="Tempo" min="0.1" max="10" kurve="log" schritt="0.01" wert="1.2" vorgabe="1" einheit="Hz"></ak-dreh>
-            <ak-dreh id="lfo-tiefe" kappe="schwarz" zeiger="tuerkis" name="Tiefe" min="0" max="100" wert="70" vorgabe="50" einheit="%"></ak-dreh>
+            <ak-dreh id="lfo-tempo" kappe="schwarz" zeiger="tuerkis" name="Rate" hilfe="Tempo des LFO in Hertz" min="0.1" max="10" kurve="log" schritt="0.01" wert="1.2" vorgabe="1" einheit="Hz"></ak-dreh>
+            <ak-dreh id="lfo-tiefe" kappe="schwarz" zeiger="tuerkis" name="Depth" hilfe="Tiefe: wie weit der LFO den Wert bewegt" min="0" max="100" wert="70" vorgabe="50" einheit="%"></ak-dreh>
           </div>
         </div></div></div>
       <div class="hf-muster" data-karte><b>Spektrum: Bänder</b>
-        <div class="ak-geraet" data-bauform="inspektor" data-modul="U"><ak-schirm art="spektrum" farbe="cyan" fuss="20 Hz|200 Hz|2 kHz|20 kHz" beschriftung="Spektrum in Terzbändern"></ak-schirm></div></div>
+        <div class="ak-geraet" data-bauform="inspektor" data-modul="U"><ak-schirm art="spektrum" farbe="cyan" fuss="20 Hz|200 Hz|2 kHz|20 kHz" hilfe="Spektrum in Terzbändern" beschriftung="Spektrum in Terzbändern"></ak-schirm></div></div>
       <div class="hf-muster" data-karte><b>Spektrum: Linie</b>
-        <div class="ak-geraet" data-bauform="inspektor" data-modul="D"><ak-schirm art="linie" farbe="violett" fuss="20 Hz|200 Hz|2 kHz|20 kHz" beschriftung="Spektrum als Linie"></ak-schirm></div></div>
+        <div class="ak-geraet" data-bauform="inspektor" data-modul="D"><ak-schirm art="linie" farbe="violett" fuss="20 Hz|200 Hz|2 kHz|20 kHz" hilfe="Spektrum als Linie" beschriftung="Spektrum als Linie"></ak-schirm></div></div>
       <div class="hf-muster" data-karte><b>Hüllkurve</b>
-        <div class="ak-geraet" data-bauform="inspektor" data-modul="S"><ak-schirm art="huelle" farbe="bernstein" verhaeltnis="16 / 7" fuss="Anstieg|Abfall|Halten|Ausklang" beschriftung="Hüllkurve"></ak-schirm></div></div>
+        <div class="ak-geraet" data-bauform="inspektor" data-modul="S"><ak-schirm art="huelle" farbe="bernstein" verhaeltnis="16 / 7" fuss="Attack|Decay|Sustain|Release" hilfe="Hüllkurve: Anstieg, Abfall, Halten, Ausklang" beschriftung="Hüllkurve"></ak-schirm></div></div>
       <div class="hf-muster" data-karte><b>Take mit Abspielkopf</b>
-        <div class="ak-geraet" data-bauform="inspektor" data-modul="U"><ak-schirm art="take" farbe="bernstein" verhaeltnis="16 / 5" fuss="0:00|Take 3 · Sprecherprobe|0:18" beschriftung="Take mit Abspielkopf"></ak-schirm></div></div>
+        <div class="ak-geraet" data-bauform="inspektor" data-modul="U"><ak-schirm art="take" farbe="bernstein" verhaeltnis="16 / 5" fuss="0:00|Take 3 · Sprecherprobe|0:18" hilfe="Übersicht eines Takes mit Abspielkopf" beschriftung="Take mit Abspielkopf"></ak-schirm></div></div>
     </div>
   </section>
 
@@ -154,7 +154,7 @@
     if (Takt.bild % 8 === 0) {
       const q = Quelle.jetzt(t);
       grundton.text = String(Math.round(q.f0));
-      matrix.text = `PEGEL ${Math.round(q.links)}`;
+      matrix.text = `LEVEL ${Math.round(q.links)}`;
       const cent = 18 * Math.sin(t * 0.5) + 6 * Math.sin(t * 2.7) + 3 * Math.sin(t * 11);
       tief.setAttribute("zustand", cent < -3 ? "an" : "aus"); hoch.setAttribute("zustand", cent > 3 ? "an" : "aus"); genau.setAttribute("zustand", Math.abs(cent) <= 3 ? "an" : "aus");
       note.text = `A4${cent >= 0 ? "+" : "-"}${Math.min(9, Math.round(Math.abs(cent) / 5))}`;
